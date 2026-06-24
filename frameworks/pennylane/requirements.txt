@@ -1,0 +1,9 @@
+numpy==1.26.4
+scipy==1.16.0
+pytest==8.4.1
+pennylane
+pennylane-lightning
+jax==0.6.1
+jaxlib==0.6.1
+optax==0.2.5
+quimb==1.12.1

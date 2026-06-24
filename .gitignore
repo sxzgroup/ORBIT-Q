@@ -1,0 +1,42 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments
+.conda/
+.venv/
+venv/
+env/
+
+# Harbor and benchmark run artifacts
+jobs/
+.artifacts/
+HANDOFF.md
+LOCAL_SUCCESS_LOGS.md
+LOCAL_TODO.md
+.tmp/
+tmp/
+logs/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Secrets and local Codex state
+.env
+.env.*
+*.local
+auth.json
+models.json
+
+# Docker/build scratch
+*.log
+dist/
+build/
+*.egg-info/
