@@ -1,10 +1,12 @@
-numpy==1.26.4
-scipy==1.16.0
-pytest==8.4.1
-tensorcircuit-ng==1.7.0
-tensornetwork-ng==0.5.1
-jax==0.6.1
-jaxlib==0.6.1
-optax==0.2.5
-quimb==1.12.1
+--extra-index-url https://pypi.org/simple
+numpy==2.2.6
+scipy==1.17.1
+pytest==7.4.4
+tensorcircuit-nightly==1.7.0.dev20260618
+tensornetwork-ng
+jax==0.10.0
+jaxlib==0.10.0
+optax==0.2.8
+diffrax==0.7.2
+quimb==1.11.1
 omeco==0.2.4

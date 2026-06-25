@@ -128,7 +128,7 @@ timeout_sec = 1800.0
 [environment]
 network_mode = "public"
 build_timeout_sec = 1800.0
-cpus = 6
+cpus = 14
 memory_mb = 32768
 storage_mb = 16384
 gpus = 0
@@ -156,22 +156,24 @@ def generate_task(
 ) -> None:
     problem_md = (source / f"problem_{problem_id}.md").read_text()
     title = problem_title(problem_md, problem_id)
+    instruction_text = filtered_instruction(problem_md, problem_id)
     task_dir = tasks_dir / f"challenge-{problem_id:02d}"
     if task_dir.exists():
         shutil.rmtree(task_dir)
     task_dir.mkdir(parents=True)
 
-    (task_dir / "instruction.md").write_text(
-        filtered_instruction(problem_md, problem_id) + "\n"
-    )
+    (task_dir / "instruction.md").write_text(instruction_text + "\n")
     (task_dir / "task.toml").write_text(task_toml(problem_id, title))
     copy_template_tree(TEMPLATE_DIR / "tests", task_dir / "tests")
     copy_template_tree(TEMPLATE_DIR / "solution", task_dir / "solution")
     (task_dir / "environment").mkdir()
-    (task_dir / "environment" / ".gitkeep").write_text("")
+    (task_dir / "environment" / ".gitkeep").write_text("\n")
 
     shutil.copy2(source / f"evaluate_{problem_id}.py", task_dir / "tests")
     shutil.copy2(source / f"solution_{problem_id}.py", task_dir / "solution")
+    (task_dir / "tests" / "problem_statement.md").write_text(
+        instruction_text + "\n"
+    )
     (task_dir / "tests" / "problem_id.txt").write_text(f"{problem_id}\n")
     (task_dir / "solution" / "problem_id.txt").write_text(f"{problem_id}\n")
     (task_dir / "tests" / "test.sh").chmod(0o755)

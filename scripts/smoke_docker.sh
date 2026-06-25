@@ -26,7 +26,7 @@ import os
 
 framework = os.environ["FRAMEWORK"]
 required = {
-    "tensorcircuit": ["tensorcircuit", "jax", "quimb", "omeco"],
+    "tensorcircuit": ["tensorcircuit", "jax", "diffrax", "quimb", "omeco"],
     "pennylane": ["pennylane", "jax"],
 }.get(framework, [])
 for module_name in required:

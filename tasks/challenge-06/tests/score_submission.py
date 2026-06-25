@@ -86,12 +86,22 @@ def _functional_score(problem_id: int, solution_module: str) -> dict:
     }
 
 
-def _llm_audit_score(source: Path, framework: str, evaluation_summary: str) -> dict:
+def _llm_audit_score(
+    source: Path,
+    framework: str,
+    evaluation_summary: str,
+    problem_statement: str,
+) -> dict:
     if os.environ.get("CODEX_AUDIT_ENABLED", "1") == "0":
         return {"llm_audit_score": 1.0, "llm_audit_skipped": True}
     audit_module = _load_module(Path("/tests/audit_codex.py"), "audit_codex_runtime")
     try:
-        return audit_module.audit_source(source, framework, evaluation_summary)
+        return audit_module.audit_source(
+            source,
+            framework,
+            evaluation_summary,
+            problem_statement,
+        )
     except Exception as exc:
         return {"llm_audit_score": 0.0, "audit_error": str(exc)}
 
@@ -115,6 +125,16 @@ def main() -> None:
         "no_forbidden_framework_score": 0.0,
         "no_raw_simulator_bypass_score": 0.0,
         "no_static_cheating_score": 0.0,
+        "llm_framework_compliance_score": 0.0,
+        "llm_cheating_score": 0.0,
+        "llm_problem_fidelity_score": 0.0,
+        "llm_implementation_correctness_score": 0.0,
+        "llm_uses_required_framework_score": 0.0,
+        "llm_no_other_quantum_framework_score": 0.0,
+        "llm_no_raw_simulator_bypass_score": 0.0,
+        "llm_no_hardcoded_or_hidden_answer_score": 0.0,
+        "llm_no_test_or_reward_tampering_score": 0.0,
+        "llm_no_evaluator_exploit_score": 0.0,
     }
     details = {"problem_id": problem_id, "framework": framework}
 
@@ -128,10 +148,17 @@ def main() -> None:
 
     static = check_source(solution_path, framework)
     functional = _functional_score(problem_id, solution_module)
+    problem_statement_path = Path("/tests/problem_statement.md")
+    problem_statement = (
+        problem_statement_path.read_text(errors="replace")
+        if problem_statement_path.exists()
+        else ""
+    )
     audit = _llm_audit_score(
         solution_path,
         framework,
         functional.get("functional_output_tail", ""),
+        problem_statement,
     )
 
     details.update({"static": static, "functional": functional, "audit": audit})
@@ -151,6 +178,34 @@ def main() -> None:
                 static["no_raw_simulator_bypass_score"]
             ),
             "no_static_cheating_score": float(static["no_static_cheating_score"]),
+            "llm_framework_compliance_score": float(
+                audit.get("llm_framework_compliance_score", 0.0)
+            ),
+            "llm_cheating_score": float(audit.get("llm_cheating_score", 0.0)),
+            "llm_problem_fidelity_score": float(
+                audit.get("llm_problem_fidelity_score", 0.0)
+            ),
+            "llm_implementation_correctness_score": float(
+                audit.get("llm_implementation_correctness_score", 0.0)
+            ),
+            "llm_uses_required_framework_score": float(
+                audit.get("llm_uses_required_framework_score", 0.0)
+            ),
+            "llm_no_other_quantum_framework_score": float(
+                audit.get("llm_no_other_quantum_framework_score", 0.0)
+            ),
+            "llm_no_raw_simulator_bypass_score": float(
+                audit.get("llm_no_raw_simulator_bypass_score", 0.0)
+            ),
+            "llm_no_hardcoded_or_hidden_answer_score": float(
+                audit.get("llm_no_hardcoded_or_hidden_answer_score", 0.0)
+            ),
+            "llm_no_test_or_reward_tampering_score": float(
+                audit.get("llm_no_test_or_reward_tampering_score", 0.0)
+            ),
+            "llm_no_evaluator_exploit_score": float(
+                audit.get("llm_no_evaluator_exploit_score", 0.0)
+            ),
         }
     )
     rewards["reward"] = (
