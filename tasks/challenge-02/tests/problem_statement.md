@@ -119,6 +119,7 @@ A run is considered functionally successful when all of the following hold for t
 - `entropy_history.shape == (500, 3)`.
 - The final loss is lower than the initial loss, derived from `loss_history`.
 - The final energy density is lower than the initial energy density, derived from `energy_density_history`.
+- The final energy density is at most `1.0` above the exact sparse ground-state energy density. This is intentionally loose and catches incorrect Hamiltonian/sign conventions without making the benchmark a high-precision ground-state solver.
 - The final entropy-profile MSE matches the MSE recomputed from the last row of `entropy_history` and `target_entropies`.
 - All returned values are NumPy arrays or NumPy-compatible scalars.
 

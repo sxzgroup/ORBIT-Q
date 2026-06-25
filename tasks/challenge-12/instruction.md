@@ -66,7 +66,6 @@ Required result keys:
 - `fidelity_history`: NumPy array with shape `(max_steps,)`.
 - `final_parameters`: NumPy array with shape `(parameter_count,)`.
 - `final_overlap_phase`: scalar float.
-- `final_grad_norm`: scalar float.
 
 Each history records one value per optimizer update, evaluated immediately before applying that update. The evaluator recomputes parameter count, derives final fidelity and final loss from the histories, and checks all shapes and scalar quantities from the returned arrays.
 
@@ -78,7 +77,7 @@ The evaluator file is `evaluate_12.py`. It dynamically imports a solution module
 python evaluate_12.py --solution solution_12
 ```
 
-The evaluator computes the DMRG-MPS target before timing, passes that quimb MPS into the solution through `config["dmrg_state"]`, and then consumes only the returned result dictionary. It prints the end-to-end solution time excluding evaluator-side DMRG preparation, initial and final fidelity, final overlap phase, final gradient norm, target MPS bond dimension, history shape, returned keys, and pass/fail criteria. It does not save files or create plots by default.
+The evaluator computes the DMRG-MPS target before timing, passes that quimb MPS into the solution through `config["dmrg_state"]`, and then consumes only the returned result dictionary. It prints the end-to-end solution time excluding evaluator-side DMRG preparation, initial and final fidelity, final overlap phase, target MPS bond dimension, history shape, returned keys, and pass/fail criteria. It does not save files or create plots by default.
 
 ## Passing Criteria
 

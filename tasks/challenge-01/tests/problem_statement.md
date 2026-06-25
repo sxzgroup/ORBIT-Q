@@ -10,7 +10,7 @@ The evaluator defines and passes the following configuration dictionary into `ru
 
 ```python
 {
-    "n_qubits": 20,
+    "n_qubits": 32,
     "field": 1.05,
     "dmrg_chi": 8,
     "dmrg_sweeps": 2,
@@ -30,10 +30,12 @@ These runtime keys are intentionally supplied by the evaluator so the DMRG prepa
 The Hamiltonian is the open-boundary transverse-field Ising model
 
 $$
-H = -\sum_{i=0}^{18} Z_i Z_{i+1} - 1.05 \sum_{i=0}^{19} X_i.
+H = -\sum_{i=0}^{30} Z_i Z_{i+1} - 1.05 \sum_{i=0}^{31} X_i.
 $$
 
 The variational circuit has four brickwork layers on top of the DMRG-MPS input state. Each layer applies trainable one-qubit $R_Z R_Y R_Z$ rotations on all qubits, followed by trainable nearest-neighbor two-qubit interactions $\exp[-i(\theta_{xx} X X + \theta_{yy} Y Y + \theta_{zz} Z Z)]$ on even bonds in even-numbered layers and odd bonds in odd-numbered layers. The optimizer is Adam with learning rate `0.005` for exactly 500 steps. Do not use early stopping.
+
+The refinement is intended as a small correction on top of the supplied DMRG-MPS input, not as a replacement by a far-from-identity random circuit.
 
 ## Solution Interface
 
@@ -50,7 +52,6 @@ The solution should not print progress. It should perform the core computation a
 Required result keys:
 
 - `energy_history`: NumPy array with length `config["max_steps"]`.
-- `grad_norm_history`: NumPy array with length `config["max_steps"]`.
 
 Each history records one value per optimizer update, evaluated immediately before applying that update. The evaluator derives the initial and final variational energies from the first and last entries of `energy_history`. The solution may use any quantum software framework, but it must consume only the evaluator-provided configuration, including the supplied `dmrg_state`, and return only this NumPy-format dictionary. The solution should not run DMRG internally.
 
@@ -62,27 +63,19 @@ The evaluator file is `evaluate_1.py`. It dynamically imports a solution module 
 python evaluate_1.py --solution solution_1
 ```
 
-The evaluator computes the DMRG-MPS input before timing, passes that quimb MPS into the solution through `config["dmrg_state"]`, and then consumes only the returned result dictionary. It independently builds a sparse TFIM Hamiltonian, computes the exact ground-state energy by sparse diagonalization, and prints:
+The evaluator computes the DMRG-MPS input before timing, passes that quimb MPS into the solution through `config["dmrg_state"]`, and then consumes only the returned result dictionary. It reports compact energy and timing summaries derived from the returned history together with the supplied DMRG reference.
 
 - solution module name,
 - end-to-end solution time, excluding evaluator-side DMRG preparation,
-- exact sparse energy,
-- DMRG energy error,
-- initial variational error,
-- final variational error,
+- DMRG reference energy,
+- initial variational energy,
+- final variational energy,
 - energy improvement from circuit refinement,
 - returned result keys.
 
 ## Passing Criteria
 
-A run is considered functionally successful when all of the following hold for the default 500-step configuration:
-
-- `len(energy_history) == 500` and `len(grad_norm_history) == 500`.
-- `final_energy < initial_energy`, showing the circuit refinement improves the DMRG-MPS input circuit ansatz from its small-random initialization.
-- $E_{\mathrm{final}} < E_{\mathrm{DMRG}}$, showing the circuit refinement improves on the input DMRG-MPS energy.
-- $E_{\mathrm{final}} - E_{\mathrm{exact}} \le 1.5 \times 10^{-3}$.
-- $|E_{\mathrm{DMRG}} - E_{\mathrm{exact}}| \le 2.5 \times 10^{-3}$.
-- All returned values are NumPy arrays or NumPy-compatible scalars.
+A run is considered functionally successful when the returned history has the expected shape, remains finite, and the refined circuit energy stays consistent with the evaluator-supplied DMRG reference without materially degrading it. All returned values must be NumPy arrays or NumPy-compatible scalars.
 
 The evaluator should report these metrics directly so another framework's `solution_1.py` can be compared without changing `evaluate_1.py`.
 

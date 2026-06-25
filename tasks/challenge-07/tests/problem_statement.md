@@ -1,8 +1,15 @@
-# Problem 7: 50-Qubit Two-Excitation VQE
+# Problem 7: 16-Qubit Measurement-Feedback VQE
 
 ## Goal
 
-Optimize a particle-number-preserving variational circuit for a 50-qubit hard-core-boson Hamiltonian while staying entirely inside the two-excitation subspace. The full Hilbert space has dimension `2^50`, but the computation should use the `C(50, 2) = 1225` dimensional symmetry sector.
+Optimize a variational quantum protocol whose energy objective is defined by an average over mid-circuit measurement trajectories. The task is not a static VQE over a single deterministic circuit: each trajectory contains projective ancilla measurements, and the subsequent two-qubit feedback gates depend explicitly on those measured classical bits.
+
+The problem is designed to test whether a framework can express and optimize a hybrid quantum-classical protocol with:
+
+- parameterized data and ancilla layers,
+- projective mid-circuit ancilla measurement,
+- branch-dependent conditional two-qubit gates,
+- trajectory-batched energy estimation inside a gradient-based VQE loop.
 
 ## Fixed Problem Configuration
 
@@ -10,41 +17,95 @@ The evaluator defines and passes the following configuration dictionary into `ru
 
 ```python
 {
-    "n_qubits": 50,
-    "n_particles": 2,
-    "initial_occupied": [16, 33],
-    "interaction": 0.7,
-    "n_layers": 20,
-    "initial_parameter_scale": 0.01,
-    "max_steps": 500,
-    "learning_rate": 0.01,
+    "n_data_qubits": 8,
+    "n_ancilla_qubits": 8,
+    "n_qubits": 16,
+    "n_layers": 2,
+    "n_trajectories": 128,
+    "initial_parameter_scale": 0.1,
+    "max_steps": 100,
+    "learning_rate": 0.02,
+    "seed": 2047,
+    "transverse_field": 1.05,
+    "minimum_improvement": 0.3,
+    "target_final_energy": -8.3,
 }
 ```
 
-Use the open-boundary hard-core-boson Hamiltonian
+Data qubits are indexed as `0,1,...,7`. Ancilla qubits are indexed as `8,9,...,15`, with ancilla `8 + i` paired to data qubit `i`.
 
-$$H = -\sum_{i=0}^{48}(\sigma_i^+\sigma_{i+1}^- + \sigma_i^-\sigma_{i+1}^+) + 0.7\sum_{i=0}^{48} n_i n_{i+1} + \sum_{i=0}^{49}\mu_i n_i,$$
+The Hamiltonian acts only on the 8 data qubits and is the open-boundary transverse-field Ising model
 
-where `n_i = |1><1|_i` and
+$$
+H = -\sum_{i=0}^{6} Z_i Z_{i+1} - 1.05 \sum_{i=0}^{7} X_i.
+$$
 
-$$\mu_i = 0.25 \cos(2\pi i / 50) + 0.10(-1)^i.$$
+## Variational Protocol
 
-### Ansatz Structure
+Each layer consists of the following operations, applied in this order.
 
-Start from the computational-basis state with exactly two excitations at sites `16` and `33`. Use 20 brickwork layers, equivalently 10 repeated even+odd blocks. In each block, first apply the even-bond layer on bonds `(0,1), (2,3), ..., (48,49)`, then apply the odd-bond layer on bonds `(1,2), (3,4), ..., (47,48)`. Each active bond `(i, i+1)` has three independent trainable real parameters `(theta, alpha, beta)` and applies the number-preserving gate `G_i(theta, alpha, beta) = RZ_i(alpha) RZ_{i+1}(beta) ISWAP_{i,i+1}(theta)`, with gates applied from right to left in this expression.
+### 1. Data Single-Qubit Layer
 
-The single-site phase is `RZ(phi) = exp(-i phi Z / 2)`. The mixing gate is the identity on `|00>` and `|11>`, and acts on the ordered subspace `(|01>, |10>)` as
+Apply trainable `RY` rotations on all data qubits:
 
 ```text
-[[cos(pi theta / 2), i sin(pi theta / 2)],
- [i sin(pi theta / 2), cos(pi theta / 2)]]
+RY(theta_data[layer, i]) on data qubit i,  i = 0,...,7.
 ```
 
-All trainable parameters are initialized independently from a normal distribution with mean `0` and standard deviation `initial_parameter_scale`.
+### 2. Ancilla Single-Qubit Layer
 
-### Loss Function
+Apply trainable `RY` rotations on all ancilla qubits:
 
-Train all gate parameters by minimizing `<H>` with Adam at learning rate `0.01` for exactly 500 optimizer updates. Do not use early stopping, because the evaluator measures fixed-work end-to-end runtime.
+```text
+RY(theta_anc[layer, i]) on ancilla qubit 8 + i,  i = 0,...,7.
+```
+
+### 3. Pre-Measurement Entangling Layer
+
+For each pair `(data_i, ancilla_i)`, apply a trainable two-qubit entangler
+
+```text
+RZZ(theta_ent[layer, i]) on qubits (8 + i, i).
+```
+
+### 4. Mid-Circuit Ancilla Measurement
+
+Measure each ancilla qubit `8 + i` in the computational basis, obtaining trajectory bit
+
+```text
+m[layer, i] in {0, 1}.
+```
+
+Use exactly `n_trajectories = 128` trajectories per objective evaluation, and keep the per-trajectory measurement randomness fixed across optimizer updates so the objective is a reproducible trajectory average rather than an optimizer-side resampling procedure.
+
+### 5. Conditional Feedback Layer
+
+For each pair `(ancilla_i, data_i)`, apply a conditional two-qubit `RZZ` gate:
+
+- if `m[layer, i] = 0`, apply `RZZ(theta_fb0[layer, i])` on `(8 + i, i)`;
+- if `m[layer, i] = 1`, apply `RZZ(theta_fb1[layer, i])` on `(8 + i, i)`.
+
+These two feedback angles are independent trainable parameters.
+
+### 6. Data Post-Processing Layer
+
+Apply trainable `RZ` rotations on all data qubits:
+
+```text
+RZ(theta_post[layer, i]) on data qubit i,  i = 0,...,7.
+```
+
+## Objective Function
+
+For a fixed parameter vector and a fixed batch of `128` trajectory uniforms, the protocol produces `128` measurement-conditioned trajectories. Let `E_t` be the data-Hamiltonian expectation value on trajectory `t`. The objective is the trajectory-averaged energy
+
+$$
+E_{\mathrm{avg}} = \frac{1}{128} \sum_{t=1}^{128} E_t.
+$$
+
+Train all variational parameters by minimizing `E_avg` with Adam at learning rate `0.02` for exactly `max_steps = 100` optimizer updates. Do not use early stopping.
+
+All trainable parameters are initialized independently from a normal distribution with mean `0` and standard deviation `initial_parameter_scale`, using the configured seed.
 
 ## Solution Interface
 
@@ -56,15 +117,16 @@ def run_solution(config):
     return results
 ```
 
-The solution should not print progress. It should perform the core computation and return only the NumPy-format quantities that the evaluator checks.
+The solution should not print progress. It should return only NumPy-format quantities consumed by the evaluator.
 
 Required result keys:
 
-- `energy_history`: NumPy array with length equal to the number of optimizer updates.
+- `energy_history`: NumPy array of length `config["max_steps"]`
+- `final_trajectory_energies`: NumPy array with shape `(config["n_trajectories"],)`
 
-`energy_history` records one energy value per optimizer update, evaluated immediately before applying that update. The evaluator derives initial and final energy from the first and last entries of `energy_history`. The excitation number and requested step count are fixed by the evaluator configuration and are not returned by the solution.
+`energy_history[t]` records the trajectory-averaged energy evaluated immediately before optimizer update `t`.
 
-The solution may use any quantum software framework, but it must consume only the evaluator-provided configuration and return only this NumPy-format dictionary.
+`final_trajectory_energies[k]` records the final per-trajectory data-Hamiltonian energy for the same fixed batch of `128` trajectory uniforms used by the objective.
 
 ## Evaluation Interface
 
@@ -74,20 +136,31 @@ The evaluator file is `evaluate_7.py`. It dynamically imports a solution module 
 python evaluate_7.py --solution solution_7
 ```
 
-The evaluator consumes only the returned result dictionary. It builds the exact sparse Hamiltonian in the two-excitation subspace, prints the subspace dimension, full Hilbert-space dimension, initial energy, final VQE energy, exact subspace ground-state energy, final excitation-number expectation, energy-history length, steps run, returned keys, and pass/fail criteria. It does not save files or create plots by default.
+The evaluator consumes only the returned result dictionary. It prints:
+
+- solution module name,
+- end-to-end solution time,
+- initial trajectory-averaged energy,
+- final trajectory-averaged energy,
+- total energy improvement,
+- mean and standard deviation of final trajectory energies,
+- energy-history length,
+- returned result keys.
+
+It does not save files or create plots by default.
 
 ## Passing Criteria
 
 A run is considered functionally successful when all of the following hold for the default configuration:
 
-- The two-excitation subspace dimension is `1225`.
-- `len(energy_history) == 500`.
-- The final VQE energy is lower than the initial energy.
-- The final VQE energy is no lower than the exact sparse ground-state energy beyond numerical tolerance.
-- The final excitation-number expectation equals `2` to numerical tolerance `1e-12`.
-- All returned values are NumPy arrays or NumPy-compatible scalars.
+- `len(energy_history) == 100`
+- `final_trajectory_energies.shape == (128,)`
+- the final trajectory-averaged energy is lower than the initial trajectory-averaged energy
+- the total energy improvement is at least `minimum_improvement = 0.3`
+- the final trajectory-averaged energy is at most `target_final_energy = -8.3`
+- all returned values are NumPy arrays or NumPy-compatible scalars.
 
-The evaluator reports these metrics directly so another framework's `solution_7.py` can be compared without changing `evaluate_7.py`.
+The evaluator reports these quantities directly so another framework's `solution_7.py` can be compared without changing `evaluate_7.py`.
 
 ## Submission Requirements
 

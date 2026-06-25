@@ -93,6 +93,7 @@ A run is considered functionally successful when all of the following hold for t
 - `len(energy_density_history) == 300`, `len(success_probability_history) == 300`, `len(mean_log_probability_history) == 300`, and `len(loss_history) == 300`.
 - The final loss is lower than the initial loss, derived from `loss_history`.
 - The final energy density is lower than the initial energy density, derived from `energy_density_history`.
+- The final energy density is at most `1.0` above the exact sparse ground-state energy density. This is intentionally loose and catches incorrect Hamiltonian/sign conventions without making the benchmark a high-precision cooling solver.
 - The final success probability derived from `success_probability_history` is in `(0, 1]`.
 - The final success probability matches `exp(60 * final_mean_log_probability)`, where both values are derived from their histories.
 - All returned values are NumPy arrays or NumPy-compatible scalars.

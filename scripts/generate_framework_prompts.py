@@ -12,7 +12,7 @@ OUTPUT_DIR = ROOT / "prompts" / "frameworks"
 # Supported framework prompts. Add entries here only after the verifier and
 # environment policy for that framework are implemented.
 FRAMEWORKS = {
-    "tensorcircuit": "TensorCircuit-NG",
+    "tensorcircuit": "TensorCircuit-NG or tensorcircuit-nightly",
     "pennylane": "PennyLane",
 }
 

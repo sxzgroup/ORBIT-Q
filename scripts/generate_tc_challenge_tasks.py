@@ -171,9 +171,7 @@ def generate_task(
 
     shutil.copy2(source / f"evaluate_{problem_id}.py", task_dir / "tests")
     shutil.copy2(source / f"solution_{problem_id}.py", task_dir / "solution")
-    (task_dir / "tests" / "problem_statement.md").write_text(
-        instruction_text + "\n"
-    )
+    (task_dir / "tests" / "problem_statement.md").write_text(instruction_text + "\n")
     (task_dir / "tests" / "problem_id.txt").write_text(f"{problem_id}\n")
     (task_dir / "solution" / "problem_id.txt").write_text(f"{problem_id}\n")
     (task_dir / "tests" / "test.sh").chmod(0o755)

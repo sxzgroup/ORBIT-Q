@@ -75,6 +75,7 @@ A run is considered functionally successful when all of the following hold for t
 - `final_a.shape == (5, 2)` and `final_b.shape == (5, 2)`.
 - The final energy density is lower than the initial energy density.
 - The final energy density is no lower than the exact sparse ground-state energy density beyond numerical tolerance.
+- The final energy density is at most `0.5` above the exact sparse ground-state energy density.
 - All returned values are NumPy arrays or NumPy-compatible scalars.
 
 The evaluator reports these metrics directly so another framework's `solution_5.py` can be compared without changing `evaluate_5.py`.

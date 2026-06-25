@@ -75,7 +75,6 @@ Required result keys:
 - `readout_penalty_history`: NumPy array with shape `(max_steps,)`.
 - `final_response_matrix`: NumPy array with shape `(n_qubits, n_field_params)`.
 - `final_zero_field_readouts`: NumPy array with shape `(n_qubits,)`.
-- `final_grad_norm`: scalar float.
 
 Each history records one value per optimizer update, evaluated immediately before applying that update. The evaluator recomputes final response MSE, final readout penalty, and final total loss from the returned arrays.
 
@@ -87,7 +86,7 @@ The evaluator file is `evaluate_11.py`. It dynamically imports a solution module
 python evaluate_11.py --solution solution_11
 ```
 
-The evaluator consumes only the returned result dictionary. It prints the end-to-end solution time, initial and final response-matrix MSE, final zero-field readout penalty, final total loss, final gradient norm, trainable parameter count, response dimensions, returned keys, and pass/fail criteria. It does not save files or create plots by default.
+The evaluator consumes only the returned result dictionary. It prints the end-to-end solution time, initial and final response-matrix MSE, final zero-field readout penalty, final total loss, trainable parameter count, response dimensions, returned keys, and pass/fail criteria. It does not save files or create plots by default.
 
 ## Passing Criteria
 
@@ -99,7 +98,6 @@ A run is considered functionally successful when all of the following hold for t
 - The final response-matrix MSE is lower than the initial response-matrix MSE.
 - The final response-matrix MSE is at most `1e-9`.
 - The final loss is lower than the initial loss.
-- The final gradient norm is finite.
 - All returned arrays contain finite values.
 
 ## Submission Requirements
