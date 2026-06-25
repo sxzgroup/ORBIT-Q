@@ -1,6 +1,8 @@
-# Challenge Benchmark
+# ORBIT-Q
 
-Harbor benchmark suite for 12 quantum challenge tasks:
+Open Research Benchmark for Integrated Tasks in Quantum Computing.
+
+This repository contains a Harbor-based benchmark suite for 12 open quantum implementation tasks:
 
 ```bash
 tasks/challenge-01
