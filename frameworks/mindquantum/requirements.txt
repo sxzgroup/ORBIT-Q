@@ -1,0 +1,10 @@
+# CPU-only MindQuantum environment for challenge_benchmark.
+# Validated locally on Apple Silicon with Python 3.11 and the Tsinghua PyPI mirror.
+# Some benchmark evaluators import `tensorcircuit`, so include tensorcircuit-ng here.
+
+numpy==2.4.6
+scipy==1.17.1
+pytest==8.4.2
+mindquantum==0.12.0
+tensorcircuit-ng==1.7.0
+quimb==1.14.0

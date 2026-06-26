@@ -14,6 +14,7 @@ OUTPUT_DIR = ROOT / "prompts" / "frameworks"
 FRAMEWORKS = {
     "tensorcircuit": "TensorCircuit-NG or tensorcircuit-nightly",
     "pennylane": "PennyLane",
+    "mindquantum": "MindQuantum",
 }
 
 

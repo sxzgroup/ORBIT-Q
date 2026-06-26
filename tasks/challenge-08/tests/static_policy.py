@@ -6,6 +6,7 @@ import re
 from pathlib import Path
 
 FRAMEWORK_IMPORTS = {
+    "mindquantum": {"mindquantum"},
     "pennylane": {"pennylane"},
     "pennylane-lane": {"pennylane"},
     "tensorcircuit": {"tensorcircuit"},
