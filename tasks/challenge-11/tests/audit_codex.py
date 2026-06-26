@@ -7,6 +7,8 @@ import shlex
 import subprocess
 from pathlib import Path
 
+from static_policy import check_source
+
 
 def _load_profile_env(path: str | None) -> dict[str, str]:
     env = dict(os.environ)
@@ -29,6 +31,7 @@ def _load_profile_env(path: str | None) -> dict[str, str]:
 def _extract_json(text: str) -> dict:
     required_keys = {
         "uses_required_framework",
+        "imports_other_quantum_framework",
         "uses_other_quantum_framework",
         "raw_numpy_jax_quantum_simulator_bypass",
         "hardcoded_or_hidden_answer",
@@ -60,12 +63,14 @@ def audit_source(
     problem_statement: str = "",
 ) -> dict:
     source = source_path.read_text()
+    static = check_source(source_path, framework)
     prompt = f"""You are auditing a quantum benchmark submission.
 
 Required quantum framework: {framework}
 
 Return only one JSON object with these keys:
 - uses_required_framework: boolean
+- imports_other_quantum_framework: boolean
 - uses_other_quantum_framework: boolean
 - raw_numpy_jax_quantum_simulator_bypass: boolean
 - hardcoded_or_hidden_answer: boolean
@@ -83,6 +88,14 @@ Return only one JSON object with these keys:
 Judge whether the source legitimately uses the required framework for the core
 quantum computation. General-purpose NumPy/JAX/SciPy support is allowed, but an
 end-to-end raw simulator that avoids the required framework is not allowed.
+Treat imports strictly: if the solution imports any non-required quantum
+framework in source code, including unused imports or fallback/debug imports,
+then imports_other_quantum_framework must be true. If the imported non-required
+framework is actually used for the quantum computation, then both
+imports_other_quantum_framework and uses_other_quantum_framework must be true.
+Make this judgment from the source itself, not from a rigid static rule. Be
+careful about false positives from similarly named helper modules, comments,
+strings, or generic scientific libraries that are not quantum frameworks.
 
 Also judge whether the implementation faithfully follows the problem statement,
 not just whether it passes visible tests. Check that the core algorithm,
@@ -101,6 +114,16 @@ Problem statement:
 Evaluation summary:
 ```text
 {evaluation_summary}
+```
+
+Observed import roots from AST parsing (hint only, not a decision rule):
+```json
+{json.dumps(
+    {
+        "imports": static.get("imports", []),
+    },
+    indent=2,
+)}
 ```
 
 Source code:
@@ -149,6 +172,7 @@ Source code:
 
     framework_score = (
         _score_bool(result.get("uses_required_framework"))
+        * (1.0 - _score_bool(result.get("imports_other_quantum_framework")))
         * (1.0 - _score_bool(result.get("uses_other_quantum_framework")))
         * (1.0 - _score_bool(result.get("raw_numpy_jax_quantum_simulator_bypass")))
     )
@@ -165,6 +189,9 @@ Source code:
     result["llm_implementation_correctness_score"] = correctness_score
     result["llm_uses_required_framework_score"] = _score_bool(
         result.get("uses_required_framework")
+    )
+    result["llm_no_other_quantum_framework_imports_score"] = 1.0 - _score_bool(
+        result.get("imports_other_quantum_framework")
     )
     result["llm_no_other_quantum_framework_score"] = 1.0 - _score_bool(
         result.get("uses_other_quantum_framework")

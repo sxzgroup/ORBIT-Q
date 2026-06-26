@@ -65,7 +65,13 @@ Required result keys:
 - `energy_history`: NumPy array with shape `(max_steps,)`.
 - `final_parameters`: final rotation tensor with shape `(n_layers, n_qubits, 3)`.
 
-Each history records one value per optimizer update, evaluated immediately before applying that update. The evaluator derives initial/final energy density from the first/last entries of `energy_history`. The largest gate size and requested step count are fixed by the evaluator configuration and are not returned by the solution.
+Each entry of `energy_history` must store the **energy density**
+
+```text
+<H> / n_qubits
+```
+
+evaluated immediately before the corresponding optimizer update, not the raw total energy `<H>`. The evaluator derives initial/final energy density from the first/last entries of `energy_history`. The largest gate size and requested step count are fixed by the evaluator configuration and are not returned by the solution.
 
 ## Evaluation Interface
 
@@ -75,7 +81,7 @@ The evaluator file is `evaluate_10.py`. It dynamically imports a solution module
 python evaluate_10.py --solution solution_10
 ```
 
-The evaluator consumes only the returned result dictionary. It prints solution time, exact-reference time, initial and final energy densities, exact ground-state energy density, VQE gap, energy-history length, largest gate size, returned keys, and pass/fail criteria. It does not save files or create plots by default.
+The evaluator consumes only the returned result dictionary. It prints end-to-end solution time, exact-reference time, initial and final energy densities, exact ground-state energy density, VQE gap, energy-history length, largest gate size, returned keys, and pass/fail criteria. It does not save files or create plots by default.
 
 ## Passing Criteria
 

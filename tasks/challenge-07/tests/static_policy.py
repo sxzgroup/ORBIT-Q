@@ -5,22 +5,6 @@ import json
 import re
 from pathlib import Path
 
-FORBIDDEN_IMPORT_ROOTS = {
-    "braket",
-    "cirq",
-    "netket",
-    "pennylane",
-    "projectq",
-    "pyquil",
-    "qiskit",
-    "qsimcirq",
-    "quantum_circuit",
-    "qulacs",
-    "qutip",
-    "stim",
-    "tequila",
-}
-
 FRAMEWORK_IMPORTS = {
     "pennylane": {"pennylane"},
     "pennylane-lane": {"pennylane"},
@@ -78,7 +62,7 @@ def check_source(path: Path, framework: str, max_lines: int = 200) -> dict:
         "line_count": _effective_code_lines(source),
         "line_count_score": 0.0,
         "framework_score": 0.0,
-        "no_forbidden_framework_score": 0.0,
+        "no_forbidden_framework_score": 1.0,
         "no_static_cheating_score": 0.0,
         "no_raw_simulator_bypass_score": 1.0,
         "imports": [],
@@ -97,12 +81,9 @@ def check_source(path: Path, framework: str, max_lines: int = 200) -> dict:
     imports = _import_roots(tree)
     result["imports"] = sorted(imports)
     required = FRAMEWORK_IMPORTS.get(framework.lower(), {framework.lower()})
-    forbidden = sorted(imports & (FORBIDDEN_IMPORT_ROOTS - required))
-    result["forbidden_imports"] = forbidden
 
     result["line_count_score"] = 1.0 if result["line_count"] <= max_lines else 0.0
     result["framework_score"] = 1.0 if imports & required else 0.0
-    result["no_forbidden_framework_score"] = 0.0 if forbidden else 1.0
 
     cheating_hits = [
         pattern for pattern in CHEATING_PATTERNS if re.search(pattern, source, re.I)

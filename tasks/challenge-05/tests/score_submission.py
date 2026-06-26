@@ -130,6 +130,7 @@ def main() -> None:
         "llm_problem_fidelity_score": 0.0,
         "llm_implementation_correctness_score": 0.0,
         "llm_uses_required_framework_score": 0.0,
+        "llm_no_other_quantum_framework_imports_score": 0.0,
         "llm_no_other_quantum_framework_score": 0.0,
         "llm_no_raw_simulator_bypass_score": 0.0,
         "llm_no_hardcoded_or_hidden_answer_score": 0.0,
@@ -190,6 +191,9 @@ def main() -> None:
             ),
             "llm_uses_required_framework_score": float(
                 audit.get("llm_uses_required_framework_score", 0.0)
+            ),
+            "llm_no_other_quantum_framework_imports_score": float(
+                audit.get("llm_no_other_quantum_framework_imports_score", 0.0)
             ),
             "llm_no_other_quantum_framework_score": float(
                 audit.get("llm_no_other_quantum_framework_score", 0.0)

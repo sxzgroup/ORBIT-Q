@@ -124,6 +124,12 @@ python3 scripts/run_harbor_challenge.py \
 
 If Harbor reports Docker is not running but `docker ps` works, this is usually Codex sandbox permission around Docker preflight/socket access. Re-run the same Harbor command with escalated Docker access.
 
+In sandboxed Codex sessions, treat Docker and Harbor access failures conservatively:
+
+- If a Docker-related command is important to the current task and fails with permission denied, socket access denied, Docker preflight failure, or another likely sandbox-related access error, request escalated Docker access immediately and retry before drawing conclusions.
+- Do not report that Docker is down, an image is missing, or a rebuild is required until the relevant `docker` or Harbor check has been retried with the needed permissions.
+- This applies in particular to `docker ps`, `docker image inspect`, `docker run`, `docker exec`, and Harbor commands that indirectly touch the Docker socket.
+
 Local Harbor also requires each task to contain an `environment/` directory before `-p tasks/challenge-XX` is recognized as a task. In this benchmark that directory is intentionally just a structural marker; framework Dockerfiles and image tags stay outside the task tree.
 
 ## Verifier-Only Candidate Check

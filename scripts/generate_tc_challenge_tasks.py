@@ -44,6 +44,16 @@ def parse_args() -> argparse.Namespace:
         default=ROOT / "tasks",
         help="Output directory for tasks/challenge-01 through tasks/challenge-12.",
     )
+    parser.add_argument(
+        "--challenge",
+        dest="challenge_ids",
+        action="append",
+        type=int,
+        help=(
+            "Optional challenge id to regenerate. Repeat to select multiple "
+            "problems. Defaults to all 12 challenges."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -193,16 +203,25 @@ def main() -> None:
     args = parse_args()
     source = args.source.expanduser().resolve()
     tasks_dir = args.tasks_dir.expanduser().resolve()
+    challenge_ids = sorted(set(args.challenge_ids or range(1, 13)))
 
-    remove_old_generated_tasks(tasks_dir)
-    for problem_id in range(1, 13):
+    if args.challenge_ids:
+        for problem_id in challenge_ids:
+            if problem_id < 1 or problem_id > 12:
+                raise ValueError(
+                    f"Challenge id must be in [1, 12], got {problem_id}"
+                )
+    else:
+        remove_old_generated_tasks(tasks_dir)
+
+    for problem_id in challenge_ids:
         generate_task(
             problem_id=problem_id,
             source=source,
             tasks_dir=tasks_dir,
         )
     print(
-        "Generated 12 challenge tasks under "
+        f"Generated {len(challenge_ids)} challenge task(s) under "
         f"{tasks_dir.relative_to(ROOT) if tasks_dir.is_relative_to(ROOT) else tasks_dir}"
     )
 

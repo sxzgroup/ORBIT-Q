@@ -34,7 +34,7 @@ Here `p01` is the probability for `0 -> 1` and `p10` is the probability for `1 -
 
 Use four fixed 12-qubit inputs and the same noisy probe circuit for every input. The four inputs are a GHZ state `(|0...0> + |1...1>) / sqrt(2)`, Bell-like pair states `(|01> + |10>) / sqrt(2)` on pairs `(0,1), (2,3), ..., (10,11)`, `|0>^12`, and `|+>^12`.
 
-The shared probe circuit is one even-bond brickwork entangler layer. On every bond `(0,1), (2,3), ..., (10,11)`, apply `RXX(0.31)` with convention `RXX(theta) = exp(-i theta X_i X_j / 2)`, and then apply the asymmetric bit-flip channel independently to the two qubits in that bond.
+The shared probe circuit has two brickwork entangler sublayers. First apply one even-bond layer on bonds `(0,1), (2,3), ..., (10,11)`, where each bond receives `RXX(0.31)` with convention `RXX(theta) = exp(-i theta X_i X_j / 2)` followed by the asymmetric bit-flip channel independently on both qubits in that bond. Then apply one offset odd-bond layer on bonds `(1,2), (3,4), ..., (9,10)` with the same `RXX(0.31)` entangler and the same per-qubit asymmetric bit-flip channel after each odd-bond entangler.
 
 All probes therefore have identical noisy entangler structure and differ only in the initial state.
 
