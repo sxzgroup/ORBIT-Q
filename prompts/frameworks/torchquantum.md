@@ -1,16 +1,16 @@
 ## Quantum Framework Constraint
 
-The required quantum software framework for this run is TensorCircuit-NG or tensorcircuit-nightly.
+The required quantum software framework for this run is TorchQuantum.
 
 You may use general-purpose Python libraries for numerical arrays, optimization, sparse linear algebra, data handling, testing, and interoperability.
 
 However:
 
-- The central quantum computation must be expressed through TensorCircuit-NG or tensorcircuit-nightly.
+- The central quantum computation must be expressed through TorchQuantum.
 - Do not use another quantum software framework to implement the task.
-- Do not replace TensorCircuit-NG or tensorcircuit-nightly with a raw NumPy/JAX/SciPy simulator from scratch.
+- Do not replace TorchQuantum with a raw NumPy/JAX/SciPy simulator from scratch.
 - Do not implement the required quantum gates, circuit evolution, measurements, or state updates by manually manipulating the full state vector, amplitudes, tensor entries, or index tables as a workaround around the framework. Use the quantum software framework's own circuit/state/operator APIs for the core quantum process.
-- Do not use TensorCircuit-NG or tensorcircuit-nightly only as a gate-matrix lookup helper, state initializer, or thin wrapper while the real quantum evolution is carried out by custom array code. The implementation itself must genuinely run through TensorCircuit-NG or tensorcircuit-nightly's quantum APIs.
+- Do not use TorchQuantum only as a gate-matrix lookup helper, state initializer, or thin wrapper while the real quantum evolution is carried out by custom array code. The implementation itself must genuinely run through TorchQuantum's quantum APIs.
 - Do not compute an exact or near-exact oracle answer for the evaluator's target quantity and then use that oracle value to fabricate outputs that merely satisfy the verifier checks.
 - Do not directly diagonalize, exactly solve, or otherwise compute the strict target optimum of the same Hamiltonian/objective when the task is asking for a variational, iterative, sampled, or framework-native optimization procedure, unless the task explicitly allows that method.
 - Do not fake, smooth, interpolate, backfill, or analytically construct required return arrays such as `energy_history`, `loss_history`, gradients, entropies, measurement statistics, or trajectory records. Every returned entry must come from the actual required computation at the corresponding step.
@@ -27,13 +27,13 @@ However:
 - Do not delegate any part of the task to sub-agents, helper agents, external agents, or parallel agent workers. Complete the work within the single provided agent session.
 - The submitted `solution_N.py` should be concise. More than 200 non-empty, non-comment Python lines is considered a failed implementation strategy.
 - The submitted solution must complete the evaluator's timed `run_solution(config)` call within 300 seconds. Runtime starts losing score after 180 seconds and receives zero runtime score at 300 seconds or above.
-- Optimize for end-to-end evaluator runtime, not just correctness. Prefer the most direct and efficient TensorCircuit-NG or tensorcircuit-nightly representation, reduce avoidable Python overhead, reuse compiled or precomputed objects when appropriate, and iterate on the implementation if a simpler first attempt is too slow.
+- Optimize for end-to-end evaluator runtime, not just correctness. Prefer the most direct and efficient TorchQuantum representation, reduce avoidable Python overhead, reuse compiled or precomputed objects when appropriate, and iterate on the implementation if a simpler first attempt is too slow.
 - When using a JAX-backed implementation, pay attention not only to execution speed but also to compilation latency. When appropriate, prefer structured scans such as `jax.scan` over large Python-unrolled update loops or deeply unrolled layer-by-layer circuit construction, since scanning repeated circuit blocks or optimizer steps can materially reduce compile overhead.
-- When there are multiple plausible approaches, test or reason about which one is likely fastest within TensorCircuit-NG or tensorcircuit-nightly, then use that path. Avoid spending time polishing slow designs that are unlikely to pass the runtime budget.
-- Before committing to a deep implementation path, verify that the installed TensorCircuit-NG or tensorcircuit-nightly and its dependencies actually expose the primitives, APIs, and numerical behavior the task needs.
+- When there are multiple plausible approaches, test or reason about which one is likely fastest within TorchQuantum, then use that path. Avoid spending time polishing slow designs that are unlikely to pass the runtime budget.
+- Before committing to a deep implementation path, verify that the installed TorchQuantum and its dependencies actually expose the primitives, APIs, and numerical behavior the task needs.
 - Stop early only if, after checking realistic framework-native alternatives, you conclude that solving the task with the required framework, allowed methods, and acceptable runtime is genuinely close to impossible.
 - If your investigation shows that the task is very unlikely to fit within the allowed runtime using the required framework and allowed methods, stop early and report that efficiency obstruction instead of spending the remaining budget on low-probability tuning attempts.
 
-Before implementing, inspect the installed TensorCircuit-NG or tensorcircuit-nightly package, examples, and source code available in the task environment. Search for APIs, tensor-network primitives, circuit/state representations, measurement utilities, optimizers, and interoperability hooks that make the task feasible and efficient in TensorCircuit-NG or tensorcircuit-nightly. Choose an implementation strategy based on what the framework can actually express well.
+Before implementing, inspect the installed TorchQuantum package, examples, and source code available in the task environment. Search for APIs, tensor-network primitives, circuit/state representations, measurement utilities, optimizers, and interoperability hooks that make the task feasible and efficient in TorchQuantum. Choose an implementation strategy based on what the framework can actually express well.
 
 If you find a substantive obstruction that makes the task impractical or impossible to solve within the required framework and runtime budget, declare the task failed clearly in your final response and stop work promptly rather than spending the entire run on an unproductive workaround. Do not bypass the obstruction by switching frameworks, by importing or using another quantum framework, by writing a raw quantum simulator from scratch, by reverse-engineering the evaluator thresholds, or by manufacturing outputs that mimic a successful run without actually performing the required computation.

@@ -45,7 +45,7 @@ docker run --rm challenge-benchmark-quantum-tensorcircuit:py311 codex --version
 Generate framework prompt files and canonical tasks only when templates or upstream problem files change:
 
 ```bash
-python3 scripts/generate_framework_prompts.py --framework tensorcircuit pennylane
+python3 scripts/generate_framework_prompts.py --framework tensorcircuit pennylane torchquantum
 python3 scripts/generate_tc_challenge_tasks.py
 ```
 
@@ -85,6 +85,7 @@ Examples:
 ```bash
 FRAMEWORK=tensorcircuit bash scripts/build_challenge_quantum_image.sh
 FRAMEWORK=pennylane bash scripts/build_challenge_quantum_image.sh
+FRAMEWORK=torchquantum bash scripts/build_challenge_quantum_image.sh
 FRAMEWORK=my-framework REQUIREMENTS_FILE=frameworks/my-framework/requirements.txt \
   bash scripts/build_challenge_quantum_image.sh
 ```

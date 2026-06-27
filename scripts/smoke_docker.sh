@@ -29,6 +29,7 @@ required = {
     "tensorcircuit": ["tensorcircuit", "jax", "diffrax", "quimb", "omeco"],
     "pennylane": ["pennylane", "jax"],
     "mindquantum": ["mindquantum", "tensorcircuit"],
+    "torchquantum": ["torch", "tensorflow", "torchquantum", "tensorcircuit", "quimb"],
 }.get(framework, [])
 for module_name in required:
     importlib.import_module(module_name)

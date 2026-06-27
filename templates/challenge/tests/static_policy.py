@@ -9,6 +9,7 @@ FRAMEWORK_IMPORTS = {
     "mindquantum": {"mindquantum"},
     "pennylane": {"pennylane"},
     "pennylane-lane": {"pennylane"},
+    "torchquantum": {"torchquantum"},
     "tensorcircuit": {"tensorcircuit"},
     "tensorcircuit-ng": {"tensorcircuit"},
     "tc": {"tensorcircuit"},

@@ -208,9 +208,7 @@ def main() -> None:
     if args.challenge_ids:
         for problem_id in challenge_ids:
             if problem_id < 1 or problem_id > 12:
-                raise ValueError(
-                    f"Challenge id must be in [1, 12], got {problem_id}"
-                )
+                raise ValueError(f"Challenge id must be in [1, 12], got {problem_id}")
     else:
         remove_old_generated_tasks(tasks_dir)
 

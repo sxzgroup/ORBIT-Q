@@ -36,6 +36,9 @@ RUN for file in /etc/apt/sources.list /etc/apt/sources.list.d/debian.sources; do
 COPY ${FRAMEWORK_REQUIREMENTS} /tmp/framework-requirements.txt
 RUN pip install --no-cache-dir -r /tmp/framework-requirements.txt
 
+COPY scripts/patch_torchquantum_optional_ibm_runtime.py /tmp/patch_torchquantum_optional_ibm_runtime.py
+RUN python /tmp/patch_torchquantum_optional_ibm_runtime.py
+
 RUN npm config set registry https://registry.npmmirror.com && \
     npm install -g "@openai/codex@${CODEX_VERSION}" && \
     codex --version

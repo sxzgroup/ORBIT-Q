@@ -15,6 +15,7 @@ FRAMEWORKS = {
     "tensorcircuit": "TensorCircuit-NG or tensorcircuit-nightly",
     "pennylane": "PennyLane",
     "mindquantum": "MindQuantum",
+    "torchquantum": "TorchQuantum",
 }
 
 
