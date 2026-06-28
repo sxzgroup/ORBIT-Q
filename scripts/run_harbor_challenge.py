@@ -10,6 +10,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_HARBOR = ROOT / ".conda" / "harbor-py312" / "bin" / "harbor"
+SOLVER_AGENT_IMPORTS = {
+    "codex-para": "adapters.codex_para:CodexPara",
+    "claude-code": "adapters.claude_para:ClaudePara",
+}
 
 
 def slugify(value: str) -> str:
@@ -52,21 +56,34 @@ def parse_args() -> argparse.Namespace:
         help="Extra framework prompt. Defaults to prompts/frameworks/<framework>.md.",
     )
     parser.add_argument(
+        "--solver-agent",
+        choices=sorted(SOLVER_AGENT_IMPORTS),
+        default=os.environ.get("SOLVER_AGENT", "codex-para"),
+        help="Agent CLI used to solve the task. The verifier still uses CodexPara.",
+    )
+    parser.add_argument(
         "--model",
-        default=(
-            os.environ.get("MODEL_NAME") or os.environ.get("MODEL") or "AWS-GPT-5.5"
-        ),
+        default=os.environ.get("MODEL_NAME") or os.environ.get("MODEL"),
         help="Agent model passed to Harbor -m.",
     )
     parser.add_argument(
         "--audit-model",
         default=os.environ.get("AUDIT_MODEL_NAME") or os.environ.get("AUDIT_MODEL"),
-        help="Verifier Codex audit model. Defaults to --model.",
+        help="Verifier Codex audit model. Defaults to AWS-GPT-5.5.",
+    )
+    parser.add_argument(
+        "--solver-reasoning-effort",
+        default=os.environ.get("SOLVER_REASONING_EFFORT")
+        or os.environ.get("CLAUDE_CODE_EFFORT_LEVEL"),
+        help=(
+            "Agent reasoning effort kwarg. For claude-code, defaults to max; "
+            "Harbor's current ClaudeCode adapter accepts low/medium/high/xhigh/max."
+        ),
     )
     parser.add_argument(
         "--job-name",
         default=os.environ.get("JOB_NAME"),
-        help="Harbor job name. Defaults to challenge-<id>-<framework>-codex-para.",
+        help="Harbor job name. Defaults to challenge-<id>-<framework>-<solver-agent>.",
     )
     parser.add_argument(
         "-n",
@@ -103,6 +120,22 @@ def challenge_name(raw: str) -> str:
     return f"challenge-{int(raw):02d}"
 
 
+def resolve_solver_model(solver_agent: str, explicit_model: str | None) -> str:
+    if explicit_model:
+        return explicit_model
+    if solver_agent == "claude-code":
+        model = os.environ.get("ANTHROPIC_MODEL") or os.environ.get(
+            "ANTHROPIC_DEFAULT_OPUS_MODEL"
+        )
+        if not model:
+            raise ValueError(
+                "Claude solver model is required. Pass --model or export "
+                "MODEL_NAME, MODEL, ANTHROPIC_MODEL, or ANTHROPIC_DEFAULT_OPUS_MODEL."
+            )
+        return model
+    return "AWS-GPT-5.5"
+
+
 def main() -> int:
     args = parse_args()
     framework = args.framework.strip()
@@ -121,12 +154,17 @@ def main() -> int:
     if not extra_instruction_path.is_file():
         raise FileNotFoundError(f"Framework prompt not found: {extra_instruction_path}")
 
-    job_name = args.job_name or f"{challenge}-{framework_slug}-codex-para"
+    solver_agent = args.solver_agent
+    solver_model = resolve_solver_model(solver_agent, args.model)
+    job_name = args.job_name or f"{challenge}-{framework_slug}-{solver_agent}"
     env = dict(os.environ)
     env["PYTHONPATH"] = str(ROOT) + (
         f":{env['PYTHONPATH']}" if env.get("PYTHONPATH") else ""
     )
-    audit_model = args.audit_model or args.model
+    audit_model = args.audit_model or "AWS-GPT-5.5"
+    solver_reasoning_effort = args.solver_reasoning_effort
+    if solver_agent == "claude-code" and not solver_reasoning_effort:
+        solver_reasoning_effort = "max"
 
     cmd = [
         str(args.harbor_bin),
@@ -142,7 +180,7 @@ def main() -> int:
         "--environment-kwarg",
         f"docker_image={docker_image}",
         "--agent-import-path",
-        "adapters.codex_para:CodexPara",
+        SOLVER_AGENT_IMPORTS[solver_agent],
         "--verifier-import-path",
         "adapters.codex_para_verifier:CodexParaVerifier",
         "--verifier-kwarg",
@@ -150,7 +188,7 @@ def main() -> int:
         "--verifier-env",
         f"REQUIRED_QUANTUM_FRAMEWORK={framework_slug}",
         "-m",
-        args.model,
+        solver_model,
         "-n",
         str(args.n_concurrent),
         "-o",
@@ -158,6 +196,8 @@ def main() -> int:
         "--job-name",
         job_name,
     ]
+    if solver_reasoning_effort:
+        cmd.extend(["--agent-kwarg", f"reasoning_effort={solver_reasoning_effort}"])
     if args.yes:
         cmd.append("--yes")
 
@@ -165,6 +205,10 @@ def main() -> int:
     print(f"Framework: {framework_slug}")
     print(f"Docker image: {docker_image}")
     print(f"Extra prompt: {extra_instruction_path.relative_to(ROOT)}")
+    print(f"Solver agent: {solver_agent}")
+    print(f"Solver model: {solver_model}")
+    print(f"Solver reasoning effort: {solver_reasoning_effort or '(agent default)'}")
+    print(f"Audit model: {audit_model}")
     sys.stdout.flush()
     return subprocess.run(cmd, env=env, check=False).returncode
 

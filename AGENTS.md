@@ -36,10 +36,11 @@ The default TensorCircuit tag is:
 challenge-benchmark-quantum-tensorcircuit:py311
 ```
 
-Verify that the image contains Codex CLI:
+Verify that the image contains Codex CLI and Claude Code:
 
 ```bash
-docker run --rm challenge-benchmark-quantum-tensorcircuit:py311 codex --version
+docker run --rm challenge-benchmark-quantum-tensorcircuit:py311 \
+  sh -lc 'codex --version && claude --version'
 ```
 
 Generate framework prompt files and canonical tasks only when templates or upstream problem files change:
@@ -106,9 +107,9 @@ MODEL_NAME=AWS-GPT-5.5
 AUDIT_MODEL_NAME=AWS-GPT-5.5
 ```
 
-`MODEL_NAME` is consumed by Harbor's `-m` flag. `AUDIT_MODEL_NAME` is passed through `--verifier-kwarg "audit_model=$AUDIT_MODEL_NAME"` and becomes `CODEX_AUDIT_MODEL` inside the verifier container. If the same model should solve and audit, set both variables to the same value.
+`MODEL_NAME` is consumed by Harbor's `-m` flag for the solver agent. `AUDIT_MODEL_NAME` is passed through `--verifier-kwarg "audit_model=$AUDIT_MODEL_NAME"` and becomes `CODEX_AUDIT_MODEL` inside the verifier container. The default audit model is `AWS-GPT-5.5`, even when the solver is Claude Code.
 
-## Run A Challenge With CodexPara
+## Run A Challenge With CodexPara Or Claude Code
 
 Use the wrapper so `tasks/challenge-*` stay fixed while the framework is selected from command-line arguments:
 
@@ -122,6 +123,27 @@ python3 scripts/run_harbor_challenge.py \
   --model "$MODEL_NAME" \
   --audit-model "$AUDIT_MODEL_NAME"
 ```
+
+To solve with Claude Code while keeping the verifier on Codex/GPT-5.5, select `--solver-agent claude-code`. Claude Code credentials and custom endpoint settings are inherited from the shell by the Harbor process and injected into the solver container by the adapter:
+
+```bash
+export ANTHROPIC_AUTH_TOKEN=...
+export ANTHROPIC_BASE_URL=https://llmapi.paratera.com
+export ANTHROPIC_DEFAULT_OPUS_MODEL=AWS-Claude-Opus-4.8
+
+MODEL_NAME="$ANTHROPIC_DEFAULT_OPUS_MODEL"
+AUDIT_MODEL_NAME=AWS-GPT-5.5
+FRAMEWORK=tensorcircuit
+python3 scripts/run_harbor_challenge.py \
+  --challenge 02 \
+  --framework "$FRAMEWORK" \
+  --solver-agent claude-code \
+  --model "$MODEL_NAME" \
+  --solver-reasoning-effort max \
+  --audit-model "$AUDIT_MODEL_NAME"
+```
+
+The Claude adapter passes `ANTHROPIC_AUTH_TOKEN` into Docker as `ANTHROPIC_API_KEY` because that is what Claude Code reads.
 
 If Harbor reports Docker is not running but `docker ps` works, this is usually Codex sandbox permission around Docker preflight/socket access. Re-run the same Harbor command with escalated Docker access.
 
@@ -188,10 +210,12 @@ Within a given framework, the agent and separate verifier use the same prebuilt 
 
 This avoids rebuilding heavy quantum dependencies per run and avoids storing repeated environment files under each task.
 
-Codex is run through local adapters:
+Solver agents are run through local adapters, while the verifier remains Codex-based:
 
 ```bash
 --agent-import-path adapters.codex_para:CodexPara
+# or
+--agent-import-path adapters.claude_para:ClaudePara
 --verifier-import-path adapters.codex_para_verifier:CodexParaVerifier
 ```
 
@@ -203,7 +227,8 @@ The shared Dockerfile bakes in common system tooling:
 python:3.11-slim
 nodejs/npm/ripgrep
 @openai/codex
-build-essential, pkg-config, rustc, cargo
+@anthropic-ai/claude-code
+build-essential, pkg-config, rustc, cargo, procps
 ```
 
 Python packages are installed from `frameworks/<framework>/requirements.txt`. For example, TensorCircuit uses `frameworks/tensorcircuit/requirements.txt`, which currently includes NumPy/SciPy/PyTest, TensorCircuit-NG, TensorNetwork-NG, JAX/JAXLIB, Optax, Quimb, and OMECo.
@@ -229,6 +254,7 @@ prompts/framework_prompt_template.md
 scripts/generate_framework_prompts.py
 prompts/frameworks/
 adapters/codex_para.py
+adapters/claude_para.py
 adapters/codex_para_verifier.py
 adapters/framework_docker.py
 scripts/inspect_harbor_job.py
@@ -337,6 +363,7 @@ Default current settings:
 ```text
 agent model: `AWS-GPT-5.5` unless overridden by `--model` / `MODEL_NAME`
 profile: set by adapter kwarg, default `para`
-reasoning effort: high
+Codex reasoning effort: high
+Claude Code reasoning effort: max when `--solver-agent claude-code` unless overridden by `--solver-reasoning-effort` / `SOLVER_REASONING_EFFORT`
 verifier audit model: `AWS-GPT-5.5` unless overridden by `--audit-model` / `AUDIT_MODEL_NAME`
 ```
