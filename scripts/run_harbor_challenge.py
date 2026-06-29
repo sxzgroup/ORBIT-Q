@@ -23,6 +23,13 @@ def slugify(value: str) -> str:
     return slug
 
 
+def display_path(path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
@@ -204,7 +211,7 @@ def main() -> int:
     print(f"Canonical task: {task_dir.relative_to(ROOT)}")
     print(f"Framework: {framework_slug}")
     print(f"Docker image: {docker_image}")
-    print(f"Extra prompt: {extra_instruction_path.relative_to(ROOT)}")
+    print(f"Extra prompt: {display_path(extra_instruction_path)}")
     print(f"Solver agent: {solver_agent}")
     print(f"Solver model: {solver_model}")
     print(f"Solver reasoning effort: {solver_reasoning_effort or '(agent default)'}")

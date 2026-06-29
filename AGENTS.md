@@ -145,6 +145,36 @@ python3 scripts/run_harbor_challenge.py \
 
 The Claude adapter passes `ANTHROPIC_AUTH_TOKEN` into Docker as `ANTHROPIC_API_KEY` because that is what Claude Code reads.
 
+When manually smoke-testing Claude Code inside the framework image with
+`docker run`, remember that the container runs as `root`. In that situation,
+`claude --permission-mode=bypassPermissions` can fail with:
+
+```text
+--dangerously-skip-permissions cannot be used with root/sudo privileges for security reasons
+```
+
+For manual container runs, set the same sandbox markers that Harbor's Claude
+adapter already injects:
+
+```bash
+-e IS_SANDBOX=1
+-e CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+```
+
+If you are using a custom Anthropic-compatible endpoint, also pass the target
+model explicitly, for example:
+
+```bash
+-e ANTHROPIC_BASE_URL=...
+-e ANTHROPIC_MODEL=AWS-Claude-Sonnet-4.6
+-e ANTHROPIC_DEFAULT_SONNET_MODEL=AWS-Claude-Sonnet-4.6
+-e ANTHROPIC_DEFAULT_OPUS_MODEL=AWS-Claude-Sonnet-4.6
+```
+
+Harbor runs through `adapters.claude_para:ClaudePara` already set these
+Claude-specific env vars, so this workaround is mainly for direct `docker run`
+checks and one-off image smoke tests.
+
 If Harbor reports Docker is not running but `docker ps` works, this is usually Codex sandbox permission around Docker preflight/socket access. Re-run the same Harbor command with escalated Docker access.
 
 In sandboxed Codex sessions, treat Docker and Harbor access failures conservatively:
