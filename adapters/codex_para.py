@@ -18,14 +18,14 @@ _PROFILE_RE = re.compile(r"^[A-Za-z0-9_.-]+$")
 
 
 class CodexPara(Codex):
-    """Harbor Codex adapter that runs Codex CLI with a named profile."""
+    """Harbor Codex adapter that can run Codex CLI with an optional profile."""
 
     def __init__(
         self,
         *args,
-        profile: str = "para",
+        profile: str | None = None,
         profile_config_path: str | None = None,
-        force_auth_json: bool = True,
+        force_auth_json: bool = False,
         install_retries: int = 3,
         install_retry_delay_sec: float = 5.0,
         model_catalog_path: str | None = None,
@@ -33,7 +33,11 @@ class CodexPara(Codex):
     ) -> None:
         super().__init__(*args, **kwargs)
 
-        if not profile or profile.startswith("-") or not _PROFILE_RE.fullmatch(profile):
+        if profile == "":
+            profile = None
+        if profile is not None and (
+            profile.startswith("-") or not _PROFILE_RE.fullmatch(profile)
+        ):
             raise ValueError(
                 "profile must contain only letters, digits, underscore, dot, or dash"
             )
@@ -110,22 +114,27 @@ class CodexPara(Codex):
             ),
         )
 
-    def _resolve_profile_config_path(self) -> Path:
+    def _resolve_profile_config_path(self) -> Path | None:
         explicit = self.profile_config_path
         if explicit is None:
             env_path = self._get_env("CODEX_PROFILE_CONFIG_PATH")
             explicit = Path(env_path).expanduser() if env_path else None
 
+        if explicit is None and self.profile is None:
+            return None
+
         path = explicit or (Path.home() / ".codex" / f"{self.profile}.config.toml")
         if not path.is_file():
             raise ValueError(
-                f"Codex profile config for profile '{self.profile}' was not found: "
-                f"{path}"
+                f"Codex config for profile '{self.profile or 'default'}' was not found: {path}"
             )
         return path
 
     def _profile_config(self) -> dict:
-        return tomllib.loads(self._resolve_profile_config_path().read_text())
+        path = self._resolve_profile_config_path()
+        if path is None:
+            return {}
+        return tomllib.loads(path.read_text())
 
     def _profile_env_key(self) -> str | None:
         config = self._profile_config()
@@ -171,9 +180,13 @@ class CodexPara(Codex):
         environment: BaseEnvironment,
     ) -> None:
         local_profile_config = self._resolve_profile_config_path()
-        remote_profile_config = (
-            self._REMOTE_CODEX_HOME / f"{self.profile}.config.toml"
-        ).as_posix()
+        if local_profile_config is None:
+            return
+
+        remote_config_name = (
+            f"{self.profile}.config.toml" if self.profile else "config.toml"
+        )
+        remote_profile_config = (self._REMOTE_CODEX_HOME / remote_config_name).as_posix()
 
         await environment.upload_file(local_profile_config, remote_profile_config)
         if environment.default_user is not None:
@@ -218,6 +231,9 @@ class CodexPara(Codex):
         escaped_instruction: str,
     ) -> str:
         output_path = (EnvironmentPaths.agent_dir / self._OUTPUT_FILENAME).as_posix()
+        profile_arg = (
+            f"--profile {shlex.quote(self.profile)} " if self.profile else ""
+        )
 
         return (
             "if [ -s ~/.nvm/nvm.sh ]; then . ~/.nvm/nvm.sh; fi; "
@@ -225,7 +241,7 @@ class CodexPara(Codex):
             f". {shlex.quote((self._REMOTE_CODEX_SECRETS_DIR / 'profile_env.sh').as_posix())}; "
             "fi; "
             "codex exec "
-            f"--profile {shlex.quote(self.profile)} "
+            f"{profile_arg}"
             "--dangerously-bypass-approvals-and-sandbox "
             "--skip-git-repo-check "
             f"--model {shlex.quote(model)} "

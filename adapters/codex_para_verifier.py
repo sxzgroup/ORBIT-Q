@@ -11,20 +11,20 @@ from adapters.codex_para import CodexPara
 
 
 class CodexParaVerifier(Verifier):
-    """Verifier wrapper that prepares Codex CLI with the same para profile.
+    """Verifier wrapper that prepares Codex CLI for the source audit.
 
     The task's ordinary tests still own scoring. This class only installs Codex
-    in the verifier container and injects the profile/auth runtime needed by
-    tests that run an LLM source audit.
+    in the verifier container and injects optional profile/auth runtime needed
+    by tests that run an LLM source audit.
     """
 
     def __init__(
         self,
         *args,
-        profile: str = "para",
+        profile: str | None = None,
         audit_model: str = "gpt-5",
         profile_config_path: str | None = None,
-        force_auth_json: bool = True,
+        force_auth_json: bool = False,
         install_retries: int = 3,
         install_retry_delay_sec: float = 5.0,
         model_catalog_path: str | None = None,
@@ -103,13 +103,14 @@ class CodexParaVerifier(Verifier):
         self.override_env.update(
             {
                 "CODEX_HOME": remote_codex_home,
-                "CODEX_PROFILE": self._codex.profile,
                 "CODEX_AUDIT_MODEL": self.audit_model.split("/")[-1],
                 "CODEX_PROFILE_ENV_FILE": (
                     self._codex._REMOTE_CODEX_SECRETS_DIR / "profile_env.sh"
                 ).as_posix(),
             }
         )
+        if self._codex.profile:
+            self.override_env["CODEX_PROFILE"] = self._codex.profile
 
     @override
     async def verify(self) -> VerifierResult:

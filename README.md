@@ -38,6 +38,7 @@ Each task is framework-neutral. The required framework is selected at run time t
 |-- prompts/frameworks/        # Generated framework-specific task instructions
 |-- scripts/                   # Benchmark runners, generators, and diagnostics
 |-- tasks/challenge-*/         # Canonical Harbor challenge tasks
+|-- conf.toml                  # Public runner defaults
 `-- templates/challenge/       # Source templates for generated tasks and verifier tests
 ```
 
@@ -99,7 +100,12 @@ Paper-facing aggregation tables and visualizations should be generated from vers
 
 ## Installation and Bootstrap
 
-Run all commands from the repository root. The preferred local Harbor environment is:
+Run all commands from the repository root. The benchmark runner reads public
+defaults from `conf.toml` and optional machine-local overrides from
+`conf.local.toml`. `conf.local.toml` is gitignored and should contain only local
+profile/model preferences, never API tokens.
+
+The preferred local Harbor environment is:
 
 ```bash
 ./.conda/harbor-py312/bin/harbor --help
@@ -142,18 +148,31 @@ challenge-benchmark-quantum-<framework>:py311
 
 ## Running a Challenge
 
-Use `scripts/run_harbor_challenge.py` so canonical task files remain fixed while the framework is selected from command-line arguments.
+Use `scripts/run_harbor_challenge.py` so canonical task files remain fixed while
+the framework, solver, Codex profile, and model settings come from `conf.toml`,
+environment variables, local overrides, or explicit CLI arguments.
 
 ```bash
-MODEL_NAME=AWS-GPT-5.5
-AUDIT_MODEL_NAME="$MODEL_NAME"
+export OPENAI_API_KEY=...
 FRAMEWORK=tensorcircuit
 
 python3 scripts/run_harbor_challenge.py \
   --challenge 02 \
-  --framework "$FRAMEWORK" \
-  --model "$MODEL_NAME" \
-  --audit-model "$AUDIT_MODEL_NAME"
+  --framework "$FRAMEWORK"
+```
+
+The tracked `conf.toml` uses Harbor's built-in Codex solver by default. To use a
+private Codex profile, create `conf.local.toml`:
+
+```toml
+[run]
+solver_agent = "codex-para"
+
+[codex]
+model = "YOUR_MODEL_NAME"
+audit_model = "YOUR_AUDIT_MODEL_NAME"
+profile = "your-profile"
+force_auth_json = true
 ```
 
 The runner passes:
@@ -163,7 +182,7 @@ The runner passes:
 --environment-import-path adapters.framework_docker:FrameworkDockerEnvironment
 --environment-kwarg framework=<framework>
 --environment-kwarg docker_image=challenge-benchmark-quantum-<framework>:py311
---agent-import-path adapters.codex_para:CodexPara
+--agent-import-path harbor.agents.installed.codex:Codex
 --verifier-import-path adapters.codex_para_verifier:CodexParaVerifier
 --verifier-env REQUIRED_QUANTUM_FRAMEWORK=<framework>
 ```
@@ -171,12 +190,11 @@ The runner passes:
 To use Claude Code as the solver while keeping the verifier audit Codex-based:
 
 ```bash
-export ANTHROPIC_AUTH_TOKEN=...
-export ANTHROPIC_BASE_URL=https://llmapi.paratera.com
-export ANTHROPIC_DEFAULT_OPUS_MODEL=AWS-Claude-Opus-4.8
+export ANTHROPIC_API_KEY=...
+export ANTHROPIC_MODEL="your-claude-model"
 
-MODEL_NAME="$ANTHROPIC_DEFAULT_OPUS_MODEL"
-AUDIT_MODEL_NAME=AWS-GPT-5.5
+MODEL_NAME="$ANTHROPIC_MODEL"
+AUDIT_MODEL_NAME=gpt-5
 FRAMEWORK=tensorcircuit
 
 python3 scripts/run_harbor_challenge.py \
@@ -188,14 +206,15 @@ python3 scripts/run_harbor_challenge.py \
   --audit-model "$AUDIT_MODEL_NAME"
 ```
 
-The Claude adapter forwards `ANTHROPIC_AUTH_TOKEN` into Docker as `ANTHROPIC_API_KEY`, which is the variable read by Claude Code.
+The Claude adapter accepts either `ANTHROPIC_API_KEY` or `ANTHROPIC_AUTH_TOKEN`
+from the host and exposes `ANTHROPIC_API_KEY` inside Docker for Claude Code.
 
 ## Verifier-Only Candidate Check
 
 To evaluate an already generated candidate without rerunning a solver, copy a task to a temporary location, replace the solution artifact, and run Harbor without an agent import path:
 
 ```bash
-AUDIT_MODEL_NAME=AWS-GPT-5.5
+AUDIT_MODEL_NAME=gpt-5
 FRAMEWORK=tensorcircuit
 tmp_task="$(mktemp -d)/challenge-01-candidate-verify"
 

@@ -132,13 +132,11 @@ Source code:
 ```
 """
     env = _load_profile_env(os.environ.get("CODEX_PROFILE_ENV_FILE"))
-    profile = os.environ.get("CODEX_PROFILE", "para")
+    profile = os.environ.get("CODEX_PROFILE", "").strip()
     model = os.environ.get("CODEX_AUDIT_MODEL", "gpt-5")
     cmd = [
         "codex",
         "exec",
-        "--profile",
-        profile,
         "--model",
         model,
         "--skip-git-repo-check",
@@ -146,6 +144,8 @@ Source code:
         "--",
         prompt,
     ]
+    if profile:
+        cmd[2:2] = ["--profile", profile]
     completed = subprocess.run(
         cmd,
         check=False,

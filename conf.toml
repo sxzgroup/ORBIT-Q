@@ -1,0 +1,33 @@
+# Public benchmark runner defaults.
+#
+# This file configures scripts/run_harbor_challenge.py. It is not a Codex CLI
+# $CODEX_HOME/config.toml file.
+#
+# Local overrides go in conf.local.toml, which is intentionally gitignored.
+
+[run]
+# challenge = "01"
+framework = "tensorcircuit"
+solver_agent = "codex"
+# docker_image = "challenge-benchmark-quantum-tensorcircuit:py311"
+# extra_instruction_path = "prompts/frameworks/tensorcircuit.md"
+# job_name = "challenge-01-tensorcircuit-codex"
+# solver_reasoning_effort = "high"
+
+[harbor]
+# If omitted, the runner uses .conda/harbor-py312/bin/harbor when present,
+# otherwise it falls back to `harbor` on PATH.
+# harbor_bin = ".conda/harbor-py312/bin/harbor"
+jobs_dir = "jobs"
+n_concurrent = 1
+yes = true
+
+[codex]
+# Public default: use Harbor's built-in Codex agent and authenticate through
+# normal Codex/OpenAI environment such as OPENAI_API_KEY.
+model = "gpt-5"
+audit_model = "gpt-5"
+profile = ""
+force_auth_json = false
+# profile_config_path = "~/.codex/default.config.toml"
+# model_catalog_path = "~/.codex/models.json"

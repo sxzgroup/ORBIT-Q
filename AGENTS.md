@@ -100,39 +100,54 @@ python3 scripts/run_harbor_challenge.py --challenge 01 --framework pennylane
 
 `scripts/run_harbor_challenge.py` passes `--environment-import-path adapters.framework_docker:FrameworkDockerEnvironment`, `--environment-kwarg framework=<framework>`, and `--verifier-env REQUIRED_QUANTUM_FRAMEWORK=<framework>`. The adapter sets the selected image in memory before Docker starts; it does not modify, copy, or patch canonical task files.
 
-When using a private or custom Codex profile, always pass model names explicitly:
+Runner defaults live in tracked `conf.toml`; machine-local overrides live in
+gitignored `conf.local.toml`. The runner resolves values in this order:
+explicit CLI arguments, environment variables, `conf.local.toml`, then
+`conf.toml`.
+
+When using a private or custom Codex profile, put local model/profile defaults
+in `conf.local.toml` or pass them explicitly:
 
 ```bash
-MODEL_NAME=AWS-GPT-5.5
-AUDIT_MODEL_NAME=AWS-GPT-5.5
+MODEL_NAME=YOUR_MODEL_NAME
+AUDIT_MODEL_NAME=YOUR_AUDIT_MODEL_NAME
 ```
 
-`MODEL_NAME` is consumed by Harbor's `-m` flag for the solver agent. `AUDIT_MODEL_NAME` is passed through `--verifier-kwarg "audit_model=$AUDIT_MODEL_NAME"` and becomes `CODEX_AUDIT_MODEL` inside the verifier container. The default audit model is `AWS-GPT-5.5`, even when the solver is Claude Code.
+`MODEL_NAME` is consumed by Harbor's `-m` flag for the solver agent. `AUDIT_MODEL_NAME` is passed through `--verifier-kwarg "audit_model=$AUDIT_MODEL_NAME"` and becomes `CODEX_AUDIT_MODEL` inside the verifier container.
 
-## Run A Challenge With CodexPara Or Claude Code
+## Run A Challenge With Codex Or Claude Code
 
 Use the wrapper so `tasks/challenge-*` stay fixed while the framework is selected from command-line arguments:
 
 ```bash
-MODEL_NAME=AWS-GPT-5.5
-AUDIT_MODEL_NAME="$MODEL_NAME"
+export OPENAI_API_KEY=...
 FRAMEWORK=tensorcircuit
 python3 scripts/run_harbor_challenge.py \
   --challenge 02 \
-  --framework "$FRAMEWORK" \
-  --model "$MODEL_NAME" \
-  --audit-model "$AUDIT_MODEL_NAME"
+  --framework "$FRAMEWORK"
 ```
 
-To solve with Claude Code while keeping the verifier on Codex/GPT-5.5, select `--solver-agent claude-code`. Claude Code credentials and custom endpoint settings are inherited from the shell by the Harbor process and injected into the solver container by the adapter:
+To keep the previous private CodexPara behavior on this machine, use `conf.local.toml`:
+
+```toml
+[run]
+solver_agent = "codex-para"
+
+[codex]
+model = "AWS-GPT-5.5"
+audit_model = "AWS-GPT-5.5"
+profile = "para"
+force_auth_json = true
+```
+
+To solve with Claude Code while keeping the verifier Codex-based, select `--solver-agent claude-code`. Claude Code credentials and custom endpoint settings are inherited from the shell by the Harbor process and injected into the solver container by the adapter:
 
 ```bash
-export ANTHROPIC_AUTH_TOKEN=...
-export ANTHROPIC_BASE_URL=https://llmapi.paratera.com
-export ANTHROPIC_DEFAULT_OPUS_MODEL=AWS-Claude-Opus-4.8
+export ANTHROPIC_API_KEY=...
+export ANTHROPIC_MODEL="your-claude-model"
 
-MODEL_NAME="$ANTHROPIC_DEFAULT_OPUS_MODEL"
-AUDIT_MODEL_NAME=AWS-GPT-5.5
+MODEL_NAME="$ANTHROPIC_MODEL"
+AUDIT_MODEL_NAME=gpt-5
 FRAMEWORK=tensorcircuit
 python3 scripts/run_harbor_challenge.py \
   --challenge 02 \
@@ -143,7 +158,7 @@ python3 scripts/run_harbor_challenge.py \
   --audit-model "$AUDIT_MODEL_NAME"
 ```
 
-The Claude adapter passes `ANTHROPIC_AUTH_TOKEN` into Docker as `ANTHROPIC_API_KEY` because that is what Claude Code reads.
+The Claude adapter accepts either `ANTHROPIC_API_KEY` or `ANTHROPIC_AUTH_TOKEN` from the host and exposes `ANTHROPIC_API_KEY` inside Docker for Claude Code.
 
 When manually smoke-testing Claude Code inside the framework image with
 `docker run`, remember that the container runs as `root`. In that situation,
@@ -192,7 +207,7 @@ To verify an already generated solution without rerunning the Agent, copy the ta
 Example for challenge 01:
 
 ```bash
-AUDIT_MODEL_NAME=AWS-GPT-5.5
+AUDIT_MODEL_NAME=gpt-5
 FRAMEWORK=tensorcircuit
 tmp_task="$(mktemp -d)/challenge-01-candidate-verify"
 cp -R tasks/challenge-01 "$tmp_task"
@@ -240,16 +255,18 @@ Within a given framework, the agent and separate verifier use the same prebuilt 
 
 This avoids rebuilding heavy quantum dependencies per run and avoids storing repeated environment files under each task.
 
-Solver agents are run through local adapters, while the verifier remains Codex-based:
+Solver agents can use Harbor's built-in Codex, the local CodexPara adapter, or the local Claude adapter, while the verifier remains Codex-based:
 
 ```bash
+--agent-import-path harbor.agents.installed.codex:Codex
+# or
 --agent-import-path adapters.codex_para:CodexPara
 # or
 --agent-import-path adapters.claude_para:ClaudePara
 --verifier-import-path adapters.codex_para_verifier:CodexParaVerifier
 ```
 
-`CodexParaVerifier` exists because Harbor agent and verifier interfaces are different. It reuses `CodexPara` auth/profile/catalog setup, then lets Harbor run `/tests/test.sh` and parse `/logs/verifier/reward.json`.
+`CodexParaVerifier` exists because Harbor agent and verifier interfaces are different. It prepares Codex auth/profile/catalog setup for the source audit, then lets Harbor run `/tests/test.sh` and parse `/logs/verifier/reward.json`.
 
 The shared Dockerfile bakes in common system tooling:
 
@@ -312,11 +329,13 @@ The main task instruction excludes baseline and hint sections. The appended fram
 
 Verifier output is written under `/logs/verifier/` and collected into each job.
 
-Main reward:
+Main pass reward:
 
 ```text
-reward = functional_score * runtime_score * static_policy_score * llm_audit_score
+reward = functional_score * static_policy_score * llm_audit_score
 ```
+
+Runtime is not a penalty term for pass/fail. If the functional checks, static policy, and LLM audit pass, the submission is considered passed regardless of runtime. Runtime is recorded faithfully as a separate comparison dimension.
 
 Important fields:
 
@@ -336,12 +355,11 @@ Important fields:
 }
 ```
 
-Runtime scoring:
+Runtime fields:
 
 ```text
-<= 180s: runtime_score = 1
-180s to 300s: linear decay
->= 300s: runtime_score = 0
+runtime_sec records the measured end-to-end solution time.
+runtime_score is kept only for compatibility/reporting and must not reduce pass reward.
 ```
 
 The functional evaluator prints:
@@ -350,7 +368,7 @@ The functional evaluator prints:
 End-to-end solution time: XX.XXs
 ```
 
-`score_submission.py` parses that line. If the line is missing, `runtime_sec=-1` and runtime score is zero.
+`score_submission.py` parses that line. If the line is missing, `runtime_sec=-1`; this should be treated as missing runtime data, not as a reward penalty.
 
 Static policy enforces a 200 effective Python line limit and checks imports, forbidden quantum frameworks, obvious test/reward tampering, and raw simulator hints.
 
@@ -384,16 +402,17 @@ If Docker Desktop still shows about `7.653GiB` memory in `docker stats`, the hos
 
 ## Secrets And Profiles
 
-The Codex adapters depend on an operator-provided Codex profile, auth file, and optional model catalog. Keep those files outside the repository and point the adapter to them with environment variables or Harbor agent/verifier kwargs.
+Private Codex profiles, auth files, optional model catalogs, and API tokens stay outside the repository. Put non-secret local defaults in `conf.local.toml`, and keep actual tokens in the shell environment or normal Codex/OpenAI auth files.
 
 Do not commit these files or paste process environments that might include secrets.
 
 Default current settings:
 
 ```text
-agent model: `AWS-GPT-5.5` unless overridden by `--model` / `MODEL_NAME`
-profile: set by adapter kwarg, default `para`
+public agent model: `gpt-5` from `conf.toml` unless overridden
+public solver agent: Harbor built-in `codex` from `conf.toml`
+local private override: `conf.local.toml` may set `codex-para`, `para`, and custom model names
 Codex reasoning effort: high
 Claude Code reasoning effort: max when `--solver-agent claude-code` unless overridden by `--solver-reasoning-effort` / `SOLVER_REASONING_EFFORT`
-verifier audit model: `AWS-GPT-5.5` unless overridden by `--audit-model` / `AUDIT_MODEL_NAME`
+verifier audit model: `gpt-5` from `conf.toml` unless overridden
 ```
