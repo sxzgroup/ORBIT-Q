@@ -1,0 +1,5 @@
+# Host-side dependencies for running ORBIT-Q benchmark scripts and Harbor adapters.
+#
+# Quantum framework/runtime dependencies are installed inside Docker images from
+# frameworks/<framework>/requirements.txt.
+harbor

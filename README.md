@@ -53,13 +53,17 @@ def run_solution(config):
     ...
 ```
 
-The verifier computes:
+For pass/fail reporting, the benchmark uses:
 
 ```text
-reward = functional_score * runtime_score * static_policy_score * llm_audit_score
+pass_reward = functional_score * static_policy_score * llm_audit_score
 ```
 
-Runtime scoring is:
+Runtime is not treated as a pass/fail penalty. The verifier records runtime
+faithfully as `runtime_sec` and may also emit a compatibility `runtime_score`,
+but final paper-facing comparisons should treat runtime as a separate dimension.
+
+The compatibility runtime score is:
 
 ```text
 runtime <= 180s: runtime_score = 1
@@ -90,7 +94,8 @@ The functional evaluator prints:
 End-to-end solution time: XX.XXs
 ```
 
-If this line is absent, the verifier records `runtime_sec = -1` and assigns zero runtime score.
+If this line is absent, the verifier records `runtime_sec = -1`; this means the
+runtime datum is missing and should not be used as a pass/fail penalty.
 
 ## Experimental Records
 
