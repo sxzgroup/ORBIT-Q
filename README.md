@@ -26,12 +26,11 @@ The benchmark currently evaluates two orthogonal axes:
 
 ![Dual-axis benchmark results](assets/fig2_dual_axis_scatter.png)
 
-ORBIT-Q is intentionally not saturated.
 The current results show clear separation across both benchmark axes, with visible gaps in validity and artifact runtime relative to expert TensorCircuit-NG implementations.
 
 ### Framework Axis
 
-The framework axis holds the agent configuration fixed and varies the required quantum software framework.
+The framework axis holds the agent configuration fixed and varies the required quantum software framework (TensorCircuit-NG: TC; Pennylane: PL; MindQuantum: MQ; TorchQuantum: TQ).
 This view measures agent-framework co-performance: native primitive coverage, differentiable workflow support, performance pathways, API discoverability, and how naturally an autonomous agent can compose those pieces into a valid scientific artifact.
 
 ### Agent Axis
@@ -298,11 +297,10 @@ Until then, use:
   title        = {ORBIT-Q: Dual-axis benchmarking of autonomous agents in scientific quantum programming},
   author       = {Zhang, Shi-Xin and Chen, Yu-Qin},
   year         = {2026},
-  note         = {Manuscript in preparation}
+  note         = {Manuscript to appear soon}
 }
 ```
 
 ## License
 
 This repository is distributed under the Apache License 2.0.
-See `LICENCE`.
