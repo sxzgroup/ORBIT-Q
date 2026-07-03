@@ -1,4 +1,4 @@
-# ORBIT-Q
+<h1 align="center">ORBIT-Q</h1>
 
 <p align="center">
   <strong>Dual-axis benchmarking of autonomous agents in scientific quantum programming</strong>
