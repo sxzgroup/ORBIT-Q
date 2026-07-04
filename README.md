@@ -8,7 +8,7 @@
 Open Research Benchmark for Integrated Tasks in Quantum Computing
 </p>
 
-![ORBIT-Q benchmark design](assets/fig1_benchmark_design.png)
+![ORBIT-Q benchmark design](docs/assets/fig1_benchmark_design.png)
 
 ORBIT-Q is a Harbor-based benchmark for evaluating autonomous coding agents on research-grade quantum programming tasks.
 It treats scientific code generation as an agent-framework co-performance problem: an agent must not only pass a functional evaluator, but also preserve the stated physics, use the requested quantum framework natively, and produce an executable scientific artifact whose runtime can be compared with expert TensorCircuit-NG references.
@@ -24,7 +24,7 @@ The benchmark currently evaluates two orthogonal axes:
 
 ## Main Results
 
-![Dual-axis benchmark results](assets/fig2_dual_axis_scatter.png)
+![Dual-axis benchmark results](docs/assets/fig2_dual_axis_scatter.png)
 
 The current results show clear separation across both benchmark axes, with visible gaps in validity and artifact runtime relative to expert TensorCircuit-NG implementations.
 
@@ -41,7 +41,7 @@ This view separates task completion from generated-code quality: a configuration
 The resource-use view further separates agent-side efficiency from artifact-side efficiency.
 Token use, solve wall time, and service cost describe how expensive it was to produce a submission; artifact runtime describes whether the produced scientific program is actually efficient after generation.
 
-![Agent and framework resource use](assets/fig4_agent_framework_consumption.png)
+![Agent and framework resource use](docs/assets/fig4_agent_framework_consumption.png)
 
 ## Task Suite
 
@@ -63,7 +63,7 @@ Each task is framework-neutral; the required framework is selected only through 
 | 11 | Spin-1 Haldane-chain state preparation and string-order verification |
 | 12 | Optimization of variational circuit overlap with an MPS target |
 
-![Task-level framework map](assets/fig3_task_map.png)
+![Task-level framework map](docs/assets/fig3_task_map.png)
 
 The task-level map shows why a single pass rate is not enough: different frameworks and agents fail on different physical workflows, and valid artifacts can vary substantially in runtime relative to the expert TC reference.
 

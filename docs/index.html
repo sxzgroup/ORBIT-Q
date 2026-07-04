@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORBIT-Q: Dual-Axis Quantum Programming Benchmark</title>
+    <meta name="description" content="Open Research Benchmark for Integrated Tasks in Quantum Computing. Evaluating autonomous agents on scientific code generation, framework constraints, and artifact efficiency.">
+    <link rel="icon" type="image/png" href="assets/fig1_benchmark_design.png">
+    
+    <!-- Theme Initialization Script -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme) {
+                document.documentElement.setAttribute("data-theme", savedTheme);
+            } else {
+                const systemTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+                document.documentElement.setAttribute("data-theme", systemTheme);
+            }
+        })();
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo-area">
+                <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
+                <span class="logo-text">ORBIT-Q</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#design">Design</a>
+                <a href="#leaderboard">Leaderboard</a>
+                <a href="#tasks">Tasks</a>
+                <a href="#quickstart">Quick Start</a>
+                <a href="https://arxiv.org/abs/2607.XXXXX" target="_blank">arXiv</a>
+                <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <svg class="sun-icon hidden" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+                </button>
+                <a href="https://github.com/sxzgroup/ORBIT-Q" target="_blank" class="nav-git-btn">
+                    <svg role="img" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    GitHub
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Open Research Benchmark for Scientific Quantum Programming
+            </div>
+            <h1 class="hero-title">ORBIT-Q</h1>
+            <p class="hero-subtitle-gradient">Dual-axis benchmarking of autonomous agents in scientific quantum programming</p>
+            <p class="hero-desc">
+                Scientific code generation demands physical model preservation, framework compliance, and runtime efficiency. ORBIT-Q evaluates LLM agents across orthogonal Framework and Agent axes using a compound validity check and artifact-level runtime measurement.
+            </p>
+            <div class="hero-actions">
+                <a href="#leaderboard" class="btn btn-primary">View Leaderboard</a>
+                <a href="#quickstart" class="btn btn-secondary">Get Started</a>
+                <a href="https://arxiv.org/abs/2607.XXXXX" target="_blank" class="btn btn-tertiary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    arXiv:2607.XXXXX [quant-ph]
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Abstract & Highlights Section -->
+    <section id="about" class="section-container">
+        <div class="card-glow info-panel">
+            <h2 class="section-title">Abstract</h2>
+            <p class="abstract-text">
+                Computational science increasingly depends on software that encodes physical models, differentiable optimization pipelines, and performance-critical numerical representations. Autonomous coding agents now perform well on many conventional programming tasks, but scientific computing demands a rigorous validation paradigm that extends beyond simple functional test completion: generated code must preserve physical fidelity, differentiable workflows, framework-native semantics, and scalable representations.
+            </p>
+            <p class="abstract-text">
+                We introduce <strong>Open Research Benchmark for Integrated Tasks in Quantum Computing (ORBIT-Q)</strong>, a benchmark for agentic scientific programming using quantum computing as a rigorous and complex testbed of modern scientific workloads. ORBIT-Q combines functional tests, static policy checks, large-language-model-driven source-level semantic auditing, expert manual verification, and artifact-level runtime metrics to support two orthogonal comparisons: different agent harness and model configurations at a fixed quantum software framework, and different quantum software frameworks at a fixed agent.
+            </p>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="hl-header">
+                        <span class="hl-num">01</span>
+                        <h3>Dual-Axis Framework</h3>
+                    </div>
+                    <p>Orthogonal views isolating framework capability/discoverability from the agent model configuration.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="hl-header">
+                        <span class="hl-num">02</span>
+                        <h3>Compound Validity</h3>
+                    </div>
+                    <p>Integrates functional correctness, static policy limits, and GPT-5.5 semantic audits to prevent framework bypasses.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="hl-header">
+                        <span class="hl-num">03</span>
+                        <h3>Artifact Efficiency</h3>
+                    </div>
+                    <p>Goes beyond agent solve cost to measure the actual execution runtime of the generated scientific program.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benchmark Design & Paper Figures Section -->
+    <section id="design" class="section-container">
+        <h2 class="section-header-title">Benchmark Design & Figures</h2>
+        <p class="section-subtitle">Exhibits from the accompanying research manuscript</p>
+        
+        <div class="fig-tabs-container">
+            <div class="fig-tabs">
+                <button class="fig-tab-btn active" data-fig="fig1">Figure 1: Design</button>
+                <button class="fig-tab-btn" data-fig="fig2">Figure 2: Dual Axis</button>
+                <button class="fig-tab-btn" data-fig="fig3">Figure 3: Task Map</button>
+                <button class="fig-tab-btn" data-fig="fig4">Figure 4: Resource Use</button>
+            </div>
+            
+            <div class="fig-content-panel active" id="fig1-panel">
+                <div class="fig-grid">
+                    <div class="fig-img-area">
+                        <img src="assets/fig1_benchmark_design.png" alt="ORBIT-Q benchmark design" class="paper-fig">
+                    </div>
+                    <div class="fig-desc-area">
+                        <h3>Figure 1: Framework-constrained scientific code generation</h3>
+                        <p class="fig-caption">
+                            <strong>a</strong>, Complex scientific tasks are implemented by autonomous coding agents and expert developers, but both outputs must pass through an explicit framework constraint before becoming a scientific artifact.
+                        </p>
+                        <p class="fig-caption">
+                            <strong>b</strong>, The verifier applies a three-stage filter: deterministic functional evaluation, GPT-5.5-led semantic evaluation for framework bypasses and problem mismatches, and human manual recheck for ambiguous cases; artifact runtime and cost are logged after validity review.
+                        </p>
+                        <p class="fig-caption">
+                            <strong>c</strong>, The benchmark uses an orthogonal agent–framework matrix to separate agent-axis comparisons at fixed framework from framework-axis comparisons at fixed agent, with each grid cell measuring agent-framework co-performance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fig-content-panel" id="fig2-panel">
+                <div class="fig-grid">
+                    <div class="fig-img-area">
+                        <img src="assets/fig2_dual_axis_scatter.png" alt="Dual-axis benchmark results" class="paper-fig">
+                    </div>
+                    <div class="fig-desc-area">
+                        <h3>Figure 2: Dual-axis benchmark results</h3>
+                        <p class="fig-caption">
+                            <strong>a, Framework axis comparison</strong> under a fixed Codex agent using GPT-5.5. Each point shows the failure rate and geometric mean runtime relative to the expert TensorCircuit-NG reference on passed tasks. TC exhibits the highest success rate and the lowest slowdown.
+                        </p>
+                        <p class="fig-caption">
+                            <strong>b, Agent axis comparison</strong> on TC using the same coordinates. The GPT-5.5 point uses the Codex agent; Opus-4.8, GLM-5.2, and Sonnet-4.6 use the Claude Code agent. The grey diamond marks the expert reference baseline.
+                        </p>
+                        <p class="fig-caption">
+                            A clear gap remains between state-of-the-art agents and human experts, in both reliability and artifact runtime.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fig-content-panel" id="fig3-panel">
+                <div class="fig-grid">
+                    <div class="fig-img-area">
+                        <img src="assets/fig3_task_map.png" alt="Task-level framework map" class="paper-fig">
+                    </div>
+                    <div class="fig-desc-area">
+                        <h3>Figure 3: Task-level discrimination across frameworks</h3>
+                        <p class="fig-caption">
+                            Task-by-framework map for the fixed-solver framework comparison (Codex with GPT-5.5 model). Color encodes solution runtime relative to the expert TC reference for passed tasks where a timed solution is available; failed tasks are marked F.
+                        </p>
+                        <p class="fig-caption">
+                            The map demonstrates that different frameworks fail on different physical workflows, reflecting the framework's native API expressiveness and automatic-differentiation stability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fig-content-panel" id="fig4-panel">
+                <div class="fig-grid">
+                    <div class="fig-img-area">
+                        <img src="assets/fig4_agent_framework_consumption.png" alt="Agent and framework resource use" class="paper-fig">
+                    </div>
+                    <div class="fig-desc-area">
+                        <h3>Figure 4: Agent-side resource use on both benchmark axes</h3>
+                        <p class="fig-caption">
+                            <strong>a–c</strong>, Model-configuration comparison on TensorCircuit-NG. Agent solve wall time, total token use (uncached vs cached), and cumulative cost per valid solution vs solve wall time.
+                        </p>
+                        <p class="fig-caption">
+                            <strong>d–f</strong>, Framework comparison for a fixed Codex agent using GPT-5.5.
+                        </p>
+                        <p class="fig-caption">
+                            GPT-5.5* denotes GPT-5.5 with the TC-specific performance-checklist prompt, which shows a significant reduction in agent-side token consumption and cost without sacrificing valid task success count.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard" class="section-container">
+        <h2 class="section-header-title">Benchmark Leaderboard</h2>
+        <p class="section-subtitle">Based on manuscript evaluations (2026)</p>
+        
+        <div class="leaderboard-tabs-container">
+            <div class="leaderboard-tabs">
+                <button class="lead-tab-btn active" data-axis="framework">Framework Axis (Fixed Agent)</button>
+                <button class="lead-tab-btn" data-axis="agent">Agent Axis (Fixed Framework)</button>
+            </div>
+            
+            <!-- Framework Axis View -->
+            <div class="axis-view active" id="framework-view">
+                <p class="view-intro">
+                    The framework axis holds the agent configuration fixed (Codex / GPT-5.5) and varies the required quantum software framework. This measures agent-framework co-performance: native primitive coverage, API discoverability, and compile/execution efficiency.
+                    <br><br>
+                    <strong>Key Finding (Artifact Efficiency):</strong> TensorCircuit-NG is not only the most successful framework (10/12 tasks solved), but also produces highly performant scientific code. Valid TensorCircuit-NG submissions achieve a geometric mean slowdown of only <strong>2.2x</strong> compared to expert implementations, whereas other frameworks exhibit much larger slowdowns (e.g. <strong>4.5x–10.1x</strong> geometric mean for PennyLane and MindQuantum). This highlights that TensorCircuit-NG provides much more efficient compilation and execution pathways for agent-synthesized code.
+                </p>
+                <div class="summary-cards-container" id="framework-summary-cards">
+                    <!-- Dynamic -->
+                </div>
+                
+                <div class="table-scroll-container">
+                    <table class="leaderboard-table" id="framework-table">
+                        <thead>
+                            <tr>
+                                <th>Framework</th>
+                                <th>Model</th>
+                                <th class="num-col">Passes</th>
+                                <th class="num-col">Failures</th>
+                                <th class="num-col">Agent Wall Time</th>
+                                <th class="num-col">Average Efficiency</th>
+                                <th class="num-col">Total Cost</th>
+                                <th class="num-col">Cost/Pass</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dynamic -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3 class="subsection-title">Framework Task-by-Task Details</h3>
+                <div class="framework-selectors">
+                    <button class="selector-btn active" data-fw="tensorcircuit">TensorCircuit-NG</button>
+                    <button class="selector-btn" data-fw="pennylane">PennyLane</button>
+                    <button class="selector-btn" data-fw="torchquantum">TorchQuantum</button>
+                    <button class="selector-btn" data-fw="mindquantum">MindQuantum</button>
+                </div>
+                
+                <div class="table-scroll-container">
+                    <table class="leaderboard-table details-table" id="framework-details-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Pass?</th>
+                                <th class="num-col">Solution Runtime</th>
+                                <th class="num-col">Ref Runtime (TC)</th>
+                                <th class="num-col">Agent Solve Time</th>
+                                <th class="num-col">Agent Tokens</th>
+                                <th class="num-col">Agent Cost</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dynamic -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Agent Axis View -->
+            <div class="axis-view" id="agent-view">
+                <p class="view-intro">
+                    The agent axis holds the quantum framework fixed (TensorCircuit-NG) and varies the coding-agent harness and model configuration. This separates task completion ability from the computational quality of the generated scientific artifact.
+                </p>
+                
+                <div class="warning-alert">
+                    <div class="alert-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    </div>
+                    <div class="alert-text">
+                        <strong>Product Refusals Note:</strong> In Claude Code Opus-4.8 evaluations, Tasks 08 and 12 failed because the agent encountered cybersecurity false-positives when executing local CLI commands. This highlights that commercial agentic harnesses suffer from security guardrail misclassifications even on benign scientific workloads.
+                    </div>
+                </div>
+
+                <div class="summary-cards-container" id="agent-summary-cards">
+                    <!-- Dynamic -->
+                </div>
+                
+                <div class="table-scroll-container">
+                    <table class="leaderboard-table" id="agent-table">
+                        <thead>
+                            <tr>
+                                <th>Agent / Model</th>
+                                <th class="num-col">Passes</th>
+                                <th class="num-col">Failures</th>
+                                <th class="num-col">Agent Wall Time</th>
+                                <th class="num-col">Average Efficiency</th>
+                                <th class="num-col">Total Cost</th>
+                                <th class="num-col">Cost/Pass</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dynamic -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3 class="subsection-title">Agent Task-by-Task Details</h3>
+                <div class="agent-selectors">
+                    <button class="selector-btn active" data-agent="codex">Codex (GPT-5.5)</button>
+                    <button class="selector-btn" data-agent="codex-plus">Codex (GPT-5.5*)</button>
+                    <button class="selector-btn" data-agent="opus">Claude Code (Opus-4.8)</button>
+                    <button class="selector-btn" data-agent="sonnet">Claude Code (Sonnet-4.6)</button>
+                    <button class="selector-btn" data-agent="glm">Claude Code (GLM-5.2)</button>
+                </div>
+                
+                <div class="table-scroll-container">
+                    <table class="leaderboard-table details-table" id="agent-details-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Pass?</th>
+                                <th class="num-col">Solution Runtime</th>
+                                <th class="num-col">Ref Runtime (TC)</th>
+                                <th class="num-col">Agent Solve Time</th>
+                                <th class="num-col">Agent Tokens</th>
+                                <th class="num-col">Agent Cost</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dynamic -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Task Suite Explorer Section -->
+    <section id="tasks" class="section-container">
+        <h2 class="section-header-title">The 12 Benchmark Tasks</h2>
+        <p class="section-subtitle">Click on a task to explore the research workflow and target files</p>
+        
+        <div class="task-explorer-area">
+            <div class="task-grid" id="task-cards-grid">
+                <!-- Dynamic Task Cards -->
+            </div>
+            
+            <div class="task-details-panel card-glow" id="task-details-panel">
+                <div class="panel-empty-state" id="panel-empty">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <p>Select a task from the list to view the technical physics workflow and code repository links.</p>
+                </div>
+                <div class="panel-content hidden" id="panel-content">
+                    <div class="task-details-header">
+                        <span class="task-detail-id" id="detail-id">Task 01</span>
+                        <h3 class="task-detail-title" id="detail-title">MPS Input followed by Variational circuit refinement</h3>
+                    </div>
+                    <div class="task-detail-body">
+                        <div class="detail-section">
+                            <h4>Research Workflow tested</h4>
+                            <p id="detail-workflow">Scientific workflow description goes here...</p>
+                        </div>
+                        <div class="detail-section">
+                            <h4>Benchmark Objective</h4>
+                            <p id="detail-objective">Objective and validation details...</p>
+                        </div>
+                        <div class="detail-links">
+                            <a href="#" target="_blank" class="github-link-btn" id="github-problem-link">
+                                <svg role="img" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                                View Problem Folder
+                            </a>
+                            <a href="#" target="_blank" class="github-link-btn" id="github-solution-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                View Verifier Template
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start section -->
+    <section id="quickstart" class="section-container">
+        <h2 class="section-header-title">Quick Start</h2>
+        <p class="section-subtitle">Reproduce ORBIT-Q evaluations locally inside the Harbor framework</p>
+        
+        <div class="terminal-container card-glow">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span class="dot-red"></span>
+                    <span class="dot-yellow"></span>
+                    <span class="dot-green"></span>
+                </div>
+                <div class="terminal-title">bash — orbit-q runner</div>
+            </div>
+            
+            <div class="terminal-tabs">
+                <button class="term-tab-btn active" data-term="bootstrap">Bootstrap</button>
+                <button class="term-tab-btn" data-term="build">Build Image</button>
+                <button class="term-tab-btn" data-term="run">Run Challenge</button>
+                <button class="term-tab-btn" data-term="verify">Verifier-Only Check</button>
+            </div>
+            
+            <div class="terminal-body">
+                <div class="term-content active" id="term-bootstrap-content">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd"># Clone the repository and inspect harbor executable</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">git clone https://github.com/sxzgroup/ORBIT-Q.git && cd ORBIT-Q</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">harbor --help</span></div>
+                    <div class="term-info">If harbor is not installed globally, install it outside the repository or run via the local virtual environment binary.</div>
+                </div>
+
+                <div class="term-content" id="term-build-content">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd"># Build framework-specific Docker images used by both agent & verifier</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">FRAMEWORK=tensorcircuit bash scripts/build_challenge_quantum_image.sh</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd"># Build PennyLane or MindQuantum images:</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">FRAMEWORK=pennylane bash scripts/build_challenge_quantum_image.sh</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">FRAMEWORK=mindquantum bash scripts/build_challenge_quantum_image.sh</span></div>
+                </div>
+
+                <div class="term-content" id="term-run-content">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd"># Solve challenge 02 using TensorCircuit-NG framework and standard Codex agent</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">export OPENAI_API_KEY="your-api-key"</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">python3 scripts/run_harbor_challenge.py --challenge 02 --framework tensorcircuit</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd"># Run using Claude Code agent instead:</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">export ANTHROPIC_API_KEY="your-anthropic-key"</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">python3 scripts/run_harbor_challenge.py --challenge 02 --framework tensorcircuit --solver-agent claude-code --model claude-4.8-opus</span></div>
+                </div>
+
+                <div class="term-content" id="term-verify-content">
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd"># Verify an already generated solution without running the agent again</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">tmp_task="$(mktemp -d)/challenge-01-verify"</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">cp -R tasks/challenge-01 "$tmp_task"</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">cp your_candidate_solution.py "$tmp_task/solution/solution_1.py"</span></div>
+                    <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">PYTHONPATH="$PWD" harbor run \</span></div>
+                    <div class="term-line"><span class="term-cmd">  -p "$tmp_task" \</span></div>
+                    <div class="term-line"><span class="term-cmd">  --environment-import-path adapters.framework_docker:FrameworkDockerEnvironment \</span></div>
+                    <div class="term-line"><span class="term-cmd">  --environment-kwarg "framework=tensorcircuit" \</span></div>
+                    <div class="term-line"><span class="term-cmd">  --environment-kwarg "docker_image=challenge-benchmark-quantum-tensorcircuit:py311" \</span></div>
+                    <div class="term-line"><span class="term-cmd">  --verifier-import-path adapters.codex_para_verifier:CodexParaVerifier \</span></div>
+                    <div class="term-line"><span class="term-cmd">  --verifier-kwarg "audit_model=gpt-5" \</span></div>
+                    <div class="term-line"><span class="term-cmd">  --verifier-env "REQUIRED_QUANTUM_FRAMEWORK=tensorcircuit" \</span></div>
+                    <div class="term-line"><span class="term-cmd">  -n 1 -o "./jobs" --job-name challenge-01-verifier --yes</span></div>
+                </div>
+            </div>
+            
+            <button class="terminal-copy-btn" id="terminal-copy-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                Copy Commands
+            </button>
+        </div>
+    </section>
+
+    <!-- Citation section -->
+    <section class="section-container citation-container">
+        <h2 class="section-header-title">Citation</h2>
+        <p class="section-subtitle">If you use ORBIT-Q in your research, please cite our manuscript:</p>
+        
+        <div class="citation-block card-glow">
+            <pre><code id="bibtex-code">@misc{orbitq2026,
+  title        = {ORBIT-Q: Dual-axis benchmarking of autonomous agents in scientific quantum programming},
+  author       = {Zhang, Shi-Xin and Chen, Yu-Qin},
+  year         = {2026},
+  eprint       = {2607.XXXXX},
+  archivePrefix= {arXiv},
+  primaryClass = {quant-ph},
+  note         = {arXiv preprint arXiv:2607.XXXXX}
+}</code></pre>
+            <button class="citation-copy-btn" id="citation-copy-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                Copy BibTeX
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 ORBIT-Q Authors. Distributed under the Apache License 2.0.</p>
+            <div class="footer-links">
+                <a href="https://github.com/sxzgroup/ORBIT-Q" target="_blank">GitHub</a>
+                <a href="https://arxiv.org/abs/2607.XXXXX" target="_blank">arXiv</a>
+                <a href="#about">About</a>
+                <a href="#leaderboard">Leaderboard</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
