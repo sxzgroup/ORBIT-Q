@@ -431,7 +431,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("detail-objective").innerText = task.objective;
             
             // Set dynamic GitHub links
-            document.getElementById("github-problem-link").href = `https://github.com/sxzgroup/ORBIT-Q/tree/main/tasks/challenge-${task.id}`;
+            document.getElementById("github-problem-link").href = `https://github.com/sxzgroup/ORBIT-Q/blob/main/tasks/challenge-${task.id}/instruction.md`;
             document.getElementById("github-solution-link").href = `https://github.com/sxzgroup/ORBIT-Q/tree/main/templates/challenge/tests/`;
         });
     });
@@ -546,11 +546,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.documentElement.setAttribute("data-theme", savedTheme);
     
     if (savedTheme === "light") {
-        sunIcon.classList.remove("hidden");
-        moonIcon.classList.add("hidden");
-    } else {
         sunIcon.classList.add("hidden");
         moonIcon.classList.remove("hidden");
+    } else {
+        sunIcon.classList.remove("hidden");
+        moonIcon.classList.add("hidden");
     }
     
     themeToggleBtn.addEventListener("click", () => {
@@ -559,12 +559,12 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (currentTheme === "dark") {
             newTheme = "light";
-            sunIcon.classList.remove("hidden");
-            moonIcon.classList.add("hidden");
-        } else {
-            newTheme = "dark";
             sunIcon.classList.add("hidden");
             moonIcon.classList.remove("hidden");
+        } else {
+            newTheme = "dark";
+            sunIcon.classList.remove("hidden");
+            moonIcon.classList.add("hidden");
         }
         
         document.documentElement.setAttribute("data-theme", newTheme);
