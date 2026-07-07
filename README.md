@@ -13,9 +13,11 @@ Open Research Benchmark for Integrated Tasks in Quantum Computing
 ORBIT-Q is a Harbor-based benchmark for evaluating autonomous coding agents on research-grade quantum programming tasks.
 It treats scientific code generation as an agent-framework co-performance problem: an agent must not only pass a functional evaluator, but also preserve the stated physics, use the requested quantum framework natively, and produce an executable scientific artifact whose runtime can be compared with expert TensorCircuit-NG references.
 
-This repository accompanies the manuscript:
+This repository accompanies the arXiv preprint:
 
-> **ORBIT-Q: Dual-axis benchmarking of autonomous agents in scientific quantum programming**
+> **ORBIT-Q: Dual-axis benchmarking of autonomous agents in scientific quantum programming**<br>
+> Shi-Xin Zhang and Yu-Qin Chen, arXiv:2607.03105 [quant-ph], 2026<br>
+> <https://arxiv.org/abs/2607.03105>
 
 The benchmark currently evaluates two orthogonal axes:
 
@@ -289,15 +291,19 @@ In sandboxed sessions, retry Docker or Harbor socket failures with the required 
 
 ## Citation
 
-If you use ORBIT-Q in academic work, cite the accompanying manuscript when the public preprint or DOI is available.
-Until then, use:
+If you use ORBIT-Q in academic work, cite the accompanying arXiv preprint:
 
 ```bibtex
-@misc{orbitq2026,
+@article{zhang2026orbitq,
   title        = {ORBIT-Q: Dual-axis benchmarking of autonomous agents in scientific quantum programming},
   author       = {Zhang, Shi-Xin and Chen, Yu-Qin},
+  journal      = {arXiv:2607.03105},
   year         = {2026},
-  note         = {Manuscript to appear soon}
+  eprint       = {2607.03105},
+  archivePrefix= {arXiv},
+  primaryClass = {quant-ph},
+  doi          = {10.48550/arXiv.2607.03105},
+  url          = {https://arxiv.org/abs/2607.03105}
 }
 ```
 
