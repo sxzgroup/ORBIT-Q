@@ -186,7 +186,9 @@ class CodexPara(Codex):
         remote_config_name = (
             f"{self.profile}.config.toml" if self.profile else "config.toml"
         )
-        remote_profile_config = (self._REMOTE_CODEX_HOME / remote_config_name).as_posix()
+        remote_profile_config = (
+            self._REMOTE_CODEX_HOME / remote_config_name
+        ).as_posix()
 
         await environment.upload_file(local_profile_config, remote_profile_config)
         if environment.default_user is not None:
@@ -231,9 +233,7 @@ class CodexPara(Codex):
         escaped_instruction: str,
     ) -> str:
         output_path = (EnvironmentPaths.agent_dir / self._OUTPUT_FILENAME).as_posix()
-        profile_arg = (
-            f"--profile {shlex.quote(self.profile)} " if self.profile else ""
-        )
+        profile_arg = f"--profile {shlex.quote(self.profile)} " if self.profile else ""
 
         return (
             "if [ -s ~/.nvm/nvm.sh ]; then . ~/.nvm/nvm.sh; fi; "
