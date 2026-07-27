@@ -2,5 +2,6 @@
 
 from .codex_para import CodexPara
 from .claude_para import ClaudePara
+from .forgecode import ForgeCode
 
-__all__ = ["ClaudePara", "CodexPara"]
+__all__ = ["ClaudePara", "CodexPara", "ForgeCode"]

@@ -31,3 +31,10 @@ profile = ""
 force_auth_json = false
 # profile_config_path = "~/.codex/default.config.toml"
 # model_catalog_path = "~/.codex/models.json"
+
+[forgecode]
+# ForgeCode model names use provider/model format.
+model = "codex/gpt-5.6-sol"
+reasoning_effort = "high"
+# credentials_path = "~/.forge/.credentials.json"
+# agent = "forge"

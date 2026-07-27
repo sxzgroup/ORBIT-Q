@@ -18,6 +18,7 @@ SOLVER_AGENT_IMPORTS = {
     "codex": "harbor.agents.installed.codex:Codex",
     "codex-para": "adapters.codex_para:CodexPara",
     "claude-code": "adapters.claude_para:ClaudePara",
+    "forgecode": "adapters.forgecode:ForgeCode",
 }
 
 
@@ -231,6 +232,17 @@ def parse_args() -> argparse.Namespace:
         help="Upload ~/.codex/auth.json instead of relying on OPENAI_API_KEY.",
     )
     parser.add_argument(
+        "--forgecode-credentials-path",
+        type=Path,
+        default=None,
+        help="Optional ForgeCode .credentials.json file.",
+    )
+    parser.add_argument(
+        "--forgecode-agent",
+        default=None,
+        help="ForgeCode agent ID. Defaults to the file-modifying 'forge' agent.",
+    )
+    parser.add_argument(
         "--yes",
         action=argparse.BooleanOptionalAction,
         default=None,
@@ -248,6 +260,11 @@ def challenge_name(raw: str) -> str:
 
 def resolve_solver_model(solver_agent: str, explicit_model: str | None) -> str:
     if explicit_model:
+        if solver_agent == "forgecode" and "/" not in explicit_model:
+            raise ValueError(
+                "ForgeCode model must be in provider/model format, "
+                "for example codex/gpt-5.6-sol"
+            )
         return explicit_model
     if solver_agent == "claude-code":
         model = os.environ.get("ANTHROPIC_MODEL") or os.environ.get(
@@ -259,6 +276,11 @@ def resolve_solver_model(solver_agent: str, explicit_model: str | None) -> str:
                 "MODEL_NAME, MODEL, ANTHROPIC_MODEL, or ANTHROPIC_DEFAULT_OPUS_MODEL."
             )
         return model
+    if solver_agent == "forgecode":
+        raise ValueError(
+            "ForgeCode solver model is required in provider/model format. "
+            "Pass --model, export FORGECODE_MODEL, or set [forgecode].model."
+        )
     return "gpt-5"
 
 
@@ -318,11 +340,18 @@ def main() -> int:
             f"{', '.join(sorted(SOLVER_AGENT_IMPORTS))}"
         )
 
-    configured_model = first_value(
-        args.model,
-        env_value("MODEL_NAME", "MODEL"),
-        config_get(config, "codex", "model"),
-    )
+    if solver_agent == "forgecode":
+        configured_model = first_value(
+            args.model,
+            env_value("FORGECODE_MODEL", "MODEL_NAME", "MODEL"),
+            config_get(config, "forgecode", "model"),
+        )
+    else:
+        configured_model = first_value(
+            args.model,
+            env_value("MODEL_NAME", "MODEL"),
+            config_get(config, "codex", "model"),
+        )
     solver_model = resolve_solver_model(
         solver_agent, str(configured_model) if configured_model is not None else None
     )
@@ -342,11 +371,18 @@ def main() -> int:
         config_get(config, "codex", "audit_model"),
         solver_model,
     )
-    solver_reasoning_effort = first_value(
-        args.solver_reasoning_effort,
-        env_value("SOLVER_REASONING_EFFORT", "CLAUDE_CODE_EFFORT_LEVEL"),
-        config_get(config, "run", "solver_reasoning_effort"),
-    )
+    if solver_agent == "forgecode":
+        solver_reasoning_effort = first_value(
+            args.solver_reasoning_effort,
+            env_value("FORGECODE_REASONING_EFFORT", "SOLVER_REASONING_EFFORT"),
+            config_get(config, "forgecode", "reasoning_effort"),
+        )
+    else:
+        solver_reasoning_effort = first_value(
+            args.solver_reasoning_effort,
+            env_value("SOLVER_REASONING_EFFORT", "CLAUDE_CODE_EFFORT_LEVEL"),
+            config_get(config, "run", "solver_reasoning_effort"),
+        )
     if solver_agent == "claude-code" and not solver_reasoning_effort:
         solver_reasoning_effort = "max"
 
@@ -415,6 +451,24 @@ def main() -> int:
         )
     )
     env["CODEX_FORCE_AUTH_JSON"] = "true" if codex_force_auth_json else "false"
+    forgecode_credentials_path = resolve_path(
+        first_value(
+            args.forgecode_credentials_path,
+            env_value("FORGECODE_CREDENTIALS_PATH"),
+            config_get(config, "forgecode", "credentials_path"),
+        )
+    )
+    forgecode_agent = str(
+        first_value(
+            args.forgecode_agent,
+            env_value("FORGECODE_AGENT"),
+            config_get(config, "forgecode", "agent"),
+            "forge",
+        )
+    ).strip()
+    forgecode_codex_auth_path = resolve_path(env_value("CODEX_AUTH_JSON_PATH"))
+    if codex_force_auth_json and forgecode_codex_auth_path is None:
+        forgecode_codex_auth_path = Path.home() / ".codex" / "auth.json"
 
     cmd = [
         str(harbor_bin),
@@ -464,6 +518,21 @@ def main() -> int:
             "model_catalog_path",
             codex_model_catalog_path,
         )
+    elif solver_agent == "forgecode":
+        add_kwarg(
+            cmd,
+            "--agent-kwarg",
+            "credentials_path",
+            forgecode_credentials_path,
+        )
+        if codex_force_auth_json:
+            add_kwarg(
+                cmd,
+                "--agent-kwarg",
+                "codex_auth_json_path",
+                forgecode_codex_auth_path,
+            )
+        add_kwarg(cmd, "--agent-kwarg", "agent_id", forgecode_agent)
 
     add_kwarg(cmd, "--verifier-kwarg", "profile", codex_profile)
     add_kwarg(
@@ -492,6 +561,16 @@ def main() -> int:
     print(f"Solver reasoning effort: {solver_reasoning_effort or '(agent default)'}")
     print(f"Audit model: {audit_model}")
     print(f"Codex profile: {codex_profile or '(default)'}")
+    if solver_agent == "forgecode":
+        credential_source = (
+            display_path(forgecode_credentials_path)
+            if forgecode_credentials_path
+            else "Codex auth.json"
+            if codex_force_auth_json
+            else "provider environment"
+        )
+        print(f"ForgeCode agent: {forgecode_agent}")
+        print(f"ForgeCode credentials: {credential_source}")
     sys.stdout.flush()
     return subprocess.run(cmd, env=env, check=False).returncode
 

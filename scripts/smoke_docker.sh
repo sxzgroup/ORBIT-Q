@@ -20,6 +20,7 @@ docker run --rm \
   bash -lc '
     set -euo pipefail
     codex --version
+    forge --version
     python - <<'"'"'PY'"'"'
 import importlib
 import os

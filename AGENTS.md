@@ -36,11 +36,11 @@ The default TensorCircuit tag is:
 challenge-benchmark-quantum-tensorcircuit:py311
 ```
 
-Verify that the image contains Codex CLI and Claude Code:
+Verify that the image contains Codex CLI, Claude Code, and ForgeCode:
 
 ```bash
 docker run --rm challenge-benchmark-quantum-tensorcircuit:py311 \
-  sh -lc 'codex --version && claude --version'
+  sh -lc 'codex --version && claude --version && forge --version'
 ```
 
 Generate framework prompt files and canonical tasks only when templates or upstream problem files change:
@@ -115,7 +115,7 @@ AUDIT_MODEL_NAME=YOUR_AUDIT_MODEL_NAME
 
 `MODEL_NAME` is consumed by Harbor's `-m` flag for the solver agent. `AUDIT_MODEL_NAME` is passed through `--verifier-kwarg "audit_model=$AUDIT_MODEL_NAME"` and becomes `CODEX_AUDIT_MODEL` inside the verifier container.
 
-## Run A Challenge With Codex Or Claude Code
+## Run A Challenge With Codex, Claude Code, Or ForgeCode
 
 Use the wrapper so `tasks/challenge-*` stay fixed while the framework is selected from command-line arguments:
 
@@ -190,6 +190,26 @@ Harbor runs through `adapters.claude_para:ClaudePara` already set these
 Claude-specific env vars, so this workaround is mainly for direct `docker run`
 checks and one-off image smoke tests.
 
+To solve with ForgeCode while keeping the verifier Codex-based, select
+`--solver-agent forgecode` and pass a `provider/model` name:
+
+```bash
+python3 scripts/run_harbor_challenge.py \
+  --challenge 01 \
+  --framework tensorcircuit \
+  --solver-agent forgecode \
+  --model codex/gpt-5.6-sol \
+  --solver-reasoning-effort high \
+  --codex-force-auth-json
+```
+
+`adapters.forgecode:ForgeCode` uses ForgeCode's one-shot `forge -p` mode with
+the file-modifying `forge` agent. The `codex` provider can temporarily convert
+the file-backed Codex login at `~/.codex/auth.json`. Other providers can use
+`--forgecode-credentials-path ~/.forge/.credentials.json` or their standard API
+key environment variable. The adapter removes provider credentials before
+Harbor collects artifacts.
+
 If Harbor reports Docker is not running but `docker ps` works, this is usually Codex sandbox permission around Docker preflight/socket access. Re-run the same Harbor command with escalated Docker access.
 
 In sandboxed Codex sessions, treat Docker and Harbor access failures conservatively:
@@ -255,7 +275,9 @@ Within a given framework, the agent and separate verifier use the same prebuilt 
 
 This avoids rebuilding heavy quantum dependencies per run and avoids storing repeated environment files under each task.
 
-Solver agents can use Harbor's built-in Codex, the local CodexPara adapter, or the local Claude adapter, while the verifier remains Codex-based:
+Solver agents can use Harbor's built-in Codex, the local CodexPara adapter, the
+local Claude adapter, or the local ForgeCode adapter, while the verifier remains
+Codex-based:
 
 ```bash
 --agent-import-path harbor.agents.installed.codex:Codex
@@ -263,6 +285,8 @@ Solver agents can use Harbor's built-in Codex, the local CodexPara adapter, or t
 --agent-import-path adapters.codex_para:CodexPara
 # or
 --agent-import-path adapters.claude_para:ClaudePara
+# or
+--agent-import-path adapters.forgecode:ForgeCode
 --verifier-import-path adapters.codex_para_verifier:CodexParaVerifier
 ```
 
@@ -275,6 +299,7 @@ python:3.11-slim
 nodejs/npm/ripgrep
 @openai/codex
 @anthropic-ai/claude-code
+ForgeCode `forge`
 build-essential, pkg-config, rustc, cargo, procps
 ```
 
@@ -302,6 +327,7 @@ scripts/generate_framework_prompts.py
 prompts/frameworks/
 adapters/codex_para.py
 adapters/claude_para.py
+adapters/forgecode.py
 adapters/codex_para_verifier.py
 adapters/framework_docker.py
 scripts/inspect_harbor_job.py
@@ -414,5 +440,7 @@ public solver agent: Harbor built-in `codex` from `conf.toml`
 local private override: `conf.local.toml` may set `codex-para`, `para`, and custom model names
 Codex reasoning effort: high
 Claude Code reasoning effort: max when `--solver-agent claude-code` unless overridden by `--solver-reasoning-effort` / `SOLVER_REASONING_EFFORT`
+ForgeCode model: `codex/gpt-5.6-sol` from `[forgecode]` in `conf.toml` unless overridden
+ForgeCode reasoning effort: high from `[forgecode]` unless overridden by `--solver-reasoning-effort` / `FORGECODE_REASONING_EFFORT`
 verifier audit model: `gpt-5` from `conf.toml` unless overridden
 ```
