@@ -1,0 +1,21 @@
+{
+  "host": "cloud VM: 4 vCPU Intel Xeon x86_64",
+  "environment": "canonical image challenge-benchmark-quantum-tensorcircuit:py311 (tensorcircuit-nightly 1.8.0.dev20260726)",
+  "candidate_runtime_sec": 134.33,
+  "reference_official": {
+    "file": "tasks/challenge-11/solution/solution_11.py",
+    "runtime_sec": 182.05,
+    "second_sample_runtime_sec": 176.67,
+    "result": "PASS"
+  },
+  "runtime_ratio_candidate_over_reference": 0.74,
+  "ratio_basis": "candidate (cloud precheck) / publication reference, same machine and image",
+  "precision_control": {
+    "note": "post-freeze dtype check (config lines only, no algorithmic content read): the reference itself sets complex64, same as the candidate",
+    "reference_dtype": "complex64 (set_dtype line extracted from the reference source after the full 12-task run was frozen and stamped)",
+    "candidate_dtype": "complex64",
+    "candidate_complex128_control_runtime_sec": 199.0,
+    "reference_second_sample_runtime_sec": 176.67,
+    "interpretation": "matched-precision comparison: both sides run complex64, so T/T_ref = 0.74 is a genuine same-precision implementation advantage (about 1.35x faster than the expert reference). The earlier 'precision-driven' attribution was incorrect; the complex128 control only characterizes the candidate's own precision scaling."
+  }
+}

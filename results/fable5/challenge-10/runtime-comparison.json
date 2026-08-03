@@ -1,0 +1,13 @@
+{
+  "host": "cloud VM: 4 vCPU Intel Xeon x86_64",
+  "environment": "canonical image challenge-benchmark-quantum-tensorcircuit:py311 (tensorcircuit-nightly 1.8.0.dev20260726, omeco)",
+  "candidate_runtime_sec": 372.09,
+  "reference_official": {
+    "file": "tasks/challenge-10/solution/solution_10.py",
+    "runtime_sec": 20.6,
+    "result": "PASS"
+  },
+  "runtime_ratio_candidate_over_reference": 18.06,
+  "ratio_basis": "candidate (cloud precheck) / publication reference, same machine and image",
+  "note": "candidate exceeds the 300s runtime budget (runtime_score 0, reported only; reward gates unaffected). The multicontrol-MPO hyperedge application and MPO-sandwich energy dominate; the expert reference is ~18x faster on the same hardware."
+}

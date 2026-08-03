@@ -1,0 +1,24 @@
+{
+  "host": "cloud VM: 4 vCPU Intel Xeon x86_64",
+  "environment": "canonical image challenge-benchmark-quantum-tensorcircuit:py311 (tensorcircuit-nightly 1.8.0.dev20260726)",
+  "candidate_runtime_sec": 14.34,
+  "reference_official": {
+    "file": "tasks/challenge-03/solution/solution_3.py",
+    "runtime_sec": 5.6,
+    "result": "PASS"
+  },
+  "runtime_ratio_candidate_over_reference": 2.56,
+  "history": {
+    "pinned_20260618_env": {
+      "candidate_runtime_sec": 13.64,
+      "reference_runtime_sec": 5.36,
+      "ratio": 2.54
+    }
+  },
+  "matched_precision_control": {
+    "note": "official candidate uses complex128; all publication references use complex64 (post-freeze config-line check), so a complex64 control variant of the same candidate code was measured for matched-precision comparison",
+    "candidate_complex64_runtime_sec": 12.99,
+    "candidate_complex64_functional_score": 1.0,
+    "matched_precision_ratio": 2.32
+  }
+}

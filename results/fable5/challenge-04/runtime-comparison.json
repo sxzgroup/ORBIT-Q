@@ -1,0 +1,30 @@
+{
+  "host": "cloud VM: 4 vCPU Intel Xeon x86_64",
+  "environment": "canonical image challenge-benchmark-quantum-tensorcircuit:py311 (tensorcircuit-nightly 1.8.0.dev20260726)",
+  "candidate_runtime_sec": 213.69,
+  "reference_official": {
+    "file": "tasks/challenge-04/solution/solution_4.py",
+    "runtime_sec": 17.89,
+    "result": "PASS"
+  },
+  "runtime_ratio_candidate_over_reference": 11.94,
+  "history": {
+    "pinned_20260618_env": {
+      "candidate_runtime_sec": 54.93,
+      "reference_runtime_sec": 18.18,
+      "ratio": 3.02
+    },
+    "v1_kraus_ladder": {
+      "candidate_runtime_sec": 54.55,
+      "ratio": 3.05,
+      "llm_audit": "failed (judged raw-simulator bypass)"
+    }
+  },
+  "note": "v2 implementation: vectorized-DM simulation on tc.MPSCircuit after the v1 Kraus-ladder failed the LLM audit as a raw-simulator bypass; v1 numbers in history",
+  "matched_precision_control": {
+    "note": "official candidate uses complex128; all publication references use complex64 (post-freeze config-line check), so a complex64 control variant of the same candidate code was measured for matched-precision comparison",
+    "candidate_complex64_runtime_sec": 202.9,
+    "candidate_complex64_functional_score": 0.0,
+    "interpretation": "the complex64 control FAILS the functional check (the 2e-4 probability-fit tolerance is unreachable in single precision with this vectorized-DM approach), while the reference passes at complex64; the official 11.94 ratio therefore partly reflects a genuine precision-requirement gap between the two algorithms"
+  }
+}

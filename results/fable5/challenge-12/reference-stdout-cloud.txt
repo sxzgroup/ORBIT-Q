@@ -1,0 +1,30 @@
+Challenge 12 evaluation
+Solution module: solution_12
+End-to-end solution time: 9.73s
+Qubits: 32
+DMRG chi: 8
+DMRG sweeps: 4
+Layers: 2
+Steps: 5000
+Trainable circuit parameters: 465
+Target MPS max bond dimension: 8
+Initial fidelity: 1.92078375e-09
+Final fidelity: 8.70018244e-01
+Initial loss: 1.00000000e+00
+Final loss: 1.29981756e-01
+Final overlap phase: -3.05884695e+00
+Fidelity history shape: (5000,)
+Returned NumPy keys: ['fidelity_history', 'final_overlap_phase', 'final_parameters', 'loss_history']
+Passing criteria:
+  loss history shape: PASS
+  fidelity history shape: PASS
+  final parameter shape: PASS
+  fidelity values finite: PASS
+  loss values finite: PASS
+  final values finite: PASS
+  fidelity improves: PASS
+  loss improves: PASS
+  final fidelity reaches threshold: PASS
+  fidelity bounded: PASS
+  target bond dimension valid: PASS
+Overall: PASS

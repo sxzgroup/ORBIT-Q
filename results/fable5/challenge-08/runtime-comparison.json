@@ -1,0 +1,12 @@
+{
+  "host": "cloud VM: 4 vCPU Intel Xeon x86_64",
+  "environment": "canonical image challenge-benchmark-quantum-tensorcircuit:py311 (tensorcircuit-nightly 1.8.0.dev20260726, omeco)",
+  "candidate_runtime_sec": 183.04,
+  "reference_official": {
+    "file": "tasks/challenge-08/solution/solution_8.py",
+    "runtime_sec": 69.23,
+    "result": "PASS"
+  },
+  "runtime_ratio_candidate_over_reference": 2.64,
+  "ratio_basis": "candidate (cloud precheck) / publication reference, same machine and image"
+}

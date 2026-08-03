@@ -1,0 +1,26 @@
+Challenge 3 evaluation
+Solution module: solution_3
+End-to-end solution time: 11.90s
+Exact sparse ground energy density: -1.17548439
+Initial energy density: -0.44430090
+Final energy density: -1.02593488
+Final success probability: 1.56028599e-02
+Final mean log event probability: -6.93383509e-02
+Initial loss: -0.44081597
+Final loss: -1.02246796
+Energy history length: 300
+Success history length: 300
+Mean log probability history length: 300
+Loss history length: 300
+Returned NumPy keys: ['energy_density_history', 'loss_history', 'mean_log_probability_history', 'success_probability_history']
+Passing criteria:
+  energy history length: PASS
+  success history length: PASS
+  mean log probability history length: PASS
+  loss history length: PASS
+  loss improves: PASS
+  energy density improves: PASS
+  loose exact energy-density upper bound: PASS
+  success probability is valid: PASS
+  success matches mean log probability: PASS
+Overall: PASS

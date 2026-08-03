@@ -1,0 +1,336 @@
+{
+  "schema_version": 1,
+  "measurement_date": "2026-07-28",
+  "metric": "geometric mean of candidate_runtime_sec / expert_reference_runtime_sec over reward-passing tasks",
+  "fable5_run": {
+    "label": "Fable 5 (Cursor agent)",
+    "solver": "Cursor agent (out-of-container; see results/fable5/README.md harness note)",
+    "model": "Fable 5",
+    "audit_model": "gpt-5.6-sol",
+    "host": "cloud Linux VM, 4 vCPU Intel Xeon x86_64",
+    "image": "challenge-benchmark-quantum-tensorcircuit:py311",
+    "passes": 12,
+    "failures": 0,
+    "failure_rate_pct": 0.0,
+    "passed_task_geometric_mean_slowdown": 2.5942893641578455,
+    "tasks": [
+      {
+        "task": 1,
+        "reward": 1.0,
+        "candidate_runtime_sec": 155.99,
+        "expert_reference_runtime_sec": 72.79,
+        "runtime_ratio": 2.14,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 2,
+        "reward": 1.0,
+        "candidate_runtime_sec": 18.11,
+        "expert_reference_runtime_sec": 6.02,
+        "runtime_ratio": 3.01,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 3,
+        "reward": 1.0,
+        "candidate_runtime_sec": 14.34,
+        "expert_reference_runtime_sec": 5.6,
+        "runtime_ratio": 2.56,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 4,
+        "reward": 1.0,
+        "candidate_runtime_sec": 213.69,
+        "expert_reference_runtime_sec": 17.89,
+        "runtime_ratio": 11.94,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 5,
+        "reward": 1.0,
+        "candidate_runtime_sec": 194.72,
+        "expert_reference_runtime_sec": 163.36,
+        "runtime_ratio": 1.19,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 6,
+        "reward": 1.0,
+        "candidate_runtime_sec": 72.15,
+        "expert_reference_runtime_sec": 66.46,
+        "runtime_ratio": 1.09,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 7,
+        "reward": 1.0,
+        "candidate_runtime_sec": 213.97,
+        "expert_reference_runtime_sec": 166.68,
+        "runtime_ratio": 1.28,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 8,
+        "reward": 1.0,
+        "candidate_runtime_sec": 183.04,
+        "expert_reference_runtime_sec": 69.23,
+        "runtime_ratio": 2.64,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 9,
+        "reward": 1.0,
+        "candidate_runtime_sec": 131.46,
+        "expert_reference_runtime_sec": 36.17,
+        "runtime_ratio": 3.63,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 10,
+        "reward": 1.0,
+        "candidate_runtime_sec": 372.09,
+        "expert_reference_runtime_sec": 20.6,
+        "runtime_ratio": 18.06,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 11,
+        "reward": 1.0,
+        "candidate_runtime_sec": 134.33,
+        "expert_reference_runtime_sec": 182.05,
+        "runtime_ratio": 0.74,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 12,
+        "reward": 1.0,
+        "candidate_runtime_sec": 21.56,
+        "expert_reference_runtime_sec": 9.73,
+        "runtime_ratio": 2.22,
+        "included_in_geometric_mean": true
+      }
+    ]
+  },
+  "gpt56_run": {
+    "label": "GPT-5.6 Sol high",
+    "solver": "Codex",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "high",
+    "audit_model": "gpt-5.6-sol",
+    "audit_reasoning_effort": "high",
+    "host": "Mac arm64, Colima, 6 CPUs, 8 GiB",
+    "image": "challenge-benchmark-quantum-tensorcircuit:py311",
+    "passes": 9,
+    "failures": 3,
+    "failure_rate_pct": 25.0,
+    "passed_task_geometric_mean_slowdown": 1.4470691985,
+    "included_tasks": [
+      2,
+      3,
+      4,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12
+    ],
+    "tasks": [
+      {
+        "task": 1,
+        "reward": 0.0,
+        "candidate_runtime_sec": 107.51,
+        "expert_reference_runtime_sec": 58.59,
+        "runtime_ratio": 1.8349547704,
+        "included_in_geometric_mean": false
+      },
+      {
+        "task": 2,
+        "reward": 1.0,
+        "candidate_runtime_sec": 10.65,
+        "expert_reference_runtime_sec": 5.35,
+        "runtime_ratio": 1.9906542056,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 3,
+        "reward": 1.0,
+        "candidate_runtime_sec": 9.84,
+        "expert_reference_runtime_sec": 4.4,
+        "runtime_ratio": 2.2363636364,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 4,
+        "reward": 1.0,
+        "candidate_runtime_sec": 14.14,
+        "expert_reference_runtime_sec": 15.97,
+        "runtime_ratio": 0.885410144,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 5,
+        "reward": 0.0,
+        "candidate_runtime_sec": 124.92,
+        "expert_reference_runtime_sec": 98.36,
+        "runtime_ratio": 1.270028467,
+        "included_in_geometric_mean": false
+      },
+      {
+        "task": 6,
+        "reward": 1.0,
+        "candidate_runtime_sec": 23.39,
+        "expert_reference_runtime_sec": 44.88,
+        "runtime_ratio": 0.5211675579,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 7,
+        "reward": 1.0,
+        "candidate_runtime_sec": 155.52,
+        "expert_reference_runtime_sec": 137.8,
+        "runtime_ratio": 1.1285921626,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 8,
+        "reward": 0.0,
+        "candidate_runtime_sec": 55.48,
+        "expert_reference_runtime_sec": null,
+        "runtime_ratio": null,
+        "included_in_geometric_mean": false,
+        "reference_measurement_status": "resource_exhausted",
+        "reference_measurement_note": "The 8 GiB Colima run requested an 18,047,205,376-byte JAX buffer. Task 08 is audit-failed and is not part of the passed-task geometric mean."
+      },
+      {
+        "task": 9,
+        "reward": 1.0,
+        "candidate_runtime_sec": 87.31,
+        "expert_reference_runtime_sec": 26.69,
+        "runtime_ratio": 3.2712626452,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 10,
+        "reward": 1.0,
+        "candidate_runtime_sec": 68.68,
+        "expert_reference_runtime_sec": 19.29,
+        "runtime_ratio": 3.5603939865,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 11,
+        "reward": 1.0,
+        "candidate_runtime_sec": 100.41,
+        "expert_reference_runtime_sec": 154.98,
+        "runtime_ratio": 0.6478900503,
+        "included_in_geometric_mean": true
+      },
+      {
+        "task": 12,
+        "reward": 1.0,
+        "candidate_runtime_sec": 12.85,
+        "expert_reference_runtime_sec": 8.08,
+        "runtime_ratio": 1.5903465347,
+        "included_in_geometric_mean": true
+      }
+    ]
+  },
+  "gpt55_paper_run": {
+    "label": "GPT-5.5 high",
+    "source": "ORBIT-Q arXiv:2607.03105 supplementary task-level table",
+    "passes": 10,
+    "failures": 2,
+    "failure_rate_pct": 16.6666666667,
+    "passed_task_geometric_mean_slowdown": 2.197480632,
+    "tasks": [
+      {
+        "task": 1,
+        "passed": false,
+        "candidate_runtime_sec": null,
+        "expert_reference_runtime_sec": 27.22,
+        "runtime_ratio": null
+      },
+      {
+        "task": 2,
+        "passed": true,
+        "candidate_runtime_sec": 9.9,
+        "expert_reference_runtime_sec": 2.87,
+        "runtime_ratio": 3.4494773519
+      },
+      {
+        "task": 3,
+        "passed": true,
+        "candidate_runtime_sec": 5.99,
+        "expert_reference_runtime_sec": 2.46,
+        "runtime_ratio": 2.4349593496
+      },
+      {
+        "task": 4,
+        "passed": true,
+        "candidate_runtime_sec": 15.19,
+        "expert_reference_runtime_sec": 11.83,
+        "runtime_ratio": 1.2840236686
+      },
+      {
+        "task": 5,
+        "passed": true,
+        "candidate_runtime_sec": 51.56,
+        "expert_reference_runtime_sec": 45.5,
+        "runtime_ratio": 1.1331868132
+      },
+      {
+        "task": 6,
+        "passed": true,
+        "candidate_runtime_sec": 100.3,
+        "expert_reference_runtime_sec": 26.83,
+        "runtime_ratio": 3.7383525904
+      },
+      {
+        "task": 7,
+        "passed": true,
+        "candidate_runtime_sec": 98.9,
+        "expert_reference_runtime_sec": 63.8,
+        "runtime_ratio": 1.5501567398
+      },
+      {
+        "task": 8,
+        "passed": false,
+        "candidate_runtime_sec": 5.43,
+        "expert_reference_runtime_sec": 25.05,
+        "runtime_ratio": null
+      },
+      {
+        "task": 9,
+        "passed": true,
+        "candidate_runtime_sec": 35.61,
+        "expert_reference_runtime_sec": 13.74,
+        "runtime_ratio": 2.5917030568
+      },
+      {
+        "task": 10,
+        "passed": true,
+        "candidate_runtime_sec": 62.8,
+        "expert_reference_runtime_sec": 12.44,
+        "runtime_ratio": 5.0482315113
+      },
+      {
+        "task": 11,
+        "passed": true,
+        "candidate_runtime_sec": 92.7,
+        "expert_reference_runtime_sec": 68.1,
+        "runtime_ratio": 1.3612334802
+      },
+      {
+        "task": 12,
+        "passed": true,
+        "candidate_runtime_sec": 12.74,
+        "expert_reference_runtime_sec": 6.12,
+        "runtime_ratio": 2.0816993464
+      }
+    ]
+  },
+  "provenance": "gpt55_paper_run and gpt56_run copied from results/gpt56sol-high/runtime-comparison-mac.json (upstream PR #5); fable5_run ratios from results/fable5/challenge-NN/runtime-comparison.json",
+  "comparison_caveat": "Each candidate/reference pair is same-machine and same-image within its run, but GPT-5.5 and GPT-5.6 were run on different hosts and benchmark revisions. The normalized comparison is informative, not a fully controlled model-only experiment. The Fable 5 run additionally uses a different (out-of-container Cursor) solving harness and a different host; its ratios are same-machine/same-image within its own run."
+}

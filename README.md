@@ -196,7 +196,7 @@ export ANTHROPIC_API_KEY=...
 export ANTHROPIC_MODEL="your-claude-model"
 
 MODEL_NAME="$ANTHROPIC_MODEL"
-AUDIT_MODEL_NAME=gpt-5
+AUDIT_MODEL_NAME=gpt-5.6-sol
 FRAMEWORK=tensorcircuit
 
 python3 scripts/run_harbor_challenge.py \
@@ -215,7 +215,7 @@ The Claude adapter accepts either `ANTHROPIC_API_KEY` or `ANTHROPIC_AUTH_TOKEN` 
 To evaluate a generated solution without rerunning an agent, copy the task to a temporary directory, replace the solution artifact, and run Harbor without an agent import path.
 
 ```bash
-AUDIT_MODEL_NAME=gpt-5
+AUDIT_MODEL_NAME=gpt-5.6-sol
 FRAMEWORK=tensorcircuit
 tmp_task="$(mktemp -d)/challenge-01-candidate-verify"
 

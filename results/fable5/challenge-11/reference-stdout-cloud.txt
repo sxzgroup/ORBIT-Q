@@ -1,0 +1,29 @@
+Challenge 11 evaluation
+Solution module: solution_11
+End-to-end solution time: 182.05s
+Exact reference time: 3.61s
+Sites: 12
+Layers: 5
+Steps: 500
+Initial energy density: -0.0546756797
+Final history energy density: -0.7045320272
+Final returned energy density: -0.7045340538
+Exact ground-state density: -0.7736449389
+Energy-density gap: 0.0691108851
+Energy improvement: 0.6498583741
+String correlators (final / exact):
+  O_string^z(0, 11): -0.3860597014 / -0.3033721740
+  O_string^z(1, 10): -0.3445221782 / -0.3178297372
+  O_string^z(2, 9): -0.4002557993 / -0.3441198052
+String-order MAE: 0.0551719875
+Energy history shape: (500,)
+Final string-order shape: (3,)
+Returned NumPy keys: ['energy_density_history', 'final_energy_density', 'final_string_orders']
+Passing criteria:
+  energy history shape: PASS
+  final string shape: PASS
+  energy improves: PASS
+  returned arrays finite: PASS
+  energy gap threshold: PASS
+  string-order mae threshold: PASS
+Overall: PASS

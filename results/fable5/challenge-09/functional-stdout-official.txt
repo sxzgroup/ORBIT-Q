@@ -1,0 +1,29 @@
+Challenge 9 evaluation
+Solution module: solution_9
+End-to-end solution time: 92.03s
+Qubits: 512
+Layers: 6
+Gate tape length: 3897
+Parameter count: 3897
+Pauli terms: ((0.5645931361768194, (('x', 388), ('z', 390))), (1.0, (('x', 16), ('y', 19))))
+Pauli cone sizes: (18, 15)
+Restarts: 200
+Steps per restart: 100
+Observable history shape: (200, 100)
+Mean initial local objective: -0.0022892487
+Mean final local objective: 1.5645756286
+Variance final local objective: 9.1366335297e-11
+Std final local objective: 9.5585739155e-06
+Best final local objective: 1.5645902753
+Success fraction: 1.000000
+Returned NumPy keys: ['observable_history']
+Passing criteria:
+  history shape: PASS
+  initial/final restart count: PASS
+  initial values finite: PASS
+  final values finite: PASS
+  history values finite: PASS
+  mean expectation improves: PASS
+  best final reaches threshold: PASS
+  final variance finite: PASS
+Overall: PASS

@@ -1,0 +1,32 @@
+E0727 14:34:24.073998      42 slow_operation_alarm.cc:73] 
+********************************
+[Compiling module jit_loss_fn for CPU] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+E0727 14:34:26.803563      31 slow_operation_alarm.cc:140] The operation took 2m2.729758756s
+
+********************************
+[Compiling module jit_loss_fn for CPU] Very slow compile? If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+********************************
+Challenge 4 evaluation
+Solution module: solution_4
+End-to-end solution time: 213.69s
+True p01, p10: 0.03400000, 0.01100000
+Initial p01, p10: 0.07000000, 0.04000000
+Fitted p01, p10: 0.03403297, 0.01103672
+Absolute p01 error: 3.29694959e-05
+Absolute p10 error: 3.67183279e-05
+Initial loss: 7.07077836e-03
+Final loss: 2.54059965e-08
+Trace-preserving error: 1.11022302e-16
+Loss history length: 120
+Fitted expectation shape: (4, 13)
+Returned NumPy keys: ['final_probabilities', 'fitted_expectations', 'loss_history']
+Passing criteria:
+  loss history length: PASS
+  loss improves: PASS
+  fitted shape: PASS
+  probability shape: PASS
+  p01 absolute error within tolerance: PASS
+  p10 absolute error within tolerance: PASS
+  trace preserving error <= 1e-8: PASS
+Overall: PASS

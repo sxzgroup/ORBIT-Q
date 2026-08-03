@@ -1,0 +1,24 @@
+{
+  "method": "Per-task solve wall time reconstructed from the Cursor session timeline: from first reading the task instruction to the frozen, self-tested candidate (includes API exploration, prototyping, failed iterations, and full-length self-tests; excludes environment setup, official verification, stamping waits, and infrastructure fixes). Values are approximate to a few minutes. Token counts and service cost are not exposed to the agent by the Cursor harness and are therefore not reported (see REPORT.md harness note).",
+  "unit": "minutes",
+  "solve_wall_time_min": {
+    "01": 50,
+    "02": 12,
+    "03": 10,
+    "04": 30,
+    "05": 27,
+    "06": 14,
+    "07": 28,
+    "08": 30,
+    "09": 12,
+    "10": 50,
+    "11": 18,
+    "12": 9
+  },
+  "notes": {
+    "01": "two prototypes (MPS conversion validation, full-scale timing) + normalization fix + two full 500-step tests",
+    "04": "16 min first solve (Kraus-ladder, later audit-rejected) + 14 min framework-native rewrite",
+    "10": "includes 2.9GB constant-capture OOM fix, contractor-hang fix, and two full-length tests",
+    "12": "fastest solve: pattern fully established by prior tasks"
+  }
+}

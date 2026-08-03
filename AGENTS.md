@@ -147,7 +147,7 @@ export ANTHROPIC_API_KEY=...
 export ANTHROPIC_MODEL="your-claude-model"
 
 MODEL_NAME="$ANTHROPIC_MODEL"
-AUDIT_MODEL_NAME=gpt-5
+AUDIT_MODEL_NAME=gpt-5.6-sol
 FRAMEWORK=tensorcircuit
 python3 scripts/run_harbor_challenge.py \
   --challenge 02 \
@@ -207,7 +207,7 @@ To verify an already generated solution without rerunning the Agent, copy the ta
 Example for challenge 01:
 
 ```bash
-AUDIT_MODEL_NAME=gpt-5
+AUDIT_MODEL_NAME=gpt-5.6-sol
 FRAMEWORK=tensorcircuit
 tmp_task="$(mktemp -d)/challenge-01-candidate-verify"
 cp -R tasks/challenge-01 "$tmp_task"
@@ -414,5 +414,5 @@ public solver agent: Harbor built-in `codex` from `conf.toml`
 local private override: `conf.local.toml` may set `codex-para`, `para`, and custom model names
 Codex reasoning effort: high
 Claude Code reasoning effort: max when `--solver-agent claude-code` unless overridden by `--solver-reasoning-effort` / `SOLVER_REASONING_EFFORT`
-verifier audit model: `gpt-5` from `conf.toml` unless overridden
+verifier audit model: `gpt-5.6-sol` from `conf.toml` unless overridden
 ```

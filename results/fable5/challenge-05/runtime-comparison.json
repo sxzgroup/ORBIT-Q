@@ -1,0 +1,13 @@
+{
+  "host": "cloud VM: 4 vCPU Intel Xeon x86_64",
+  "environment": "canonical image challenge-benchmark-quantum-tensorcircuit:py311 (tensorcircuit-nightly 1.8.0.dev20260726, omeco integrated)",
+  "candidate_runtime_sec": 194.72,
+  "reference_official": {
+    "file": "tasks/challenge-05/solution/solution_5.py",
+    "runtime_sec": 163.36,
+    "result": "PASS",
+    "note": "unpatched, uses tc.set_contractor('omeco'); runs natively on the upgraded canonical image"
+  },
+  "runtime_ratio_candidate_over_reference": 1.19,
+  "ratio_basis": "candidate (cloud precheck) / publication reference, same machine and image"
+}

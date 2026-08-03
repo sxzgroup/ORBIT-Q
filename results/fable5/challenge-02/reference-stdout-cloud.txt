@@ -1,0 +1,26 @@
+Challenge 2 evaluation
+Solution module: solution_2
+End-to-end solution time: 6.02s
+Exact sparse ground energy density: -2.00036502
+Initial energy density: -0.74485052
+Final energy density: -1.99161816
+Final block entropies: [0.295466, 0.5869  , 0.266979]
+Target entropies: [0.3, 0.6, 0.8]
+Entropy-profile MSE: 9.47678909e-02
+Entropy-profile RMSE: 3.07843911e-01
+Initial loss: -0.65404928
+Final loss: -1.96792626
+Energy history length: 500
+Loss history length: 500
+Entropy history shape: (500, 3)
+Returned NumPy keys: ['energy_density_history', 'entropy_history', 'entropy_mse_history', 'loss_history']
+Passing criteria:
+  energy history length: PASS
+  loss history length: PASS
+  entropy mse history length: PASS
+  entropy history shape: PASS
+  loss improves: PASS
+  energy density improves: PASS
+  loose exact energy-density upper bound: PASS
+  reported entropy mse matches: PASS
+Overall: PASS
