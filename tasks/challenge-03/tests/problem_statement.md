@@ -27,13 +27,26 @@ The initial state is `|+>^12`.
 
 ### Cooling Ansatz
 
-Use ten time steps. Step `t` applies trainable nearest-neighbor gates `exp[-i(theta_xx XX + theta_zz ZZ)]` on the brickwork bonds for that step, then trainable `RX` rotations on every qubit, then the post-selected `Z` measurement branch defined below. Even-numbered steps use bonds `(0,1), (2,3), (4,5), (6,7), (8,9), (10,11)`. Odd-numbered steps use bonds `(1,2), (3,4), (5,6), (7,8), (9,10)`. Each active bond has two scalar parameters, `theta_xx` and `theta_zz`, and each step has 12 scalar `RX` angles.
+Use ten time steps, grouped into five complete even+odd brickwork blocks. Each
+step applies trainable nearest-neighbor gates
+`exp[-i(theta_xx XX + theta_zz ZZ)]` on that step's bonds and then trainable
+`RX` rotations on every qubit. Even-numbered steps use bonds `(0,1), (2,3),
+(4,5), (6,7), (8,9), (10,11)`. Odd-numbered steps use bonds `(1,2), (3,4),
+(5,6), (7,8), (9,10)`. Each active bond has two scalar parameters,
+`theta_xx` and `theta_zz`, and each step has 12 scalar `RX` angles.
 
 ### Post-Selected Measurement Branch
 
-After every time step, post-select the `+1` (`Z`-up, computational-basis `0`) outcome on each even-indexed qubit `0,2,4,6,8,10`, one measurement event at a time. This means post-selection is applied after an even-bond step and also after an odd-bond step, not only after a full even+odd block.
+After each complete even+odd brickwork block, post-select the `+1` (`Z`-up,
+computational-basis `0`) outcome on each even-indexed qubit `0,2,4,6,8,10`,
+one measurement event at a time. Do not post-select between the even and odd
+layers: the two layers must act coherently before the measurement branch is
+selected.
 
-For each event, compute the branch probability and record `log(p_event + 1e-12)`. There are `10 * 6 = 60` selected measurement events in total. The total post-selection probability is the product of these 60 event probabilities.
+For each event, compute the branch probability and record
+`log(p_event + 1e-12)`. There are `5 * 6 = 30` selected measurement events in
+total. The total post-selection probability is the product of these 30 event
+probabilities.
 
 ### Loss Function
 
@@ -95,7 +108,7 @@ A run is considered functionally successful when all of the following hold for t
 - The final energy density is lower than the initial energy density, derived from `energy_density_history`.
 - The final energy density is at most `1.0` above the exact sparse ground-state energy density. This is intentionally loose and catches incorrect Hamiltonian/sign conventions without making the benchmark a high-precision cooling solver.
 - The final success probability derived from `success_probability_history` is in `(0, 1]`.
-- The final success probability matches `exp(60 * final_mean_log_probability)`, where both values are derived from their histories.
+- The final success probability matches `exp(30 * final_mean_log_probability)`, where both values are derived from their histories.
 - All returned values are NumPy arrays or NumPy-compatible scalars.
 
 The evaluator reports these metrics directly so another framework's `solution_3.py` can be compared without changing `evaluate_3.py`.

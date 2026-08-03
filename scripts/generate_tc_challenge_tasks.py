@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE_DIR = ROOT / "templates" / "challenge"
+SOURCE_OVERRIDE_DIR = ROOT / "challenge_sources"
 GENERATED_CANARY_RE = re.compile(r"harbor-canary GUID (?:tc-)?challenge-\d\d-generated")
 
 
@@ -94,6 +95,11 @@ score.
     return body + footer
 
 
+def source_file(source: Path, problem_id: int, filename: str) -> Path:
+    override = SOURCE_OVERRIDE_DIR / f"challenge-{problem_id:02d}" / filename
+    return override if override.exists() else source / filename
+
+
 def task_toml(
     problem_id: int,
     title: str,
@@ -164,7 +170,9 @@ def generate_task(
     source: Path,
     tasks_dir: Path,
 ) -> None:
-    problem_md = (source / f"problem_{problem_id}.md").read_text()
+    problem_md = source_file(
+        source, problem_id, f"problem_{problem_id}.md"
+    ).read_text()
     title = problem_title(problem_md, problem_id)
     instruction_text = filtered_instruction(problem_md, problem_id)
     task_dir = tasks_dir / f"challenge-{problem_id:02d}"
@@ -179,8 +187,14 @@ def generate_task(
     (task_dir / "environment").mkdir()
     (task_dir / "environment" / ".gitkeep").write_text("\n")
 
-    shutil.copy2(source / f"evaluate_{problem_id}.py", task_dir / "tests")
-    shutil.copy2(source / f"solution_{problem_id}.py", task_dir / "solution")
+    shutil.copy2(
+        source_file(source, problem_id, f"evaluate_{problem_id}.py"),
+        task_dir / "tests",
+    )
+    shutil.copy2(
+        source_file(source, problem_id, f"solution_{problem_id}.py"),
+        task_dir / "solution",
+    )
     (task_dir / "tests" / "problem_statement.md").write_text(instruction_text + "\n")
     (task_dir / "tests" / "problem_id.txt").write_text(f"{problem_id}\n")
     (task_dir / "solution" / "problem_id.txt").write_text(f"{problem_id}\n")

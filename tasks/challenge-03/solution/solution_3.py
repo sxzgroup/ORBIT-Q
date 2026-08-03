@@ -111,10 +111,8 @@ def cooling_trajectory(params, input_state, config):
 
     def block_step(state, p):
         state = apply_unitary_step(state, p["even"], even, config)
-        state, even_logps = apply_postselected_measurements(state, config)
         state = apply_unitary_step(state, p["odd"], odd, config)
-        state, odd_logps = apply_postselected_measurements(state, config)
-        return state, K.concat([even_logps, odd_logps])
+        return apply_postselected_measurements(state, config)
 
     final_state, logps = jax.lax.scan(block_step, input_state, params)
     return final_state, K.reshape(logps, [-1])

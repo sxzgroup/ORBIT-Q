@@ -67,7 +67,9 @@ def evaluate(solution_module, config):
     loss_history = np.asarray(results["loss_history"], dtype=float)
     success_probability = float(success_history[-1])
     mean_log_probability = float(mean_log_history[-1])
-    n_events = config["n_steps"] * len(range(0, config["n_qubits"], 2))
+    n_events = (config["n_steps"] // 2) * len(
+        range(0, config["n_qubits"], 2)
+    )
     recomputed_success = float(np.exp(n_events * mean_log_probability))
 
     criteria = {
