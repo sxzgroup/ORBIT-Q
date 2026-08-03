@@ -1,0 +1,163 @@
+{
+    "id": "285649ea-8a02-49b2-9028-c9fa5ca0417e",
+    "task_name": "challenge-10",
+    "trial_name": "challenge-10__CG4A5Yg",
+    "trial_uri": "file:///Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-flash-high-solaudit-20260802-valid/jobs/challenge-10-tensorcircuit-deepseek-v4-flash-high-20260802-r1/challenge-10__CG4A5Yg",
+    "task_id": {
+        "path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-flash-high-solaudit-20260802-valid/challenge-10"
+    },
+    "source": null,
+    "task_checksum": "829221858b3ee8eca4758f0b1cafad75320af32e8693a5a4e665980c54f6743c",
+    "config": {
+        "task": {
+            "path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-flash-high-solaudit-20260802-valid/challenge-10",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "challenge-10__CG4A5Yg",
+        "trials_dir": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-flash-high-solaudit-20260802-valid/jobs/challenge-10-tensorcircuit-deepseek-v4-flash-high-20260802-r1",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": null,
+            "import_path": "adapters.codex_para:CodexPara",
+            "model_name": "deepseek-v4-flash",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "reasoning_effort": "high",
+                "profile": "deepseek-v4-flash",
+                "profile_config_path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-flash-high-solaudit-20260802-valid/.secrets/deepseek-v4-flash.config.toml",
+                "model_catalog_path": "/Users/qqy/.codex-orbitq-deepseek/models.json",
+                "force_auth_json": false
+            },
+            "env": {
+                "HTTP_PROXY": "http://172.17.0.1:7892",
+                "HTTPS_PROXY": "http://172.17.0.1:7892",
+                "NO_PROXY": "localhost,127.0.0.1"
+            },
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": null,
+            "import_path": "adapters.framework_docker:FrameworkDockerEnvironment",
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {
+                "framework": "tensorcircuit",
+                "docker_image": "challenge-benchmark-quantum-tensorcircuit:py311"
+            },
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {
+                "REQUIRED_QUANTUM_FRAMEWORK": "tensorcircuit",
+                "HTTP_PROXY": "http://172.17.0.1:7892",
+                "HTTPS_PROXY": "http://172.17.0.1:7892",
+                "NO_PROXY": "localhost,127.0.0.1"
+            },
+            "import_path": "adapters.codex_para_verifier:CodexParaVerifier",
+            "kwargs": {
+                "audit_model": "gpt-5.6-sol",
+                "force_auth_json": true,
+                "profile_config_path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/results/deepseek-v4-flash-high/audit-high.config.toml"
+            },
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [
+            "/Users/qqy/Desktop/2026Project/ORBIT-Q/prompts/frameworks/tensorcircuit.md"
+        ],
+        "job_id": "67278fc4-94dd-4bdc-b8e4-28e7fd09d5da"
+    },
+    "agent_info": {
+        "name": "codex",
+        "version": "0.145.0",
+        "model_info": {
+            "name": "deepseek-v4-flash",
+            "provider": null
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 8739800,
+        "n_cache_tokens": 8646272,
+        "n_output_tokens": 71591,
+        "cost_usd": 0.0573489616,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "problem_id": 10,
+            "reward": 1.0,
+            "functional_score": 1.0,
+            "runtime_score": 1.0,
+            "runtime_sec": 20.5,
+            "static_policy_score": 1.0,
+            "llm_audit_score": 1.0,
+            "line_count_score": 1.0,
+            "framework_score": 1.0,
+            "no_forbidden_framework_score": 1.0,
+            "no_raw_simulator_bypass_score": 1.0,
+            "no_static_cheating_score": 1.0,
+            "llm_framework_compliance_score": 1.0,
+            "llm_cheating_score": 1.0,
+            "llm_problem_fidelity_score": 1.0,
+            "llm_implementation_correctness_score": 1.0,
+            "llm_uses_required_framework_score": 1.0,
+            "llm_no_other_quantum_framework_imports_score": 1.0,
+            "llm_no_other_quantum_framework_score": 1.0,
+            "llm_no_raw_simulator_bypass_score": 1.0,
+            "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+            "llm_no_test_or_reward_tampering_score": 1.0,
+            "llm_no_evaluator_exploit_score": 1.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-08-01T21:05:26.679008Z",
+    "finished_at": "2026-08-01T21:26:26.436100Z",
+    "environment_setup": {
+        "started_at": "2026-08-01T21:05:26.776815Z",
+        "finished_at": "2026-08-01T21:05:27.875478Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-08-01T21:05:27.875562Z",
+        "finished_at": "2026-08-01T21:05:28.361999Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-08-01T21:05:28.362488Z",
+        "finished_at": "2026-08-01T21:24:07.834445Z"
+    },
+    "verifier": {
+        "started_at": "2026-08-01T21:24:21.247098Z",
+        "finished_at": "2026-08-01T21:26:26.436022Z"
+    },
+    "step_results": null
+}

@@ -1,0 +1,21 @@
+Challenge 6 evaluation
+Solution module: solution_6
+End-to-end solution time: 54.79s
+Exact sparse ground energy density: -1.6025524139
+Initial energy density: -0.6323773861
+Final energy density: -1.2778654099
+Learned analog times: [0.137735, 0.135556, 0.261598, 0.302981]
+Learned analog couplings (J): [-0.267454,  0.145364,  0.662568,  0.759215]
+Learned analog detunings (Delta): [0.099668, 0.794508, 0.817671, 0.788374]
+Energy history length: 100
+Returned NumPy keys: ['energy_density_history', 'final_analog_couplings', 'final_analog_detunings', 'final_analog_times']
+Passing criteria:
+  energy history length: PASS
+  analog times shape: PASS
+  analog times in bounds: PASS
+  couplings in bounds: PASS
+  detunings in bounds: PASS
+  energy density improves: PASS
+  energy respects exact lower bound: PASS
+  loose exact energy-density upper bound: PASS
+Overall: PASS

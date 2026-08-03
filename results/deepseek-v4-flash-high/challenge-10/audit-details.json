@@ -1,0 +1,62 @@
+{
+  "problem_id": 10,
+  "framework": "tensorcircuit",
+  "static": {
+    "path": "/root/solution_10.py",
+    "framework": "tensorcircuit",
+    "exists": true,
+    "parse_ok": 1.0,
+    "line_count": 90,
+    "line_count_score": 1.0,
+    "framework_score": 1.0,
+    "no_forbidden_framework_score": 1.0,
+    "no_static_cheating_score": 1.0,
+    "no_raw_simulator_bypass_score": 1.0,
+    "imports": [
+      "jax",
+      "numpy",
+      "tensorcircuit"
+    ],
+    "forbidden_imports": [],
+    "cheating_hits": [],
+    "raw_simulator_hits": [],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_score": 1.0,
+    "runtime_score": 1.0,
+    "runtime_sec": 20.5,
+    "functional_return_code": 0,
+    "functional_passed": true,
+    "functional_output_tail": "Challenge 10 evaluation\nSolution module: solution_10\nEnd-to-end solution time: 20.50s\nExact reference time: 57.08s\nQubits: 22\nSelected CMZ qubits: 18\nLargest ansatz gate qubits: 18\nLayers: 2\nSteps run: 200\nInitial energy density: 0.8748319149\nFinal energy density: -1.1777324677\nExact ground energy density: -1.2925285569\nVQE energy-density gap: 0.1147960893\nEnergy improvement: 2.0525643826\nEnergy history length: 200\nFinal parameter shape: (2, 22, 3)\nReturned NumPy keys: ['energy_history', 'final_parameters']\nPassing criteria:\n  18-qubit largest gate: PASS\n  history length matches steps: PASS\n  parameter shape: PASS\n  energy improves: PASS\n  history finite: PASS\n  above exact ground energy: PASS\n  loose VQE gap threshold: PASS\nOverall: PASS\n"
+  },
+  "audit": {
+    "uses_required_framework": true,
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": true,
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "The core quantum computation uses tensorcircuit's JAX-backed MPSCircuit, TensorCircuit rotation gates, apply_MPO, and expectation methods. NumPy constructs initial MPS and CMZ MPO tensors, while JAX supplies differentiation, JIT compilation, and optimization; neither replaces TensorCircuit with an end-to-end raw simulator. JAX and NumPy are not competing quantum frameworks.",
+    "cheating_rationale": "The source contains no hardcoded result, oracle access, test or reward tampering, hidden file access, or evaluator-specific output fabrication. The efficient bond-dimension-2 MPO is an exact representation of I - 2 times the projector onto all selected qubits being one, rather than an exploitation.",
+    "fidelity_rationale": "The implementation prepares the configured Neel state, initializes every rotation parameter from the configured seeded Gaussian, applies RX-RZ-RY on every qubit followed by the exact fixed selected-qubit CMZ in each layer, evaluates the configured open-boundary TFIM expectation without a dense Hamiltonian, and performs exactly max_steps Adam updates. Energy history entries are the pre-update energy divided by n_qubits, and the returned keys and shapes match the specification. The MPO spans the interval between the first and last selected qubits using identity propagation on unselected sites, but acts nontrivially exactly when all 18 selected qubits are one.",
+    "implementation_error_rationale": "No obvious logic error is present. The MPO contraction implements I - 2 product_q |1><1| on the selected qubits, Adam bias correction uses steps 1 through max_steps, and final_parameters correctly contains parameters after the final update while energy_history records pre-update values.",
+    "confidence": 0.99,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "problem_id": 4,
+  "framework": "tensorcircuit",
+  "static": {
+    "path": "/root/solution_4.py",
+    "framework": "tensorcircuit",
+    "exists": true,
+    "parse_ok": 1.0,
+    "line_count": 111,
+    "line_count_score": 1.0,
+    "framework_score": 1.0,
+    "no_forbidden_framework_score": 1.0,
+    "no_static_cheating_score": 1.0,
+    "no_raw_simulator_bypass_score": 1.0,
+    "imports": [
+      "jax",
+      "numpy",
+      "tensorcircuit"
+    ],
+    "forbidden_imports": [],
+    "cheating_hits": [],
+    "raw_simulator_hits": [
+      "np\\.kron"
+    ],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_score": 1.0,
+    "runtime_score": 1.0,
+    "runtime_sec": 19.46,
+    "functional_return_code": 0,
+    "functional_passed": true,
+    "functional_output_tail": "Challenge 4 evaluation\nSolution module: solution_4\nEnd-to-end solution time: 19.46s\nTrue p01, p10: 0.03400000, 0.01100000\nInitial p01, p10: 0.07000000, 0.04000000\nFitted p01, p10: 0.03403295, 0.01103670\nAbsolute p01 error: 3.29456833e-05\nAbsolute p10 error: 3.66976861e-05\nInitial loss: 7.07077836e-03\nFinal loss: 2.53807845e-08\nTrace-preserving error: 0.00000000e+00\nLoss history length: 120\nFitted expectation shape: (4, 13)\nReturned NumPy keys: ['final_probabilities', 'fitted_expectations', 'loss_history']\nPassing criteria:\n  loss history length: PASS\n  loss improves: PASS\n  fitted shape: PASS\n  probability shape: PASS\n  p01 absolute error within tolerance: PASS\n  p10 absolute error within tolerance: PASS\n  trace preserving error <= 1e-8: PASS\nOverall: PASS\n"
+  },
+  "audit": {
+    "uses_required_framework": true,
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": true,
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "The core noisy quantum computation is performed with tensorcircuit.MPSCircuit, tensorcircuit gates, and MPS contractions via proj_with_mps. JAX supplies differentiable tensor algebra, JIT compilation, and optimization gradients, but does not replace TensorCircuit with an end-to-end raw simulator. NumPy and JAX are general-purpose numerical libraries, not other quantum frameworks.",
+    "cheating_rationale": "The submission generates target observables from the evaluator-provided true probabilities as explicitly required, then genuinely performs 120 Adam updates from the configured initial probabilities. It does not read hidden answers, hardcode fitted outputs, modify tests or rewards, or exploit return-value checks.",
+    "fidelity_rationale": "The implementation constructs all four required input states, applies the even and offset odd RXX brickwork layers, inserts independently applied asymmetric bit-flip channels after each entangler, and evaluates all single-site Z observables plus full-chain Z parity. The channel is explicitly formed from the specified Kraus operators as a differentiable superoperator. Probabilities use sigmoid-parameterized logits, the objective is table-wide mean squared error, loss is recorded before every update, Adam uses the configured learning rate and step count without early stopping, and all required NumPy outputs have the correct shapes.",
+    "implementation_error_rationale": "No obvious implementation error is present. The Liouville-space gate transformations, probe preparation, channel orientation, observable vectors, Adam bias correction, and final output construction are consistent with the specification and the reported evaluation.",
+    "confidence": 0.99,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  }
+}

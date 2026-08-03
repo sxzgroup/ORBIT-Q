@@ -1,0 +1,48 @@
+{
+    "task": {
+        "path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-flash-high-solaudit-20260802-valid/challenge-07"
+    },
+    "trial_name": "challenge-07__cJDtCEr",
+    "trials_dir": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-flash-high-solaudit-20260802-valid/jobs/challenge-07-tensorcircuit-deepseek-v4-flash-high-20260802-r1",
+    "agent": {
+        "import_path": "adapters.codex_para:CodexPara",
+        "model_name": "deepseek-v4-flash",
+        "kwargs": {
+            "reasoning_effort": "high",
+            "profile": "deepseek-v4-flash",
+            "profile_config_path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-flash-high-solaudit-20260802-valid/.secrets/deepseek-v4-flash.config.toml",
+            "model_catalog_path": "/Users/qqy/.codex-orbitq-deepseek/models.json",
+            "force_auth_json": false
+        },
+        "env": {
+            "HTTP_PROXY": "http://172.17.0.1:7892",
+            "HTTPS_PROXY": "http://172.17.0.1:7892",
+            "NO_PROXY": "localhost,127.0.0.1"
+        }
+    },
+    "environment": {
+        "import_path": "adapters.framework_docker:FrameworkDockerEnvironment",
+        "kwargs": {
+            "framework": "tensorcircuit",
+            "docker_image": "challenge-benchmark-quantum-tensorcircuit:py311"
+        }
+    },
+    "verifier": {
+        "env": {
+            "REQUIRED_QUANTUM_FRAMEWORK": "tensorcircuit",
+            "HTTP_PROXY": "http://172.17.0.1:7892",
+            "HTTPS_PROXY": "http://172.17.0.1:7892",
+            "NO_PROXY": "localhost,127.0.0.1"
+        },
+        "import_path": "adapters.codex_para_verifier:CodexParaVerifier",
+        "kwargs": {
+            "audit_model": "gpt-5.6-sol",
+            "force_auth_json": true,
+            "profile_config_path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/results/deepseek-v4-flash-high/audit-high.config.toml"
+        }
+    },
+    "extra_instruction_paths": [
+        "/Users/qqy/Desktop/2026Project/ORBIT-Q/prompts/frameworks/tensorcircuit.md"
+    ],
+    "job_id": "b0b7d39d-57e9-480f-ace3-791d6d1c191d"
+}

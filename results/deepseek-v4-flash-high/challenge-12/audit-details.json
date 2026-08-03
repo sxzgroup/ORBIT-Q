@@ -1,0 +1,63 @@
+{
+  "problem_id": 12,
+  "framework": "tensorcircuit",
+  "static": {
+    "path": "/root/solution_12.py",
+    "framework": "tensorcircuit",
+    "exists": true,
+    "parse_ok": 1.0,
+    "line_count": 71,
+    "line_count_score": 1.0,
+    "framework_score": 1.0,
+    "no_forbidden_framework_score": 1.0,
+    "no_static_cheating_score": 1.0,
+    "no_raw_simulator_bypass_score": 1.0,
+    "imports": [
+      "jax",
+      "numpy",
+      "optax",
+      "tensorcircuit"
+    ],
+    "forbidden_imports": [],
+    "cheating_hits": [],
+    "raw_simulator_hits": [],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_score": 1.0,
+    "runtime_score": 1.0,
+    "runtime_sec": 21.86,
+    "functional_return_code": 0,
+    "functional_passed": true,
+    "functional_output_tail": "Challenge 12 evaluation\nSolution module: solution_12\nEnd-to-end solution time: 21.86s\nQubits: 32\nDMRG chi: 8\nDMRG sweeps: 4\nLayers: 2\nSteps: 5000\nTrainable circuit parameters: 465\nTarget MPS max bond dimension: 8\nInitial fidelity: 1.71861836e-09\nFinal fidelity: 8.69746278e-01\nInitial loss: 9.99999998e-01\nFinal loss: 1.30253722e-01\nFinal overlap phase: -2.72944922e+00\nFidelity history shape: (5000,)\nReturned NumPy keys: ['fidelity_history', 'final_overlap_phase', 'final_parameters', 'loss_history']\nPassing criteria:\n  loss history shape: PASS\n  fidelity history shape: PASS\n  final parameter shape: PASS\n  fidelity values finite: PASS\n  loss values finite: PASS\n  final values finite: PASS\n  fidelity improves: PASS\n  loss improves: PASS\n  final fidelity reaches threshold: PASS\n  fidelity bounded: PASS\n  target bond dimension valid: PASS\nOverall: PASS\n"
+  },
+  "audit": {
+    "uses_required_framework": true,
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": true,
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "The core quantum computation uses tensorcircuit.MPSCircuit, tensorcircuit SU4 gates, MPS gate application, and tensor-network overlap evaluation. JAX supplies differentiation and JIT compilation, Optax supplies Adam, and NumPy handles data conversion and returned arrays; none constitutes another quantum framework or a raw simulator bypass.",
+    "cheating_rationale": "The source consumes the evaluator-provided DMRG MPS, computes overlaps through TensorCircuit, and performs genuine gradient-based optimization. It contains no hardcoded result histories or parameters, hidden-oracle access, test/reward tampering, or evaluator-specific exploitation.",
+    "fidelity_rationale": "The implementation constructs the 32-qubit Neel state, creates the specified alternating two-layer brickwork with 31 independently parameterized 15-parameter SU4 gates, optimizes direct squared MPS-circuit overlap using Adam at the configured learning rate for exactly max_steps updates without early stopping, and records each history value immediately before its update. It returns all required NumPy-format keys with the expected parameter flattening and evaluates the final overlap phase using the post-update final parameters.",
+    "implementation_error_rationale": "No obvious implementation error is present. The bond construction yields 16 gates in the first layer and 15 in the second, totaling 465 parameters, and the reported evaluation confirms valid shapes, finite quantities, and successful optimization.",
+    "confidence": 0.99,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  }
+}

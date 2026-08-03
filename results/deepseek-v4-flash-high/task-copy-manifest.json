@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "base_commit": "0201238ec2983907e2891f5319f5fff2d00844d5",
+  "canonical_tasks_root": "/Users/qqy/Desktop/2026Project/ORBIT-Q/tasks",
+  "task_copy_root": "jobs/deepseek-v4-flash-high-solaudit-20260802-valid",
+  "resource_adapter": {
+    "cpus": 6,
+    "memory_mb": 10240,
+    "storage_mb": 16384
+  },
+  "aggregate_task_copy_sha256": "19fe27b83eaf668b3df32d1a68902b08cbe28585f189290769018eb16d927895",
+  "tasks": [
+    {
+      "challenge": "challenge-01",
+      "canonical_tree_sha256": "bd247adf52816b1f7f5a713ef7ae53b7763db6f7ce378218cdf7485138d15c9e",
+      "execution_copy_tree_sha256": "a9108cb0c21a32d646446a3e219e623aabad50955991d486d0ff7fa5a8584809",
+      "changed_files": [
+        "task.toml"
+      ]
+    },
+    {
+      "challenge": "challenge-02",
+      "canonical_tree_sha256": "3dc92b86d9f998b71be50efe92a3aaa65aa93d8e302b5083b7348119c218b408",
+      "execution_copy_tree_sha256": "18b4094b5b93654fc55196efb48fe6b8d1913c1705a7b858dd57b4699cf3a2f8",
+      "changed_files": [
+        "task.toml"
+      ]
+    },
+    {
+      "challenge": "challenge-03",
+      "canonical_tree_sha256": "8196adb46dec92122f0d247aee33a52674c6795c9a1a1e8ad9ae94de5a0d9f54",
+      "execution_copy_tree_sha256": "673090cf9dd312d80ff3299847667517a5eaab13fa6c2291e2957499e9c6d489",
+      "changed_files": [
+        "task.toml"
+      ]
+    },
+    {
+      "challenge": "challenge-04",
+      "canonical_tree_sha256": "7fb96cfffdcfe7fc081d54157fef7440d07f7b88fed7e1e67d06416db1ef01d5",
+      "execution_copy_tree_sha256": "e79db6e81a1218763a8ca793f87803435b5128b803eb5ec79a478ec7eebb8e42",
+      "changed_files": [
+        "task.toml"
+      ]
+    },
+    {
+      "challenge": "challenge-05",
+      "canonical_tree_sha256": "6051a175d2c21cab239a119f73a55f5dcb1f621cd480598e589d64b71180c24a",
+      "execution_copy_tree_sha256": "fe8768ab6cbfb8b7edfaea3223582cfefd0f7c0522ceee45f556082d92732f8b",
+      "changed_files": [
+        "task.toml"
+      ]
+    },
+    {
+      "challenge": "challenge-06",
+      "canonical_tree_sha256": "c1be06575e0bb9826a32fd94a7cdb4d2bb867d3ced649e0123e91500500a2bd5",
+      "execution_copy_tree_sha256": "51bec4c0f77da3b7afe935967fd76b9ebe873d64a67d4ebada9a142340519b17",
+      "changed_files": [
+        "task.toml"
+      ]
+    },
+    {
+      "challenge": "challenge-07",
+      "canonical_tree_sha256": "cf789ac8f8c701d48a283d354952f0506e617d287f072d48e14bb3443a1d2d55",
+      "execution_copy_tree_sha256": "94b1dfadb7f8171bd205ecb46a8200fc73bb8b0568ec1da1f97d72184ef4cf93",
+      "changed_files": [
+        "task.toml"
+      ]
+    },
+    {
+      "challenge": "challenge-08",
+      "canonical_tree_sha256": "f00ffab657b3685148a0c73c18cb07f11300900ff7dcca9b407ec4f050a804ca",
+      "execution_copy_tree_sha256": "2bfaa49653814db4042791f3c4cf3c095d0ab38e265b42a2acbef12e010b1747",
+      "changed_files": [
+        "task.toml"
+      ]
+    },
+    {
+      "challenge": "challenge-09",
+      "canonical_tree_sha256": "3cd0e12885f9d8d3696619dceda01f2a09540957e452a8d957a1b5e6581fc00a",
+      "execution_copy_tree_sha256": "b150f883cfb6cd449345bc22d0fd65689e88947e899aaf469cfd37768521b6c4",
+      "changed_files": [
+        "task.toml"
+      ]
+    },
+    {
+      "challenge": "challenge-10",
+      "canonical_tree_sha256": "a4fafaba190631d8fe72dac931eb839a74db2d4d74efd9cbe2e800455f5b5ce6",
+      "execution_copy_tree_sha256": "fda9d63d5b05dfcf3edde16c97246ea5d11dbbe4ff7b9c1adf276cf4490120ca",
+      "changed_files": [
+        "task.toml"
+      ]
+    },
+    {
+      "challenge": "challenge-11",
+      "canonical_tree_sha256": "e23380c61e0ef3210ac3d3b94e922c0026871ac6d56e93278cb8e958e9108bd5",
+      "execution_copy_tree_sha256": "3b78cfac2ff86a2739e8e6f1099a91845528045283bd408cd42cb2daa3c230cc",
+      "changed_files": [
+        "task.toml"
+      ]
+    },
+    {
+      "challenge": "challenge-12",
+      "canonical_tree_sha256": "4f5bc64476646929c199cc30dcea1b466c15cb13e36798044bb794e7d565ee7e",
+      "execution_copy_tree_sha256": "fea2f9d258022cd26f71ff451be6a1e87f1f22876c8e55bfa445bda8c59c895c",
+      "changed_files": [
+        "task.toml"
+      ]
+    }
+  ],
+  "source_task_copy_root": "jobs/gpt56terra-high-solaudit-20260731-valid"
+}

@@ -1,0 +1,66 @@
+{
+    "schema_version": 1,
+    "task": {
+        "name": "challenge-04",
+        "type": "local",
+        "digest": "sha256:d448d597346355bf2b2ed093309bfdfc0062937f71fc42648c3308c092b8f4c4",
+        "path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-flash-high-solaudit-20260802-valid/challenge-04"
+    },
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "extra_instructions": [
+        {
+            "path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/prompts/frameworks/tensorcircuit.md",
+            "digest": "sha256:61aa603c11dcc3a1ed611f47f11ba7c9e5f25831b14a681ed2af9870652d7aab"
+        }
+    ],
+    "agent": {
+        "import_path": "adapters.codex_para:CodexPara",
+        "model_name": "deepseek-v4-flash",
+        "skills": [],
+        "resume_trajectory": false,
+        "extra_allowed_hosts": [],
+        "kwargs": {
+            "reasoning_effort": "high",
+            "profile": "deepseek-v4-flash",
+            "profile_config_path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-flash-high-solaudit-20260802-valid/.secrets/deepseek-v4-flash.config.toml",
+            "model_catalog_path": "/Users/qqy/.codex-orbitq-deepseek/models.json",
+            "force_auth_json": false
+        },
+        "env": {
+            "HTTP_PROXY": "http://172.17.0.1:7892",
+            "HTTPS_PROXY": "http://172.17.0.1:7892",
+            "NO_PROXY": "localhost,127.0.0.1"
+        },
+        "mcp_servers": []
+    },
+    "skills": [],
+    "environment": {
+        "import_path": "adapters.framework_docker:FrameworkDockerEnvironment",
+        "force_build": false,
+        "delete": true,
+        "cpu_enforcement_policy": "auto",
+        "memory_enforcement_policy": "auto",
+        "extra_docker_compose": [],
+        "kwargs": {
+            "framework": "tensorcircuit",
+            "docker_image": "challenge-benchmark-quantum-tensorcircuit:py311"
+        },
+        "extra_allowed_hosts": []
+    },
+    "verifier": {
+        "env": {
+            "REQUIRED_QUANTUM_FRAMEWORK": "tensorcircuit",
+            "HTTP_PROXY": "http://172.17.0.1:7892",
+            "HTTPS_PROXY": "http://172.17.0.1:7892",
+            "NO_PROXY": "localhost,127.0.0.1"
+        },
+        "import_path": "adapters.codex_para_verifier:CodexParaVerifier",
+        "kwargs": {
+            "audit_model": "gpt-5.6-sol",
+            "force_auth_json": true,
+            "profile_config_path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/results/deepseek-v4-flash-high/audit-high.config.toml"
+        },
+        "disable": false
+    }
+}
