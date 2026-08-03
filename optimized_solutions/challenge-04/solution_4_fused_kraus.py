@@ -1,0 +1,159 @@
+"""
+Task Suite Problem 4: trainable Kraus noise calibration.
+
+The asymmetric bit-flip channel is implemented as user-defined Kraus tensor
+algebra. The solution returns only NumPy values consumed by evaluate_4.py.
+"""
+
+import numpy as np
+import optax
+
+import tensorcircuit as tc
+
+K = tc.set_backend("jax")
+tc.set_dtype("complex64")
+PROBE_COUNT = 4
+
+
+def raw_from_probability(value):
+    return K.convert_to_tensor(np.asarray(np.log(value / (1.0 - value)), np.float32))
+
+
+def probabilities(raw_params):
+    return K.sigmoid(raw_params[0]), K.sigmoid(raw_params[1])
+
+
+def initial_parameters(config):
+    return K.stack(
+        [
+            raw_from_probability(config["initial_p01"]),
+            raw_from_probability(config["initial_p10"]),
+        ]
+    )
+
+
+def asymmetric_bitflip_kraus(p01, p10):
+    zero = K.cast(K.convert_to_tensor(0.0), "complex64")
+    k0 = K.stack(
+        [
+            K.stack([K.cast(K.sqrt(1.0 - p01), "complex64"), zero]),
+            K.stack([zero, K.cast(K.sqrt(1.0 - p10), "complex64")]),
+        ]
+    )
+    k1 = K.stack(
+        [
+            K.stack([zero, K.cast(K.sqrt(p10), "complex64")]),
+            K.stack([zero, zero]),
+        ]
+    )
+    k2 = K.stack(
+        [
+            K.stack([zero, zero]),
+            K.stack([K.cast(K.sqrt(p01), "complex64"), zero]),
+        ]
+    )
+    return [k0, k1, k2]
+
+
+def apply_noisy_entangler_layer(circuit, kraus, config):
+    rxx = K.reshape(
+        tc.gates.rxx_gate(theta=config["entangler_angle"]).tensor,
+        [4, 4],
+    )
+    noisy_kraus = [
+        K.kron(left, right) @ rxx for left in kraus for right in kraus
+    ]
+    for start in (0, 1):
+        for i in range(start, config["n_qubits"] - 1, 2):
+            circuit.apply_general_kraus(noisy_kraus, i, i + 1)
+
+
+def prepare_initial_state(circuit, probe_index, config):
+    if probe_index == 0:
+        circuit.h(0)
+        for i in range(1, config["n_qubits"]):
+            circuit.cnot(0, i)
+    elif probe_index == 1:
+        for i in range(0, config["n_qubits"], 2):
+            circuit.h(i)
+            circuit.cnot(i, i + 1)
+            circuit.x(i + 1)
+    elif probe_index == 3:
+        for i in range(config["n_qubits"]):
+            circuit.h(i)
+
+
+def probe_states(config):
+    states = []
+    for probe_index in range(PROBE_COUNT):
+        circuit = tc.Circuit(config["n_qubits"])
+        prepare_initial_state(circuit, probe_index, config)
+        states.append(circuit.state())
+    return K.stack(states)
+
+
+def probe_observables(initial_state, p01, p10, config):
+    circuit = tc.DMCircuit(config["n_qubits"], inputs=initial_state)
+    kraus = asymmetric_bitflip_kraus(p01, p10)
+    apply_noisy_entangler_layer(circuit, kraus, config)
+    values = [
+        K.real(circuit.expectation((tc.gates.z(), [i]), reuse=False))
+        for i in range(config["n_qubits"])
+    ]
+    parity_ops = [(tc.gates.z(), [i]) for i in range(config["n_qubits"])]
+    values.append(K.real(circuit.expectation(*parity_ops, reuse=False)))
+    return K.stack(values)
+
+
+def observable_table(p01, p10, initial_states, config):
+    evaluate = K.vmap(
+        lambda initial_state: probe_observables(
+            initial_state, p01, p10, config
+        )
+    )
+    return evaluate(initial_states)
+
+
+def loss_and_observables(
+    raw_params, target_expectations, initial_states, config
+):
+    p01, p10 = probabilities(raw_params)
+    fitted_expectations = observable_table(p01, p10, initial_states, config)
+    loss = K.mean((fitted_expectations - target_expectations) ** 2)
+    return loss, (p01, p10, fitted_expectations)
+
+
+def run_solution(config):
+    initial_states = probe_states(config)
+    true_target = observable_table(
+        K.convert_to_tensor(config["true_p01"]),
+        K.convert_to_tensor(config["true_p10"]),
+        initial_states,
+        config,
+    )
+    params = initial_parameters(config)
+    optimizer = optax.adam(config["learning_rate"])
+    opt_state = optimizer.init(params)
+
+    def loss_fn(p):
+        return loss_and_observables(p, true_target, initial_states, config)
+
+    def train_step(p, state):
+        (loss, aux), grads = K.value_and_grad(loss_fn, has_aux=True)(p)
+        updates, state = optimizer.update(grads, state, p)
+        p = optax.apply_updates(p, updates)
+        return p, state, loss, aux
+
+    train_step = K.jit(train_step)
+
+    loss_history = []
+    for _ in range(config["max_steps"]):
+        params, opt_state, loss, aux = train_step(params, opt_state)
+        final_p01, final_p10, fitted_expectations = aux
+        loss_history.append(loss)
+
+    return {
+        "loss_history": K.numpy(K.stack(loss_history)),
+        "final_probabilities": K.numpy(K.stack([final_p01, final_p10])),
+        "fitted_expectations": K.numpy(fitted_expectations),
+    }
