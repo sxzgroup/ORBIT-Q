@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "metric_definition": {
+    "agent_wall_sec": "Harbor agent_execution interval only; excludes setup and verifier time",
+    "total_cost_usd": "campaign solver cost recorded by the adapter, except Grok 4.5 which uses its archived token-class list-price reconstruction",
+    "per_valid": "campaign total divided by final valid-solution count",
+    "bubble_area": "proportional to total_cost_usd"
+  },
+  "runs": [
+    {
+      "label": "Sol high",
+      "passes": 10,
+      "agent_wall_sec": 11861.715963,
+      "total_cost_usd": 25.527418,
+      "source": "results/gpt56sol-high/agent-resource-use.json"
+    },
+    {
+      "label": "Sol ultra",
+      "passes": 10,
+      "agent_wall_sec": 10967.757,
+      "total_cost_usd": 30.019293,
+      "source": "results/gpt56sol-ultra/agent-resource-use.json"
+    },
+    {
+      "label": "Terra high",
+      "passes": 9,
+      "agent_wall_sec": 12385.907,
+      "total_cost_usd": 12.036862,
+      "source": "results/gpt56terra-high/summary.json"
+    },
+    {
+      "label": "Luna high",
+      "passes": 9,
+      "agent_wall_sec": 14362.147,
+      "total_cost_usd": 2.236872,
+      "source": "results/gpt56luna-high/summary.json"
+    },
+    {
+      "label": "DeepSeek V4 Flash high",
+      "passes": 5,
+      "agent_wall_sec": 17424.726,
+      "total_cost_usd": 0.572672,
+      "source": "results/deepseek-v4-flash-high/summary.json"
+    },
+    {
+      "label": "Grok 4.5 high",
+      "passes": 8,
+      "agent_wall_sec": 9785.49,
+      "total_cost_usd": 5.09014,
+      "source": "results/grok-4.5-high/summary.json; cost reconstructed from recorded token classes at archived xAI list prices"
+    },
+    {
+      "label": "DeepSeek V4 Pro high",
+      "passes": 5,
+      "agent_wall_sec": 19453.447,
+      "total_cost_usd": 1.101116,
+      "source": "results/deepseek-v4-pro-high/summary.json (TensorCircuit 1.8 rerun)"
+    }
+  ]
+}
