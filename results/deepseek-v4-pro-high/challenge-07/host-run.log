@@ -1,0 +1,53 @@
+--agent-import-path is deprecated; use --agent instead.
+--environment-import-path is deprecated; use --env instead.
+--verifier-import-path is deprecated; use --verifier instead.
+  1/1 Framework_Score: 1.000 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0:24:06 0:00:00
+adhoc • codex • deepseek-v4-pro
+┏━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━━┳━━┳━━━┳━━┳━━━┳━━┳━━━┓
+┃  ┃  ┃  ┃  ┃  ┃  ┃  ┃  ┃  ┃  ┃  ┃  ┃  ┃  ┃  ┃  ┃  ┃  ┃ … ┃  ┃ … ┃  ┃ … ┃  ┃ … ┃
+┡━━╇━━╇━━╇━━╇━━╇━━╇━━╇━━╇━━╇━━╇━━╇━━╇━━╇━━╇━━╇━━╇━━╇━━╇━━━╇━━╇━━━╇━━╇━━━╇━━╇━━━┩
+│  │  │  │  │  │  │  │  │  │  │  │  │  │  │  │  │  │  │ … │  │ … │  │ … │  │ … │
+└──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴───┴──┴───┴──┴───┘
+
+┏━━━━━━━━┳━━━━━━━┓
+┃ Reward ┃ Count ┃
+┡━━━━━━━━╇━━━━━━━┩
+│ 7      │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 97.41  │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+│ 1.0    │     1 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 24m 6s
+Results written to 
+/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-pro-high-tc18-solaudit-2
+0260813-valid/jobs/challenge-07-tensorcircuit-deepseek-v4-pro-high-tc18-20260813
+-r1/result.json
+Inspect results by running `harbor view 
+/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-pro-high-tc18-solaudit-2
+0260813-valid/jobs`
+Share results by running `harbor upload 
+/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-pro-high-tc18-solaudit-2
+0260813-valid/jobs/challenge-07-tensorcircuit-deepseek-v4-pro-high-tc18-20260813
+-r1`
+

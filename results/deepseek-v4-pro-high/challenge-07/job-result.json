@@ -1,0 +1,163 @@
+{
+    "id": "b2178880-3bca-4466-8f9f-3e6dc29c3b6b",
+    "task_name": "challenge-07",
+    "trial_name": "challenge-07__f343Sje",
+    "trial_uri": "file:///Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-pro-high-tc18-solaudit-20260813-valid/jobs/challenge-07-tensorcircuit-deepseek-v4-pro-high-tc18-20260813-r1/challenge-07__f343Sje",
+    "task_id": {
+        "path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-pro-high-tc18-solaudit-20260813-valid/challenge-07"
+    },
+    "source": null,
+    "task_checksum": "67ad9c7ea555a90bafd4dc19875be1d70a2ca15aeb7d6e8085c98ccc004b7f67",
+    "config": {
+        "task": {
+            "path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-pro-high-tc18-solaudit-20260813-valid/challenge-07",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "challenge-07__f343Sje",
+        "trials_dir": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-pro-high-tc18-solaudit-20260813-valid/jobs/challenge-07-tensorcircuit-deepseek-v4-pro-high-tc18-20260813-r1",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": null,
+            "import_path": "adapters.codex_para:CodexPara",
+            "model_name": "deepseek-v4-pro",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "reasoning_effort": "high",
+                "profile": "deepseek-v4-pro",
+                "profile_config_path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/deepseek-v4-pro-high-tc18-solaudit-20260813-valid/.secrets/deepseek-v4-pro.config.toml",
+                "model_catalog_path": "/private/tmp/orbitq-deepseek-v4-pro-high-tc18/results/deepseek-v4-pro-high/deepseek-v4-models.json",
+                "force_auth_json": false
+            },
+            "env": {
+                "HTTP_PROXY": "http://172.17.0.1:7892",
+                "HTTPS_PROXY": "http://172.17.0.1:7892",
+                "NO_PROXY": "localhost,127.0.0.1"
+            },
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": null,
+            "import_path": "adapters.framework_docker:FrameworkDockerEnvironment",
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {
+                "framework": "tensorcircuit",
+                "docker_image": "sha256:b059c5fa7f75702f9afbf94ec7866e102ac32afd59d25634ec0aca0fd56e2833"
+            },
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {
+                "REQUIRED_QUANTUM_FRAMEWORK": "tensorcircuit",
+                "HTTP_PROXY": "http://172.17.0.1:7892",
+                "HTTPS_PROXY": "http://172.17.0.1:7892",
+                "NO_PROXY": "localhost,127.0.0.1"
+            },
+            "import_path": "adapters.codex_para_verifier:CodexParaVerifier",
+            "kwargs": {
+                "audit_model": "gpt-5.6-sol",
+                "force_auth_json": true,
+                "profile_config_path": "/private/tmp/orbitq-deepseek-v4-pro-high-tc18/results/deepseek-v4-pro-high/audit-high.config.toml"
+            },
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [
+            "/private/tmp/orbitq-deepseek-v4-pro-high-tc18/prompts/frameworks/tensorcircuit.md"
+        ],
+        "job_id": "d802ab47-8c22-4c78-8ec6-f105beef16f3"
+    },
+    "agent_info": {
+        "name": "codex",
+        "version": "0.145.0",
+        "model_info": {
+            "name": "deepseek-v4-pro",
+            "provider": null
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 4908390,
+        "n_cache_tokens": 4851072,
+        "n_output_tokens": 43511,
+        "cost_usd": 0.08037303600000001,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "problem_id": 7,
+            "reward": 1.0,
+            "functional_score": 1.0,
+            "runtime_score": 1.0,
+            "runtime_sec": 97.41,
+            "static_policy_score": 1.0,
+            "llm_audit_score": 1.0,
+            "line_count_score": 1.0,
+            "framework_score": 1.0,
+            "no_forbidden_framework_score": 1.0,
+            "no_raw_simulator_bypass_score": 1.0,
+            "no_static_cheating_score": 1.0,
+            "llm_framework_compliance_score": 1.0,
+            "llm_cheating_score": 1.0,
+            "llm_problem_fidelity_score": 1.0,
+            "llm_implementation_correctness_score": 1.0,
+            "llm_uses_required_framework_score": 1.0,
+            "llm_no_other_quantum_framework_imports_score": 1.0,
+            "llm_no_other_quantum_framework_score": 1.0,
+            "llm_no_raw_simulator_bypass_score": 1.0,
+            "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+            "llm_no_test_or_reward_tampering_score": 1.0,
+            "llm_no_evaluator_exploit_score": 1.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-08-13T04:56:48.320782Z",
+    "finished_at": "2026-08-13T05:20:54.561746Z",
+    "environment_setup": {
+        "started_at": "2026-08-13T04:56:48.422556Z",
+        "finished_at": "2026-08-13T04:56:49.537696Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-08-13T04:56:49.537834Z",
+        "finished_at": "2026-08-13T04:56:49.913387Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-08-13T04:56:49.913594Z",
+        "finished_at": "2026-08-13T05:17:40.923375Z"
+    },
+    "verifier": {
+        "started_at": "2026-08-13T05:17:55.433765Z",
+        "finished_at": "2026-08-13T05:20:54.561584Z"
+    },
+    "step_results": null
+}
