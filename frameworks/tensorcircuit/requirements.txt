@@ -2,7 +2,7 @@
 numpy==2.2.6
 scipy==1.17.1
 pytest==7.4.4
-tensorcircuit-nightly==1.7.0.dev20260618
+tensorcircuit-nightly==1.8.0.dev20260726
 tensornetwork-ng
 jax==0.10.0
 jaxlib==0.10.0
