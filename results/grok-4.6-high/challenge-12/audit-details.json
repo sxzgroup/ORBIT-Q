@@ -1,0 +1,62 @@
+{
+  "problem_id": 12,
+  "framework": "tensorcircuit",
+  "static": {
+    "path": "/root/solution_12.py",
+    "framework": "tensorcircuit",
+    "exists": true,
+    "parse_ok": 1.0,
+    "line_count": 103,
+    "line_count_score": 1.0,
+    "framework_score": 1.0,
+    "no_forbidden_framework_score": 1.0,
+    "no_static_cheating_score": 1.0,
+    "no_raw_simulator_bypass_score": 1.0,
+    "imports": [
+      "jax",
+      "numpy",
+      "tensorcircuit"
+    ],
+    "forbidden_imports": [],
+    "cheating_hits": [],
+    "raw_simulator_hits": [],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_score": 1.0,
+    "runtime_score": 1.0,
+    "runtime_sec": 14.92,
+    "functional_return_code": 0,
+    "functional_passed": true,
+    "functional_output_tail": "Challenge 12 evaluation\nSolution module: solution_12\nEnd-to-end solution time: 14.92s\nQubits: 32\nDMRG chi: 8\nDMRG sweeps: 4\nLayers: 2\nSteps: 5000\nTrainable circuit parameters: 465\nTarget MPS max bond dimension: 8\nInitial fidelity: 1.92078797e-09\nFinal fidelity: 8.69819164e-01\nInitial loss: 1.00000000e+00\nFinal loss: 1.30180836e-01\nFinal overlap phase: 2.34761906e+00\nFidelity history shape: (5000,)\nReturned NumPy keys: ['fidelity_history', 'final_overlap_phase', 'final_parameters', 'loss_history']\nPassing criteria:\n  loss history shape: PASS\n  fidelity history shape: PASS\n  final parameter shape: PASS\n  fidelity values finite: PASS\n  loss values finite: PASS\n  final values finite: PASS\n  fidelity improves: PASS\n  loss improves: PASS\n  final fidelity reaches threshold: PASS\n  fidelity bounded: PASS\n  target bond dimension valid: PASS\nOverall: PASS\n"
+  },
+  "audit": {
+    "uses_required_framework": true,
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": true,
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "The core quantum computation legitimately uses tensorcircuit with its JAX backend. TensorCircuit MPSCircuit objects represent both the variational ket and target MPS, tensorcircuit.su4 constructs every trainable gate, and proj_with_mps computes the direct MPS overlap. NumPy and JAX are used only for tensor preparation, differentiation, optimization, JIT compilation, and result conversion; JAX is not used to implement a separate quantum simulator.",
+    "cheating_rationale": "The submission consumes the evaluator-provided dmrg_state, does not access hidden answers, does not hardcode reported metrics, and does not modify tests, logs, rewards, or evaluator state. The returned histories and parameters arise from the implemented optimization.",
+    "fidelity_rationale": "The implementation starts from the requested |0101...01> product state, applies two alternating nearest-neighbor brickwork layers with 31 SU4 gates and 465 parameters, computes the direct squared MPS overlap, and performs exactly max_steps Adam updates with the configured learning rate and initialization. Histories are recorded immediately before each update, the supplied target MPS is used without running DMRG internally, and all required NumPy-format outputs have the specified meanings and shapes.",
+    "implementation_error_rationale": "No obvious implementation error is present. The gate count and bond pattern are correct, gradients are taken through the tensorcircuit overlap, the Adam bias corrections are applied consistently, and the successful evaluation results are compatible with the implemented computation.",
+    "confidence": 0.99,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  }
+}
