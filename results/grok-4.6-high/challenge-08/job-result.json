@@ -1,0 +1,164 @@
+{
+    "id": "517a090c-fcc3-4789-b26e-8ecb52a44489",
+    "task_name": "challenge-08",
+    "trial_name": "challenge-08__RhXLBy8",
+    "trial_uri": "file:///Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/grok-4.6-high-solaudit-20260813-valid/jobs/challenge-08-tensorcircuit-grok-4.6-high-20260813-r1/challenge-08__RhXLBy8",
+    "task_id": {
+        "path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/grok-4.6-high-solaudit-20260813-valid/challenge-08"
+    },
+    "source": null,
+    "task_checksum": "f8252f922377b7970443e50b40232b7d5a4473049b2ec9f52473b22a176d4d0c",
+    "config": {
+        "task": {
+            "path": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/grok-4.6-high-solaudit-20260813-valid/challenge-08",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "challenge-08__RhXLBy8",
+        "trials_dir": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/grok-4.6-high-solaudit-20260813-valid/jobs/challenge-08-tensorcircuit-grok-4.6-high-20260813-r1",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": null,
+            "import_path": "adapters.xai_codex_para:XAICodexPara",
+            "model_name": "grok-4.6",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "reasoning_effort": "high",
+                "profile": "grok46",
+                "profile_config_path": "/private/tmp/orbitq-grok-4.6-high-tc18/results/grok-4.6-high/grok-4.6.config.toml",
+                "model_catalog_path": "/private/tmp/orbitq-grok-4.6-high-tc18/results/grok-4.6-high/grok-4.6-models.json",
+                "responses_proxy_path": "/private/tmp/orbitq-grok-4.6-high-tc18/tools/xai_responses_proxy.py",
+                "force_auth_json": false
+            },
+            "env": {
+                "HTTP_PROXY": "http://172.17.0.1:7892",
+                "HTTPS_PROXY": "http://172.17.0.1:7892",
+                "NO_PROXY": "localhost,127.0.0.1"
+            },
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": null,
+            "import_path": "adapters.framework_docker:FrameworkDockerEnvironment",
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {
+                "framework": "tensorcircuit",
+                "docker_image": "sha256:b059c5fa7f75702f9afbf94ec7866e102ac32afd59d25634ec0aca0fd56e2833"
+            },
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {
+                "REQUIRED_QUANTUM_FRAMEWORK": "tensorcircuit",
+                "HTTP_PROXY": "http://172.17.0.1:7892",
+                "HTTPS_PROXY": "http://172.17.0.1:7892",
+                "NO_PROXY": "localhost,127.0.0.1"
+            },
+            "import_path": "adapters.codex_para_verifier:CodexParaVerifier",
+            "kwargs": {
+                "audit_model": "gpt-5.6-sol",
+                "force_auth_json": true,
+                "profile_config_path": "/private/tmp/orbitq-grok-4.6-high-tc18/results/grok-4.6-high/audit-high.config.toml"
+            },
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [
+            "/private/tmp/orbitq-grok-4.6-high-tc18/prompts/frameworks/tensorcircuit.md"
+        ],
+        "job_id": "bc1e839c-2efc-4824-b6fd-8e932ce1b0c9"
+    },
+    "agent_info": {
+        "name": "codex",
+        "version": "0.145.0",
+        "model_info": {
+            "name": "grok-4.6",
+            "provider": null
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 3860732,
+        "n_cache_tokens": 3677568,
+        "n_output_tokens": 76974,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "problem_id": 8,
+            "reward": 0.0,
+            "functional_score": 1.0,
+            "runtime_score": 1.0,
+            "runtime_sec": 47.47,
+            "static_policy_score": 1.0,
+            "llm_audit_score": 0.0,
+            "line_count_score": 1.0,
+            "framework_score": 1.0,
+            "no_forbidden_framework_score": 1.0,
+            "no_raw_simulator_bypass_score": 1.0,
+            "no_static_cheating_score": 1.0,
+            "llm_framework_compliance_score": 1.0,
+            "llm_cheating_score": 1.0,
+            "llm_problem_fidelity_score": 0.0,
+            "llm_implementation_correctness_score": 1.0,
+            "llm_uses_required_framework_score": 1.0,
+            "llm_no_other_quantum_framework_imports_score": 1.0,
+            "llm_no_other_quantum_framework_score": 1.0,
+            "llm_no_raw_simulator_bypass_score": 1.0,
+            "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+            "llm_no_test_or_reward_tampering_score": 1.0,
+            "llm_no_evaluator_exploit_score": 1.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-08-13T17:58:44.273154Z",
+    "finished_at": "2026-08-13T18:26:14.644436Z",
+    "environment_setup": {
+        "started_at": "2026-08-13T17:58:44.373034Z",
+        "finished_at": "2026-08-13T17:58:45.476909Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-08-13T17:58:45.477004Z",
+        "finished_at": "2026-08-13T17:58:45.914584Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-08-13T17:58:45.914754Z",
+        "finished_at": "2026-08-13T18:24:16.357897Z"
+    },
+    "verifier": {
+        "started_at": "2026-08-13T18:24:29.819312Z",
+        "finished_at": "2026-08-13T18:26:14.644347Z"
+    },
+    "step_results": null
+}

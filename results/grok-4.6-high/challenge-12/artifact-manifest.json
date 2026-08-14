@@ -1,0 +1,23 @@
+[
+  {
+    "source": "/logs/artifacts",
+    "destination": "artifacts/logs/artifacts",
+    "type": "directory",
+    "status": "empty",
+    "service": null
+  },
+  {
+    "source": "/root/solution_12.py",
+    "destination": "artifacts/root/solution_12.py",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/root/evaluation_summary.json",
+    "destination": "artifacts/root/evaluation_summary.json",
+    "type": "file",
+    "status": "failed",
+    "service": null
+  }
+]

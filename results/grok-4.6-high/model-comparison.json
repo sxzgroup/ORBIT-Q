@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "runs": [
+    {
+      "label": "Sol high",
+      "solver_model": "gpt-5.6-sol",
+      "solver_effort": "high",
+      "passes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "label": "Sol ultra",
+      "solver_model": "gpt-5.6-sol",
+      "solver_effort": "ultra",
+      "passes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "label": "Terra high",
+      "solver_model": "gpt-5.6-terra",
+      "solver_effort": "high",
+      "passes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        11,
+        12
+      ]
+    },
+    {
+      "label": "Luna high",
+      "solver_model": "gpt-5.6-luna",
+      "solver_effort": "high",
+      "passes": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "label": "DeepSeek V4 Flash high",
+      "solver_model": "deepseek-v4-flash",
+      "solver_effort": "high",
+      "passes": [
+        3,
+        4,
+        5,
+        10,
+        12
+      ]
+    },
+    {
+      "label": "Grok 4.5 high",
+      "solver_model": "grok-4.5",
+      "solver_effort": "high",
+      "passes": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        12
+      ]
+    },
+    {
+      "label": "DeepSeek V4 Pro high",
+      "solver_model": "deepseek-v4-pro",
+      "solver_effort": "high",
+      "passes": [
+        2,
+        4,
+        6,
+        7,
+        10
+      ]
+    },
+    {
+      "label": "Grok 4.6 high",
+      "solver_model": "grok-4.6",
+      "solver_effort": "high",
+      "passes": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  ],
+  "note": "Task 08 is failed for every displayed campaign after human review. Earlier rows are sourced from published upstream result archives."
+}
