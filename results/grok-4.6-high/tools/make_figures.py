@@ -232,7 +232,7 @@ def resource_figure() -> None:
         (46.0, 0.38),
         (14.8, 0.80),
         (62.5, 0.58),
-        (38.0, 1.00),
+        (25.2, 2.18),
     ]
     for name, count, xval, yval, color, label_xy in zip(
         names, valid, solve_per_valid, cost_per_valid, COLORS, label_positions
