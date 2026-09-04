@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-09-04T19:26:02.361482+00:00",
+  "id": "364faea9edec40b8c5325d2dd08a28f2414c9667176362c54e32eb066aaa61cb",
+  "name": "challenge-02__eec4edb__verifier__trial-main-1",
+  "image": "sha256:ce64a50ab90eaee930d981b7397903bc4baca54f32b8c88f5fa6ad2c40b9f5d7",
+  "mounts": [
+    {
+      "Type": "bind",
+      "Source": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/gpt6astra-high-clean-20260905/challenge-02-tensorcircuit-gpt-6-astra-high-clean-r1/challenge-02__eEC4EdB/verifier",
+      "Destination": "/logs/verifier",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": "rprivate"
+    }
+  ],
+  "nano_cpus": 6000000000,
+  "memory_bytes": 10737418240,
+  "started_at": "2026-09-04T19:25:42.093378334Z"
+}

@@ -1,0 +1,70 @@
+{
+  "problem_id": 10,
+  "framework": "tensorcircuit",
+  "static": {
+    "path": "/root/solution_10.py",
+    "framework": "tensorcircuit",
+    "exists": null,
+    "parse_ok": 1.0,
+    "line_count": 54,
+    "line_count_score": 1.0,
+    "framework_score": 1.0,
+    "no_forbidden_framework_score": 1.0,
+    "no_static_cheating_score": 1.0,
+    "no_raw_simulator_bypass_score": 1.0,
+    "imports": [
+      "jax",
+      "numpy",
+      "optax",
+      "tensorcircuit"
+    ],
+    "forbidden_imports": [],
+    "cheating_hits": [],
+    "raw_simulator_hits": [
+      "eigh"
+    ],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_score": 1.0,
+    "runtime_score": 1.0,
+    "runtime_sec": 69.88,
+    "functional_return_code": 0,
+    "functional_passed": null,
+    "functional_output_tail": "Challenge 10 evaluation\nSolution module: solution_10\nEnd-to-end solution time: 69.88s\nExact reference time: 54.19s\nQubits: 22\nSelected CMZ qubits: 18\nLargest ansatz gate qubits: 18\nLayers: 2\nSteps run: 200\nInitial energy density: 0.9718778133\nFinal energy density: -1.1766288280\nExact ground energy density: -1.2925285569\nVQE energy-density gap: 0.1158997289\nEnergy improvement: 2.1485066414\nEnergy history length: 200\nFinal parameter shape: (2, 22, 3)\nReturned NumPy keys: ['energy_history', 'final_parameters']\nPassing criteria:\n  18-qubit largest gate: PASS\n  history length matches steps: PASS\n  parameter shape: PASS\n  energy improves: PASS\n  history finite: PASS\n  above exact ground energy: PASS\n  loose VQE gap threshold: PASS\nOverall: PASS\n"
+  },
+  "audit": {
+    "uses_required_framework": null,
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": null,
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "The core quantum computation legitimately uses TensorCircuit: tc.Circuit constructs the 22-qubit ansatz, c.cmz applies the required 18-qubit gate, c.state produces the state, and tc.quantum.PauliStringSum2MVP performs the Hamiltonian matrix-vector product. JAX supplies differentiation/JIT and NumPy supplies initialization and output conversion; neither is used to implement a separate quantum simulator. No other quantum framework is imported.",
+    "cheating_rationale": "The source contains no hardcoded results, hidden-oracle access, test or reward tampering, evaluator-specific manipulation, or other apparent exploit. All returned quantities arise from the configured variational optimization.",
+    "fidelity_rationale": "The implementation follows the specified Neel-state preparation, two-layer RX-RZ-RY-per-qubit ansatz followed by CMZ on the configured selected qubits, TFIM Hamiltonian and energy-density objective, seeded independent Gaussian initialization, Adam learning rate, exactly max_steps updates, and pre-update energy recording. It returns NumPy arrays under exactly the required keys and with the required shapes. The evaluation results are consistent with this behavior.",
+    "implementation_error_rationale": "No obvious implementation error is present. The Pauli-string coefficients implement the stated open-boundary TFIM, value_and_grad differentiates the TensorCircuit energy, and each stored value is computed before its corresponding parameter update.",
+    "confidence": 0.99,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  },
+  "_archive_normalization": {
+    "original_file": "audit-details.raw.txt",
+    "redacted_values_represented_as_null": 4,
+    "note": "Harbor replaced literal true with an unquoted redaction marker. Raw bytes retained; redacted values are unknown. Numeric metrics unchanged."
+  }
+}

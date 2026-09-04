@@ -1,0 +1,487 @@
+{
+  "checked_tasks": 12,
+  "all_unique_sessions": true,
+  "scope": "Host mounts, task hashes, explicit configuration, recorded CLI/model/effort, and exact historical-result path strings.",
+  "conclusion": "No evidence of exposure to previous results in the recorded inputs and mounts",
+  "limitations": "This establishes execution isolation, not absence of prior model training knowledge. Keyword checks are supplementary to mount/config evidence.",
+  "tasks": [
+    {
+      "task": 1,
+      "candidate_sha256": "f338dba565415fd2b51e09e41a1c577ebd8a91943169072eabde852c5edbf713",
+      "task_copy_unchanged": true,
+      "raw_verifier_provenance_unchanged": true,
+      "fresh_session_ids": [
+        "01a06dd7-1c4a-7b00-8390-2ac356e66def"
+      ],
+      "session_metadata": [
+        {
+          "id": "01a06dd7-1c4a-7b00-8390-2ac356e66def",
+          "cli_version": "0.153.3",
+          "cwd": "/root",
+          "history_mode": "paginated"
+        }
+      ],
+      "observed_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "cwd": "/root"
+        }
+      ],
+      "old_result_path_matches": {
+        "gpt56sol-high": 0,
+        "gpt56sol-ultra": 0,
+        "gpt-5.6-sol-high-orbit-q": 0,
+        "github.com/sxzgroup/orbit-q/pull/5": 0,
+        "github.com/sxzgroup/orbit-q/pull/6": 0,
+        "/users/qqy/desktop/2026project/orbit-q/.scratch": 0
+      },
+      "container_evidence": [
+        "challenge-01__t5v3pbq__env-main-1.json",
+        "challenge-01__t5v3pbq__verifier__trial-main-1.json"
+      ],
+      "resume_trajectory": false,
+      "skills": [],
+      "mcp_servers": [],
+      "extra_mounts": null
+    },
+    {
+      "task": 2,
+      "candidate_sha256": "3df7ac70f5f66fcb98376441edb897dc4187e1fd6eb64ad1ef83d0e69c392e8f",
+      "task_copy_unchanged": true,
+      "raw_verifier_provenance_unchanged": true,
+      "fresh_session_ids": [
+        "01a06ddf-b9ec-7821-98c3-f9d617a7eb66"
+      ],
+      "session_metadata": [
+        {
+          "id": "01a06ddf-b9ec-7821-98c3-f9d617a7eb66",
+          "cli_version": "0.153.3",
+          "cwd": "/root",
+          "history_mode": "paginated"
+        }
+      ],
+      "observed_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "cwd": "/root"
+        }
+      ],
+      "old_result_path_matches": {
+        "gpt56sol-high": 0,
+        "gpt56sol-ultra": 0,
+        "gpt-5.6-sol-high-orbit-q": 0,
+        "github.com/sxzgroup/orbit-q/pull/5": 0,
+        "github.com/sxzgroup/orbit-q/pull/6": 0,
+        "/users/qqy/desktop/2026project/orbit-q/.scratch": 0
+      },
+      "container_evidence": [
+        "challenge-02__eec4edb__env-main-1.json",
+        "challenge-02__eec4edb__verifier__trial-main-1.json"
+      ],
+      "resume_trajectory": false,
+      "skills": [],
+      "mcp_servers": [],
+      "extra_mounts": null
+    },
+    {
+      "task": 3,
+      "candidate_sha256": "30e180918713dddee615cc48fa4ab0740c9361b014707aac52b8afde8106754c",
+      "task_copy_unchanged": true,
+      "raw_verifier_provenance_unchanged": true,
+      "fresh_session_ids": [
+        "01a06de3-10c4-75c3-a019-bb5eb180c511"
+      ],
+      "session_metadata": [
+        {
+          "id": "01a06de3-10c4-75c3-a019-bb5eb180c511",
+          "cli_version": "0.153.3",
+          "cwd": "/root",
+          "history_mode": "paginated"
+        }
+      ],
+      "observed_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "cwd": "/root"
+        }
+      ],
+      "old_result_path_matches": {
+        "gpt56sol-high": 0,
+        "gpt56sol-ultra": 0,
+        "gpt-5.6-sol-high-orbit-q": 0,
+        "github.com/sxzgroup/orbit-q/pull/5": 0,
+        "github.com/sxzgroup/orbit-q/pull/6": 0,
+        "/users/qqy/desktop/2026project/orbit-q/.scratch": 0
+      },
+      "container_evidence": [
+        "challenge-03__hydzwdg__env-main-1.json",
+        "challenge-03__hydzwdg__verifier__trial-main-1.json"
+      ],
+      "resume_trajectory": false,
+      "skills": [],
+      "mcp_servers": [],
+      "extra_mounts": null
+    },
+    {
+      "task": 4,
+      "candidate_sha256": "7056af7215163f2dd4e8ace881fc5083427a05d224d5b24a18f982756a76c1b8",
+      "task_copy_unchanged": true,
+      "raw_verifier_provenance_unchanged": true,
+      "fresh_session_ids": [
+        "01a06de6-3fba-7ee3-be4d-a0231f0016e3"
+      ],
+      "session_metadata": [
+        {
+          "id": "01a06de6-3fba-7ee3-be4d-a0231f0016e3",
+          "cli_version": "0.153.3",
+          "cwd": "/root",
+          "history_mode": "paginated"
+        }
+      ],
+      "observed_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "cwd": "/root"
+        }
+      ],
+      "old_result_path_matches": {
+        "gpt56sol-high": 0,
+        "gpt56sol-ultra": 0,
+        "gpt-5.6-sol-high-orbit-q": 0,
+        "github.com/sxzgroup/orbit-q/pull/5": 0,
+        "github.com/sxzgroup/orbit-q/pull/6": 0,
+        "/users/qqy/desktop/2026project/orbit-q/.scratch": 0
+      },
+      "container_evidence": [
+        "challenge-04__ryptcof__env-main-1.json",
+        "challenge-04__ryptcof__verifier__trial-main-1.json"
+      ],
+      "resume_trajectory": false,
+      "skills": [],
+      "mcp_servers": [],
+      "extra_mounts": null
+    },
+    {
+      "task": 5,
+      "candidate_sha256": "07e56dd27bca64cc7498259109395924489b8fbfe89851a52de72c58e9d7eb7d",
+      "task_copy_unchanged": true,
+      "raw_verifier_provenance_unchanged": true,
+      "fresh_session_ids": [
+        "01a06de9-444d-7640-8c77-85f2fffa409b"
+      ],
+      "session_metadata": [
+        {
+          "id": "01a06de9-444d-7640-8c77-85f2fffa409b",
+          "cli_version": "0.153.3",
+          "cwd": "/root",
+          "history_mode": "paginated"
+        }
+      ],
+      "observed_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "cwd": "/root"
+        }
+      ],
+      "old_result_path_matches": {
+        "gpt56sol-high": 0,
+        "gpt56sol-ultra": 0,
+        "gpt-5.6-sol-high-orbit-q": 0,
+        "github.com/sxzgroup/orbit-q/pull/5": 0,
+        "github.com/sxzgroup/orbit-q/pull/6": 0,
+        "/users/qqy/desktop/2026project/orbit-q/.scratch": 0
+      },
+      "container_evidence": [
+        "challenge-05__bvqrqfs__env-main-1.json"
+      ],
+      "resume_trajectory": false,
+      "skills": [],
+      "mcp_servers": [],
+      "extra_mounts": null
+    },
+    {
+      "task": 6,
+      "candidate_sha256": "f2a4a7c8d49babb2815a1c3f03f2ec70bf69cc971f17e0ff92abbc8d282072db",
+      "task_copy_unchanged": true,
+      "raw_verifier_provenance_unchanged": true,
+      "fresh_session_ids": [
+        "01a06dec-f2cf-7840-a25b-7fc3b39ff9a0"
+      ],
+      "session_metadata": [
+        {
+          "id": "01a06dec-f2cf-7840-a25b-7fc3b39ff9a0",
+          "cli_version": "0.153.3",
+          "cwd": "/root",
+          "history_mode": "paginated"
+        }
+      ],
+      "observed_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "cwd": "/root"
+        }
+      ],
+      "old_result_path_matches": {
+        "gpt56sol-high": 0,
+        "gpt56sol-ultra": 0,
+        "gpt-5.6-sol-high-orbit-q": 0,
+        "github.com/sxzgroup/orbit-q/pull/5": 0,
+        "github.com/sxzgroup/orbit-q/pull/6": 0,
+        "/users/qqy/desktop/2026project/orbit-q/.scratch": 0
+      },
+      "container_evidence": [
+        "challenge-06__xytyedw__env-main-1.json",
+        "challenge-06__xytyedw__verifier__trial-main-1.json"
+      ],
+      "resume_trajectory": false,
+      "skills": [],
+      "mcp_servers": [],
+      "extra_mounts": null
+    },
+    {
+      "task": 7,
+      "candidate_sha256": "c77546fd874382499edaf3065864d7e3b6e1560f5492fff5871b01429af8cfe5",
+      "task_copy_unchanged": true,
+      "raw_verifier_provenance_unchanged": true,
+      "fresh_session_ids": [
+        "01a06df2-c9b2-7d72-ab61-58b53dc33c19"
+      ],
+      "session_metadata": [
+        {
+          "id": "01a06df2-c9b2-7d72-ab61-58b53dc33c19",
+          "cli_version": "0.153.3",
+          "cwd": "/root",
+          "history_mode": "paginated"
+        }
+      ],
+      "observed_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "cwd": "/root"
+        }
+      ],
+      "old_result_path_matches": {
+        "gpt56sol-high": 0,
+        "gpt56sol-ultra": 0,
+        "gpt-5.6-sol-high-orbit-q": 0,
+        "github.com/sxzgroup/orbit-q/pull/5": 0,
+        "github.com/sxzgroup/orbit-q/pull/6": 0,
+        "/users/qqy/desktop/2026project/orbit-q/.scratch": 0
+      },
+      "container_evidence": [
+        "challenge-07__9nc9erq__env-main-1.json",
+        "challenge-07__9nc9erq__verifier__trial-main-1.json"
+      ],
+      "resume_trajectory": false,
+      "skills": [],
+      "mcp_servers": [],
+      "extra_mounts": null
+    },
+    {
+      "task": 8,
+      "candidate_sha256": "5731b266010b0847a1df8c056a8bd1cb11a140265305fb976a85d616c70d860f",
+      "task_copy_unchanged": true,
+      "raw_verifier_provenance_unchanged": true,
+      "fresh_session_ids": [
+        "01a06df9-96db-7d01-a866-7cad0e16548c"
+      ],
+      "session_metadata": [
+        {
+          "id": "01a06df9-96db-7d01-a866-7cad0e16548c",
+          "cli_version": "0.153.3",
+          "cwd": "/root",
+          "history_mode": "paginated"
+        }
+      ],
+      "observed_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "cwd": "/root"
+        }
+      ],
+      "old_result_path_matches": {
+        "gpt56sol-high": 0,
+        "gpt56sol-ultra": 0,
+        "gpt-5.6-sol-high-orbit-q": 0,
+        "github.com/sxzgroup/orbit-q/pull/5": 0,
+        "github.com/sxzgroup/orbit-q/pull/6": 0,
+        "/users/qqy/desktop/2026project/orbit-q/.scratch": 0
+      },
+      "container_evidence": [
+        "challenge-08__eg5trdj__env-main-1.json",
+        "challenge-08__eg5trdj__verifier__trial-main-1.json"
+      ],
+      "resume_trajectory": false,
+      "skills": [],
+      "mcp_servers": [],
+      "extra_mounts": null
+    },
+    {
+      "task": 9,
+      "candidate_sha256": "9288c3b1dfba9226a0a2a832e7da5236751eeee857fdcba82d6a695870b82ec0",
+      "task_copy_unchanged": true,
+      "raw_verifier_provenance_unchanged": true,
+      "fresh_session_ids": [
+        "01a06dfe-940b-7763-a0a2-bf9447f59169"
+      ],
+      "session_metadata": [
+        {
+          "id": "01a06dfe-940b-7763-a0a2-bf9447f59169",
+          "cli_version": "0.153.3",
+          "cwd": "/root",
+          "history_mode": "paginated"
+        }
+      ],
+      "observed_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "cwd": "/root"
+        }
+      ],
+      "old_result_path_matches": {
+        "gpt56sol-high": 0,
+        "gpt56sol-ultra": 0,
+        "gpt-5.6-sol-high-orbit-q": 0,
+        "github.com/sxzgroup/orbit-q/pull/5": 0,
+        "github.com/sxzgroup/orbit-q/pull/6": 0,
+        "/users/qqy/desktop/2026project/orbit-q/.scratch": 0
+      },
+      "container_evidence": [
+        "challenge-09__euqqglp__env-main-1.json",
+        "challenge-09__euqqglp__verifier__trial-main-1.json"
+      ],
+      "resume_trajectory": false,
+      "skills": [],
+      "mcp_servers": [],
+      "extra_mounts": null
+    },
+    {
+      "task": 10,
+      "candidate_sha256": "3bb2557e7d67644cf0200f80fd9d7e8ecfb48140f908eca455d791046f92a619",
+      "task_copy_unchanged": true,
+      "raw_verifier_provenance_unchanged": true,
+      "fresh_session_ids": [
+        "01a06e02-b26e-7152-b938-7ce467af2c12"
+      ],
+      "session_metadata": [
+        {
+          "id": "01a06e02-b26e-7152-b938-7ce467af2c12",
+          "cli_version": "0.153.3",
+          "cwd": "/root",
+          "history_mode": "paginated"
+        }
+      ],
+      "observed_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "cwd": "/root"
+        }
+      ],
+      "old_result_path_matches": {
+        "gpt56sol-high": 0,
+        "gpt56sol-ultra": 0,
+        "gpt-5.6-sol-high-orbit-q": 0,
+        "github.com/sxzgroup/orbit-q/pull/5": 0,
+        "github.com/sxzgroup/orbit-q/pull/6": 0,
+        "/users/qqy/desktop/2026project/orbit-q/.scratch": 0
+      },
+      "container_evidence": [
+        "challenge-10__opetbkf__env-main-1.json",
+        "challenge-10__opetbkf__verifier__trial-main-1.json"
+      ],
+      "resume_trajectory": false,
+      "skills": [],
+      "mcp_servers": [],
+      "extra_mounts": null
+    },
+    {
+      "task": 11,
+      "candidate_sha256": "8ddfc364644ecc39aaee21184540b45aa41a1adfb1d9aa54ea912d69235a13fa",
+      "task_copy_unchanged": true,
+      "raw_verifier_provenance_unchanged": true,
+      "fresh_session_ids": [
+        "01a06e07-f959-7203-9b67-8356378903cb"
+      ],
+      "session_metadata": [
+        {
+          "id": "01a06e07-f959-7203-9b67-8356378903cb",
+          "cli_version": "0.153.3",
+          "cwd": "/root",
+          "history_mode": "paginated"
+        }
+      ],
+      "observed_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "cwd": "/root"
+        }
+      ],
+      "old_result_path_matches": {
+        "gpt56sol-high": 0,
+        "gpt56sol-ultra": 0,
+        "gpt-5.6-sol-high-orbit-q": 0,
+        "github.com/sxzgroup/orbit-q/pull/5": 0,
+        "github.com/sxzgroup/orbit-q/pull/6": 0,
+        "/users/qqy/desktop/2026project/orbit-q/.scratch": 0
+      },
+      "container_evidence": [
+        "challenge-11__5hshrzr__env-main-1.json",
+        "challenge-11__5hshrzr__verifier__trial-main-1.json"
+      ],
+      "resume_trajectory": false,
+      "skills": [],
+      "mcp_servers": [],
+      "extra_mounts": null
+    },
+    {
+      "task": 12,
+      "candidate_sha256": "83fefe8596e0cb65b9fca94794fa8d3a342081c4023c522b8d6707a0ae623033",
+      "task_copy_unchanged": true,
+      "raw_verifier_provenance_unchanged": true,
+      "fresh_session_ids": [
+        "01a06e0e-22f4-7da0-846c-920bed375dfb"
+      ],
+      "session_metadata": [
+        {
+          "id": "01a06e0e-22f4-7da0-846c-920bed375dfb",
+          "cli_version": "0.153.3",
+          "cwd": "/root",
+          "history_mode": "paginated"
+        }
+      ],
+      "observed_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high",
+          "cwd": "/root"
+        }
+      ],
+      "old_result_path_matches": {
+        "gpt56sol-high": 0,
+        "gpt56sol-ultra": 0,
+        "gpt-5.6-sol-high-orbit-q": 0,
+        "github.com/sxzgroup/orbit-q/pull/5": 0,
+        "github.com/sxzgroup/orbit-q/pull/6": 0,
+        "/users/qqy/desktop/2026project/orbit-q/.scratch": 0
+      },
+      "container_evidence": [
+        "challenge-12__bgysy62__env-main-1.json"
+      ],
+      "resume_trajectory": false,
+      "skills": [],
+      "mcp_servers": [],
+      "extra_mounts": null
+    }
+  ]
+}

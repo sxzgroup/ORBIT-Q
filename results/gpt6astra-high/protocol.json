@@ -1,0 +1,278 @@
+{
+  "created_at": "2026-09-04T19:12:21.754812+00:00",
+  "branch": "codex/gpt-6-astra-high-clean-benchmark",
+  "base_commit": "0201238ec2983907e2891f5319f5fff2d00844d5",
+  "solver_model": "gpt-6-astra",
+  "solver_effort": "high",
+  "audit_model": "gpt-5.6-sol",
+  "audit_effort": "high",
+  "solver_cli": "0.153.3",
+  "audit_cli": "0.145.0",
+  "harbor_version": "0.20.0",
+  "docker_image": "challenge-benchmark-quantum-tensorcircuit:astra-cli01533-audit01450",
+  "parent_image_id": "sha256:b059c5fa7f75702f9afbf94ec7866e102ac32afd59d25634ec0aca0fd56e2833",
+  "cpus": 6,
+  "memory_mb": 10240,
+  "storage_mb": 16384,
+  "trials_per_challenge": 1,
+  "harbor_retries": 0,
+  "concurrency": 1,
+  "execution_order": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "task_hashes": {
+    "challenge-01": {
+      "environment/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "instruction.md": "4c3761842d2fc7e0e9ce1d825308fc32012ba7470d7ea6e17d53f782238a6b2d",
+      "solution/problem_id.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "solution/solution_1.py": "60a2df55bad90f159f3edf67e39e01ea07e83b6d14c1dd3e9ff1df17553ea1a2",
+      "solution/solve.sh": "6568f905dd391a8419dd925634d7c7f418e23fc0bbe5a94ef2bae064861a49e5",
+      "task.toml": "56eccd2aa73ac3ce57294b8c253187fd3be917e3f8b1d1f03100b357da21fce5",
+      "tests/audit_codex.py": "5f70f2cd4fd6c5dc609ba4a85bb9895fbe5a62851ef6a3b5d8defba32ba1d981",
+      "tests/evaluate_1.py": "c0b6bea94044e3f6cac12e5f48a54255097bec95624325861685c47adda66fb6",
+      "tests/problem_id.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "tests/problem_statement.md": "4c3761842d2fc7e0e9ce1d825308fc32012ba7470d7ea6e17d53f782238a6b2d",
+      "tests/score_submission.py": "3af4056563fa9d9ff1f2a5d8e69853f98f762064d6a3b4fa49ec5c728d4b645f",
+      "tests/static_policy.py": "8af4d9fc92729edd78a9e72b2cea1c7c3ce0fd536869998d6210b3619d62ae4c",
+      "tests/test.sh": "0bbe552d9d0b5858759a167d4d6a1003de391c9c30564af894d766838c0d2f23"
+    },
+    "challenge-02": {
+      "environment/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "instruction.md": "e3e9b7517cd8aa1d0fad4fe4bce13cd61cde94d94c21b0324df95e80dd581a39",
+      "solution/problem_id.txt": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "solution/solution_2.py": "9aa9779f1e7290de2d3adad35f0a305df7822606aa153d7131d5f28b68e18b5a",
+      "solution/solve.sh": "6568f905dd391a8419dd925634d7c7f418e23fc0bbe5a94ef2bae064861a49e5",
+      "task.toml": "99b853859b266d07495442b59c5b34d349eb9bd85ad31e2fb949d78016fef8b7",
+      "tests/audit_codex.py": "5f70f2cd4fd6c5dc609ba4a85bb9895fbe5a62851ef6a3b5d8defba32ba1d981",
+      "tests/evaluate_2.py": "76881417fdbaa55f61fcebc7ed338fe947a61fb823a663e95d3c06bd9394fcfa",
+      "tests/problem_id.txt": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "tests/problem_statement.md": "e3e9b7517cd8aa1d0fad4fe4bce13cd61cde94d94c21b0324df95e80dd581a39",
+      "tests/score_submission.py": "3af4056563fa9d9ff1f2a5d8e69853f98f762064d6a3b4fa49ec5c728d4b645f",
+      "tests/static_policy.py": "8af4d9fc92729edd78a9e72b2cea1c7c3ce0fd536869998d6210b3619d62ae4c",
+      "tests/test.sh": "0bbe552d9d0b5858759a167d4d6a1003de391c9c30564af894d766838c0d2f23"
+    },
+    "challenge-03": {
+      "environment/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "instruction.md": "c4e3f6122d85b28f1745857a6aed29f73660ca8b0106a5c17ba500e5f5f1d5fb",
+      "solution/problem_id.txt": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+      "solution/solution_3.py": "eb059b0f457ba4e677eff06e58429ddd58e1fd1007057c820ef2a5df663aaa1e",
+      "solution/solve.sh": "6568f905dd391a8419dd925634d7c7f418e23fc0bbe5a94ef2bae064861a49e5",
+      "task.toml": "5025ca6476d55ddb6783a7bcd358945ee9ebc2963a8be6d3aea396bd6d1360e0",
+      "tests/audit_codex.py": "5f70f2cd4fd6c5dc609ba4a85bb9895fbe5a62851ef6a3b5d8defba32ba1d981",
+      "tests/evaluate_3.py": "5fad7fbdedca24ab4d84c3a84ad318e52b9aa1c220445d649537e86869c113a0",
+      "tests/problem_id.txt": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+      "tests/problem_statement.md": "c4e3f6122d85b28f1745857a6aed29f73660ca8b0106a5c17ba500e5f5f1d5fb",
+      "tests/score_submission.py": "3af4056563fa9d9ff1f2a5d8e69853f98f762064d6a3b4fa49ec5c728d4b645f",
+      "tests/static_policy.py": "8af4d9fc92729edd78a9e72b2cea1c7c3ce0fd536869998d6210b3619d62ae4c",
+      "tests/test.sh": "0bbe552d9d0b5858759a167d4d6a1003de391c9c30564af894d766838c0d2f23"
+    },
+    "challenge-04": {
+      "environment/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "instruction.md": "8724b467812e5fca2be6f8c6b6157e9e083fd1b318149577d54fe4337f41f4ea",
+      "solution/problem_id.txt": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+      "solution/solution_4.py": "29fc2417465fcd3db0d6e4c4dbc008aa0fe0ac58fe3397fe3a4dc5f8e47897ec",
+      "solution/solve.sh": "6568f905dd391a8419dd925634d7c7f418e23fc0bbe5a94ef2bae064861a49e5",
+      "task.toml": "d6909b3471e58ee51be328c6b3634a5977b20ed4fdd2d861cb519ca125a8ca92",
+      "tests/audit_codex.py": "5f70f2cd4fd6c5dc609ba4a85bb9895fbe5a62851ef6a3b5d8defba32ba1d981",
+      "tests/evaluate_4.py": "5f7db300ea32dd0ba16bbfc36d59e79965151d31d46797ed4442844ec514ba59",
+      "tests/problem_id.txt": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+      "tests/problem_statement.md": "8724b467812e5fca2be6f8c6b6157e9e083fd1b318149577d54fe4337f41f4ea",
+      "tests/score_submission.py": "3af4056563fa9d9ff1f2a5d8e69853f98f762064d6a3b4fa49ec5c728d4b645f",
+      "tests/static_policy.py": "8af4d9fc92729edd78a9e72b2cea1c7c3ce0fd536869998d6210b3619d62ae4c",
+      "tests/test.sh": "0bbe552d9d0b5858759a167d4d6a1003de391c9c30564af894d766838c0d2f23"
+    },
+    "challenge-05": {
+      "environment/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "instruction.md": "b0b31d059b86d92bee03a51a82586c0c4e0823de2ec5a96dc5772baeccd5da78",
+      "solution/problem_id.txt": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+      "solution/solution_5.py": "212ec101f72aa87468b5d2aabc76b445b158a69d8f99e709cb8a0bbd05476a8f",
+      "solution/solve.sh": "6568f905dd391a8419dd925634d7c7f418e23fc0bbe5a94ef2bae064861a49e5",
+      "task.toml": "20fea713845da66d6661594f1d9b113eeef51f6d1e7c9a721d61b5fe81a948a0",
+      "tests/audit_codex.py": "5f70f2cd4fd6c5dc609ba4a85bb9895fbe5a62851ef6a3b5d8defba32ba1d981",
+      "tests/evaluate_5.py": "928cf131719d0c867a1cecb9f2d70fe0d8cf9908d207d1c5d2c7343753253afb",
+      "tests/problem_id.txt": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+      "tests/problem_statement.md": "b0b31d059b86d92bee03a51a82586c0c4e0823de2ec5a96dc5772baeccd5da78",
+      "tests/score_submission.py": "3af4056563fa9d9ff1f2a5d8e69853f98f762064d6a3b4fa49ec5c728d4b645f",
+      "tests/static_policy.py": "8af4d9fc92729edd78a9e72b2cea1c7c3ce0fd536869998d6210b3619d62ae4c",
+      "tests/test.sh": "0bbe552d9d0b5858759a167d4d6a1003de391c9c30564af894d766838c0d2f23"
+    },
+    "challenge-06": {
+      "environment/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "instruction.md": "e3e8a8044c322027327b6e694dbb476f67dbc09465ea80dd4f20aebf8c64c8a7",
+      "solution/problem_id.txt": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+      "solution/solution_6.py": "2a3fce5cebe393d89a8afbfa700dc82147fd8c56c939ea97c10e59380d615c15",
+      "solution/solve.sh": "6568f905dd391a8419dd925634d7c7f418e23fc0bbe5a94ef2bae064861a49e5",
+      "task.toml": "08625e2ba00faf4353955bf2c6ba1b8b4be30a67e88365f538ac864643375782",
+      "tests/audit_codex.py": "5f70f2cd4fd6c5dc609ba4a85bb9895fbe5a62851ef6a3b5d8defba32ba1d981",
+      "tests/evaluate_6.py": "eb2cd4bacd4b578ddf33fbfec276f420e59b2199a618b67e46411d7427413943",
+      "tests/problem_id.txt": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+      "tests/problem_statement.md": "e3e8a8044c322027327b6e694dbb476f67dbc09465ea80dd4f20aebf8c64c8a7",
+      "tests/score_submission.py": "3af4056563fa9d9ff1f2a5d8e69853f98f762064d6a3b4fa49ec5c728d4b645f",
+      "tests/static_policy.py": "8af4d9fc92729edd78a9e72b2cea1c7c3ce0fd536869998d6210b3619d62ae4c",
+      "tests/test.sh": "0bbe552d9d0b5858759a167d4d6a1003de391c9c30564af894d766838c0d2f23"
+    },
+    "challenge-07": {
+      "environment/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "instruction.md": "e267f59cdda3d7602ecfdde1a45cb3981e39d52a4bae2f87b4dbb375bcab9680",
+      "solution/problem_id.txt": "10159baf262b43a92d95db59dae1f72c645127301661e0a3ce4e38b295a97c58",
+      "solution/solution_7.py": "3c84fd06b5134320996c957c3c01b88f3f7835bba2f6485d29017305ec85cfa7",
+      "solution/solve.sh": "6568f905dd391a8419dd925634d7c7f418e23fc0bbe5a94ef2bae064861a49e5",
+      "task.toml": "ac4c296e5b8e09d1e263be50f760349c1c754701aa7289b19ad2620f7133ec89",
+      "tests/audit_codex.py": "5f70f2cd4fd6c5dc609ba4a85bb9895fbe5a62851ef6a3b5d8defba32ba1d981",
+      "tests/evaluate_7.py": "c42faa56d800246340c2e3a2f5809afe60222a8c3a78bf8402705ca5a1f16986",
+      "tests/problem_id.txt": "10159baf262b43a92d95db59dae1f72c645127301661e0a3ce4e38b295a97c58",
+      "tests/problem_statement.md": "e267f59cdda3d7602ecfdde1a45cb3981e39d52a4bae2f87b4dbb375bcab9680",
+      "tests/score_submission.py": "3af4056563fa9d9ff1f2a5d8e69853f98f762064d6a3b4fa49ec5c728d4b645f",
+      "tests/static_policy.py": "8af4d9fc92729edd78a9e72b2cea1c7c3ce0fd536869998d6210b3619d62ae4c",
+      "tests/test.sh": "0bbe552d9d0b5858759a167d4d6a1003de391c9c30564af894d766838c0d2f23"
+    },
+    "challenge-08": {
+      "environment/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "instruction.md": "be1db9100dd3b89304fb2213d4c0e1c48cf3144572aec753e77acd43ee0243fe",
+      "solution/problem_id.txt": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8",
+      "solution/solution_8.py": "e34960d1ab18eb3da59f959579aad8240f82ec4f6c8c1dd0128fa7f589ba60f6",
+      "solution/solve.sh": "6568f905dd391a8419dd925634d7c7f418e23fc0bbe5a94ef2bae064861a49e5",
+      "task.toml": "6f4ad8cdf21e65f7215ced20ecf4755f0710c8379389be29637781482272d63f",
+      "tests/audit_codex.py": "5f70f2cd4fd6c5dc609ba4a85bb9895fbe5a62851ef6a3b5d8defba32ba1d981",
+      "tests/evaluate_8.py": "15ec500489f269c8292cbeb742691a2dabb7ba9d99da706ad15fb88beebe3211",
+      "tests/problem_id.txt": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8",
+      "tests/problem_statement.md": "be1db9100dd3b89304fb2213d4c0e1c48cf3144572aec753e77acd43ee0243fe",
+      "tests/score_submission.py": "3af4056563fa9d9ff1f2a5d8e69853f98f762064d6a3b4fa49ec5c728d4b645f",
+      "tests/static_policy.py": "8af4d9fc92729edd78a9e72b2cea1c7c3ce0fd536869998d6210b3619d62ae4c",
+      "tests/test.sh": "0bbe552d9d0b5858759a167d4d6a1003de391c9c30564af894d766838c0d2f23"
+    },
+    "challenge-09": {
+      "environment/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "instruction.md": "8401c2a494f0279d0f63a52c421ad2789859d6005e1f95b8b8e78a1de97787f2",
+      "solution/problem_id.txt": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+      "solution/solution_9.py": "c986cf99aab358c7c6f9cc40db5d3331836a638e8eff3cb6b4a31f1fd6c7a7bc",
+      "solution/solve.sh": "6568f905dd391a8419dd925634d7c7f418e23fc0bbe5a94ef2bae064861a49e5",
+      "task.toml": "83f1da98107661bade699f700485bb34409f62634ef40e623dc639c0de8e90ac",
+      "tests/audit_codex.py": "5f70f2cd4fd6c5dc609ba4a85bb9895fbe5a62851ef6a3b5d8defba32ba1d981",
+      "tests/evaluate_9.py": "1f374632c55d2665551365ee362f767514317c915f37ff6d89f879f52e211293",
+      "tests/problem_id.txt": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+      "tests/problem_statement.md": "8401c2a494f0279d0f63a52c421ad2789859d6005e1f95b8b8e78a1de97787f2",
+      "tests/score_submission.py": "3af4056563fa9d9ff1f2a5d8e69853f98f762064d6a3b4fa49ec5c728d4b645f",
+      "tests/static_policy.py": "8af4d9fc92729edd78a9e72b2cea1c7c3ce0fd536869998d6210b3619d62ae4c",
+      "tests/test.sh": "0bbe552d9d0b5858759a167d4d6a1003de391c9c30564af894d766838c0d2f23"
+    },
+    "challenge-10": {
+      "environment/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "instruction.md": "a5e96735db39f9b19c314c31fe1b6bc63a6b8c90ff5cd02b0d8f9a6b4df65584",
+      "solution/problem_id.txt": "917df3320d778ddbaa5c5c7742bc4046bf803c36ed2b050f30844ed206783469",
+      "solution/solution_10.py": "595a8b4b34d1bfdb9a0e5975cc0f6d3582e9e011036a493b23773ac7325f742d",
+      "solution/solve.sh": "6568f905dd391a8419dd925634d7c7f418e23fc0bbe5a94ef2bae064861a49e5",
+      "task.toml": "d9015d667461437a4a698939a5ba0b24712cd94daa17e6b290834246569b4c6b",
+      "tests/audit_codex.py": "5f70f2cd4fd6c5dc609ba4a85bb9895fbe5a62851ef6a3b5d8defba32ba1d981",
+      "tests/evaluate_10.py": "ba3c9d4f90b6b1c39e7cd104961cd5b6f36028338ed17a4a9118fdca3ed1fe66",
+      "tests/problem_id.txt": "917df3320d778ddbaa5c5c7742bc4046bf803c36ed2b050f30844ed206783469",
+      "tests/problem_statement.md": "a5e96735db39f9b19c314c31fe1b6bc63a6b8c90ff5cd02b0d8f9a6b4df65584",
+      "tests/score_submission.py": "3af4056563fa9d9ff1f2a5d8e69853f98f762064d6a3b4fa49ec5c728d4b645f",
+      "tests/static_policy.py": "8af4d9fc92729edd78a9e72b2cea1c7c3ce0fd536869998d6210b3619d62ae4c",
+      "tests/test.sh": "0bbe552d9d0b5858759a167d4d6a1003de391c9c30564af894d766838c0d2f23"
+    },
+    "challenge-11": {
+      "environment/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "instruction.md": "06f57943894e0455fcc5935216bcb0d3706628a38f81c5c7143ec5b95104ad78",
+      "solution/problem_id.txt": "25d4f2a86deb5e2574bb3210b67bb24fcc4afb19f93a7b65a057daa874a9d18e",
+      "solution/solution_11.py": "49efe66295773cc8bfcc4e828a1662ba6ca78200419723b4a9336e1e72f1ec12",
+      "solution/solve.sh": "6568f905dd391a8419dd925634d7c7f418e23fc0bbe5a94ef2bae064861a49e5",
+      "task.toml": "198bd067ce0d48973b142c19885c3694f86bc58ce6226c3c9e6051f435b741e5",
+      "tests/audit_codex.py": "5f70f2cd4fd6c5dc609ba4a85bb9895fbe5a62851ef6a3b5d8defba32ba1d981",
+      "tests/evaluate_11.py": "fe2b05d62b9bd40ad233cc68a3682fd3aca6d362bf2b4a3dbb22b4f535e01300",
+      "tests/problem_id.txt": "25d4f2a86deb5e2574bb3210b67bb24fcc4afb19f93a7b65a057daa874a9d18e",
+      "tests/problem_statement.md": "06f57943894e0455fcc5935216bcb0d3706628a38f81c5c7143ec5b95104ad78",
+      "tests/score_submission.py": "3af4056563fa9d9ff1f2a5d8e69853f98f762064d6a3b4fa49ec5c728d4b645f",
+      "tests/static_policy.py": "8af4d9fc92729edd78a9e72b2cea1c7c3ce0fd536869998d6210b3619d62ae4c",
+      "tests/test.sh": "0bbe552d9d0b5858759a167d4d6a1003de391c9c30564af894d766838c0d2f23"
+    },
+    "challenge-12": {
+      "environment/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "instruction.md": "cd795bbbd5fcf2beb0000528e1e169fa09a4f20bdbc829381b2bbf7810c36fec",
+      "solution/problem_id.txt": "a1fb50e6c86fae1679ef3351296fd6713411a08cf8dd1790a4fd05fae8688164",
+      "solution/solution_12.py": "578b53dae336ff5b42b337758ca4b2f18da5f62047360e0c40906716c95ccbb1",
+      "solution/solve.sh": "6568f905dd391a8419dd925634d7c7f418e23fc0bbe5a94ef2bae064861a49e5",
+      "task.toml": "5d24ec1ee60a9598bee6c2a878f1fc903652295ae874d88712539a83b63dcdc9",
+      "tests/audit_codex.py": "5f70f2cd4fd6c5dc609ba4a85bb9895fbe5a62851ef6a3b5d8defba32ba1d981",
+      "tests/evaluate_12.py": "d94d0ac35da6929d2643ecf1645cff8a24eb688c241105943820b42227ec0691",
+      "tests/problem_id.txt": "a1fb50e6c86fae1679ef3351296fd6713411a08cf8dd1790a4fd05fae8688164",
+      "tests/problem_statement.md": "cd795bbbd5fcf2beb0000528e1e169fa09a4f20bdbc829381b2bbf7810c36fec",
+      "tests/score_submission.py": "3af4056563fa9d9ff1f2a5d8e69853f98f762064d6a3b4fa49ec5c728d4b645f",
+      "tests/static_policy.py": "8af4d9fc92729edd78a9e72b2cea1c7c3ce0fd536869998d6210b3619d62ae4c",
+      "tests/test.sh": "0bbe552d9d0b5858759a167d4d6a1003de391c9c30564af894d766838c0d2f23"
+    }
+  },
+  "previous_task_comparison": [
+    {
+      "challenge": 1,
+      "identical_to_previous_execution_task": true
+    },
+    {
+      "challenge": 2,
+      "identical_to_previous_execution_task": true
+    },
+    {
+      "challenge": 3,
+      "identical_to_previous_execution_task": true
+    },
+    {
+      "challenge": 4,
+      "identical_to_previous_execution_task": true
+    },
+    {
+      "challenge": 5,
+      "identical_to_previous_execution_task": true
+    },
+    {
+      "challenge": 6,
+      "identical_to_previous_execution_task": true
+    },
+    {
+      "challenge": 7,
+      "identical_to_previous_execution_task": true
+    },
+    {
+      "challenge": 8,
+      "identical_to_previous_execution_task": true
+    },
+    {
+      "challenge": 9,
+      "identical_to_previous_execution_task": true
+    },
+    {
+      "challenge": 10,
+      "identical_to_previous_execution_task": true
+    },
+    {
+      "challenge": 11,
+      "identical_to_previous_execution_task": true
+    },
+    {
+      "challenge": 12,
+      "identical_to_previous_execution_task": true
+    }
+  ],
+  "solver_inputs": [
+    "instruction.md",
+    "prompts/frameworks/tensorcircuit.md",
+    "installed image APIs"
+  ],
+  "resume": false,
+  "skills": [],
+  "mcp_servers": [],
+  "extra_host_mounts": [],
+  "cli_change_reason": "Service rejects gpt-6-astra on Codex 0.145.0; solver uses 0.153.3. Audit uses original 0.145.0.",
+  "comparison_scope": "Astra high vs Sol high changes model; Sol high vs Sol ultra changes effort. No pure Astra effort effect is estimated from one effort level.",
+  "docker_image_id": "sha256:ce64a50ab90eaee930d981b7397903bc4baca54f32b8c88f5fa6ad2c40b9f5d7"
+}

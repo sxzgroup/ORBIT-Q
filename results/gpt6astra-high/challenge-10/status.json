@@ -1,0 +1,12 @@
+{
+  "challenge": 10,
+  "trial": "challenge-10__oPEtbkF",
+  "status": "finished",
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 69.88,
+  "harbor_exit_code": 0,
+  "finished_at": "2026-09-04T20:06:48.069481+00:00"
+}

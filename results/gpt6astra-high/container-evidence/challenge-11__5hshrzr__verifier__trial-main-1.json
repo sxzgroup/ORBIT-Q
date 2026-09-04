@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-09-04T20:12:36.627081+00:00",
+  "id": "f849cff7fadd060a57b41f097108b3e3ad5afea5cc78e6f6717a77661db6d067",
+  "name": "challenge-11__5hshrzr__verifier__trial-main-1",
+  "image": "sha256:ce64a50ab90eaee930d981b7397903bc4baca54f32b8c88f5fa6ad2c40b9f5d7",
+  "mounts": [
+    {
+      "Type": "bind",
+      "Source": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/gpt6astra-high-clean-20260905/challenge-11-tensorcircuit-gpt-6-astra-high-clean-r1/challenge-11__5HSHRZr/verifier",
+      "Destination": "/logs/verifier",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": "rprivate"
+    }
+  ],
+  "nano_cpus": 6000000000,
+  "memory_bytes": 10737418240,
+  "started_at": "2026-09-04T20:10:59.29956908Z"
+}
