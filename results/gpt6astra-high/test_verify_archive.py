@@ -118,6 +118,16 @@ class ArchiveTests(unittest.TestCase):
             with self.assertRaisesRegex(verifier.VerificationError, "PNG CRC"):
                 verifier.verify(root)
 
+    def test_square_efficiency_dimensions(self):
+        with self.copy() as root:
+            path = root / "resource-efficiency/astra-high-resource-efficiency-square.png"
+            contents = bytearray(path.read_bytes())
+            contents[16:20] = (1535).to_bytes(4, "big")
+            path.write_bytes(contents)
+            self.reseal(root)
+            with self.assertRaisesRegex(verifier.VerificationError, "Square efficiency PNG dimensions"):
+                verifier.verify(root)
+
     def test_reject_nonfinite_json(self):
         with self.assertRaises(verifier.VerificationError):
             verifier.parse_json('{"cost": NaN}')

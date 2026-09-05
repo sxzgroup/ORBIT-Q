@@ -290,6 +290,26 @@ def verify_figures(root):
                 f"{stem}: model labels")
 
 
+def verify_square_efficiency(root):
+    folder = root / "resource-efficiency"
+    stem = "astra-high-resource-efficiency-square"
+    require({p.name for p in folder.iterdir()} == {f"{stem}.{ext}" for ext in ("png", "pdf", "svg")},
+            "Square efficiency figure formats")
+    png = (folder / f"{stem}.png").read_bytes()
+    require(png.startswith(b"\x89PNG\r\n\x1a\n"), "Square efficiency PNG signature")
+    width, height = struct.unpack(">II", png[16:24])
+    require(width == height == 1536, "Square efficiency PNG dimensions")
+    pdf = (folder / f"{stem}.pdf").read_bytes()
+    require(pdf.startswith(b"%PDF-") and pdf.rstrip().endswith(b"%%EOF"), "Square efficiency PDF")
+    svg = ET.fromstring((folder / f"{stem}.svg").read_text())
+    viewbox = list(map(float, svg.attrib["viewBox"].split()))
+    require(viewbox[2] == viewbox[3], "Square efficiency SVG dimensions")
+    text = " ".join(" ".join(svg.itertext()).split())
+    labels = [r["label"] for r in load(root / "public-model-comparison.json")["runs"]] + ["Astra high"]
+    require(all(label in text for label in labels) and "total solver cost" in text,
+            "Square efficiency model labels and area legend")
+
+
 def verify(root=ROOT):
     root = Path(root).resolve()
     count = verify_manifest(root)
@@ -310,6 +330,7 @@ def verify(root=ROOT):
     require(len(set(sessions)) == 12, "Session reused across tasks")
     verify_comparisons(root, data)
     verify_figures(root)
+    verify_square_efficiency(root)
     try:
         runtime = runpy.run_path(str(root / "runtime/verify_runtime.py"))["verify"](root / "runtime")
     except ValueError as exc:
@@ -319,7 +340,7 @@ def verify(root=ROOT):
             if not target.startswith("https://"):
                 require((path.parent / target).exists(), f"Broken link in {path.name}: {target}")
     return {"files_checked": count, "tasks": 12, "automatic_passes": 12, "comparison_models": 9,
-            "figure_files": 6, "runtime_figure_files": 4,
+            "figure_files": 6, "square_efficiency_files": 3, "runtime_figure_files": 4,
             "runtime_comparisons": runtime["task_count"],
             "estimated_expert_references": runtime["estimated_reference_count"],
             "mode": "offline, read-only; stored evidence only"}

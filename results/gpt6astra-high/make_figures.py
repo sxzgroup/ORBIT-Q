@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Two figures comparing Astra with the eight frozen campaigns in PR #28."""
+"""Main comparison figures and a square export of resource-efficiency panel (c)."""
+import argparse
 import json
 from io import StringIO
 import os
@@ -42,14 +43,16 @@ plt.rcParams.update({
 })
 
 
-def save(fig, name):
-    fig.savefig(destination / f"{name}.png", bbox_inches="tight", pad_inches=0.08)
-    fig.savefig(destination / f"{name}.pdf", bbox_inches="tight", pad_inches=0.08,
+def save(fig, name, *, output_dir=destination, square=False):
+    output_dir.mkdir(exist_ok=True)
+    bounds = None if square else "tight"
+    fig.savefig(output_dir / f"{name}.png", bbox_inches=bounds, pad_inches=0.08)
+    fig.savefig(output_dir / f"{name}.pdf", bbox_inches=bounds, pad_inches=0.08,
                 metadata={"CreationDate": None, "ModDate": None})
     svg = StringIO()
-    fig.savefig(svg, format="svg", bbox_inches="tight", pad_inches=0.08, metadata={"Date": None})
+    fig.savefig(svg, format="svg", bbox_inches=bounds, pad_inches=0.08, metadata={"Date": None})
     # Matplotlib adds trailing spaces to SVG path lines. Keep tracked exports clean.
-    (destination / f"{name}.svg").write_text("\n".join(line.rstrip() for line in svg.getvalue().splitlines()) + "\n")
+    (output_dir / f"{name}.svg").write_text("\n".join(line.rstrip() for line in svg.getvalue().splitlines()) + "\n")
     plt.close(fig)
 
 
@@ -83,6 +86,39 @@ def outcome_figure():
     save(fig, "astra-high-vs-sol-outcomes")
 
 
+def efficiency_panel(ax):
+    """One data/encoding path for the original and square versions of panel (c)."""
+    label_positions = [(28, 2.68), (27, 3.15), (30, 1.47), (29, 0.40),
+                       (45, 0.65), (25, 0.96), (63, 0.88), (30, 2.12), (4, 1.65)]
+    for run, color, position in zip(RUNS, COLORS, label_positions):
+        count = len(run["passes"])
+        x = run["agent_wall_sec"] / 60 / count
+        y = run["total_cost_usd"] / count
+        ax.scatter(x, y, s=run["total_cost_usd"] * 28, color=color,
+                   edgecolor="black", linewidth=0.9, zorder=3)
+        label = run["label"].replace("DeepSeek V4 ", "DeepSeek V4\n")
+        ax.annotate(f"{label}\n({count}/12)", (x, y), xytext=position,
+                    textcoords="data", ha="left", va="center",
+                    fontsize=8, color=color, weight="bold")
+    ax.set(xlabel="Solve time per passing solution (min)",
+           ylabel="Solver cost per passing solution (USD)",
+           xlim=(0, 80), ylim=(-0.12, 3.85))
+    ax.set_title("(c) Configuration-level resource efficiency", loc="left", fontsize=11)
+    ax.text(0.98, 0.98, "Marker area ∝ total solver cost",
+            transform=ax.transAxes, ha="right", va="top", fontsize=7)
+
+
+def square_efficiency_figure():
+    fig = plt.figure(figsize=(6.4, 6.4))
+    ax = fig.add_axes([0.16, 0.14, 0.80, 0.80])
+    efficiency_panel(ax)
+    ax.set_box_aspect(1)
+    ax.grid(axis="y", alpha=0.25)
+    ax.set_axisbelow(True)
+    save(fig, "astra-high-resource-efficiency-square",
+         output_dir=OUT / "resource-efficiency", square=True)
+
+
 def resource_figure():
     astra = models["astra_high"]
     fig, axes = plt.subplots(1, 3, figsize=(14.8, 4.6),
@@ -108,24 +144,7 @@ def resource_figure():
     for ax in axes[:2]:
         ax.set_xticks(TASKS, [f"{n:02d}" for n in TASKS])
         ax.set_xlabel("Challenge")
-    label_positions = [(28, 2.68), (27, 3.15), (30, 1.47), (29, 0.40),
-                       (45, 0.65), (25, 0.96), (63, 0.88), (30, 2.12), (4, 1.65)]
-    for run, color, position in zip(RUNS, COLORS, label_positions):
-        count = len(run["passes"])
-        x = run["agent_wall_sec"] / 60 / count
-        y = run["total_cost_usd"] / count
-        axes[2].scatter(x, y, s=run["total_cost_usd"] * 28, color=color,
-                        edgecolor="black", linewidth=0.9, zorder=3)
-        label = run["label"].replace("DeepSeek V4 ", "DeepSeek V4\n")
-        axes[2].annotate(f"{label}\n({count}/12)", (x, y), xytext=position,
-                         textcoords="data", ha="left", va="center",
-                         fontsize=8, color=color, weight="bold")
-    axes[2].set(xlabel="Solve time per passing solution (min)",
-                ylabel="Solver cost per passing solution (USD)",
-                xlim=(0, 80), ylim=(-0.12, 3.85))
-    axes[2].set_title("(c) Configuration-level resource efficiency", loc="left", fontsize=11)
-    axes[2].text(0.98, 0.98, "Marker area ∝ total solver cost",
-                  transform=axes[2].transAxes, ha="right", va="top", fontsize=7)
+    efficiency_panel(axes[2])
     for ax in axes:
         ax.grid(axis="y", alpha=0.25)
         ax.set_axisbelow(True)
@@ -139,6 +158,12 @@ def resource_figure():
 
 
 if __name__ == "__main__":
-    outcome_figure()
-    resource_figure()
-    print("Generated two figures with all eight PR #28 campaigns plus Astra (purple); panels a/b unchanged.")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--square-only", action="store_true",
+                        help="Export only square panel (c), leaving all existing figures untouched")
+    args = parser.parse_args()
+    if not args.square_only:
+        outcome_figure()
+        resource_figure()
+    square_efficiency_figure()
+    print("Generated square resource-efficiency panel (c); data, colors and total-cost areas unchanged.")

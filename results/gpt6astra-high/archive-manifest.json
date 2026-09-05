@@ -5,7 +5,7 @@
   "sha256": {
     "Dockerfile.cli": "40f542c0290b12309d367526c3ed44b98399957c4f861417ee7f4d14f43fc68d",
     "METHODS.md": "914788b57746d62ff45d464fa7cb8b53f8a42a04a3dc879ca5c70298e84d6cf2",
-    "README.md": "75c65dae08fd55b9f7f02cd4d8177ff67e79fc059860829aa553df3e72429fe5",
+    "README.md": "d9cee85591fec81adbe56ae56071423f071b9861674e85c33e77bf4b153cd97c",
     "audit-high.config.toml": "14c94e959de2196a10dd0460dcb9dbd3c71bb9d7862d1a0eaed31dc583d31b1f",
     "challenge-01/audit-details.json": "1bdf0668b9018acefd78600789846b96b4120c0b5c794e3489e38c86edfe91ff",
     "challenge-01/audit-details.raw.txt": "60962b3b34c6004551089d29df853ed00b96149c34e216d82e2e0a10dc3e44d9",
@@ -159,9 +159,12 @@
     "figs/astra-high-vs-sol-outcomes.png": "e1c7413954e1be9a79dc70488868fdf0d4e70eec129c13ae42b7acf6074b127c",
     "figs/astra-high-vs-sol-outcomes.svg": "f4355ef9b82585c3fd1fa2fed46daf987bb40340f09a2d9b7462fb42ac0ea79d",
     "inspect_run.py": "371769931c6fcb52f07288e63a0d4c16e50c597a0534e443347df01523c343f7",
-    "make_figures.py": "2f2cef570bfe91ded2dbf087cf5c7b28c75cfa6624bbc70f288f4ecead1459f3",
+    "make_figures.py": "9dc0c85baa71ee34525b2632d1781781c93dd7b355d97f8e86fcf5f508d994ee",
     "protocol.json": "5a29d545c880232a2588d79bd3b3c3b946e3f8a1890534b17dd08a96cb659ecf",
     "public-model-comparison.json": "4950fd4a7c81faa83c2486b910935cee2630b8717920ea68922b0fac99f79217",
+    "resource-efficiency/astra-high-resource-efficiency-square.pdf": "a7f5d87cb0d65ae987660c10bb9c8d1d9ccec7761405f075d479866fd59a3241",
+    "resource-efficiency/astra-high-resource-efficiency-square.png": "f5c133e337139bfe5b53afc83a1fbb78566abd471a897997bab266684440d444",
+    "resource-efficiency/astra-high-resource-efficiency-square.svg": "3a2f4afdd8df2766f098d14863c0463cf26244dafe877ea6880592a31bd23d2f",
     "run_benchmark.py": "07364a10abcee97d04929516f0755832c5db0c2f875c4fb7381d39a99164b975",
     "runtime/README.md": "5ed103495fbc2d475d71f0f09a1d39f2e1ed864c94f96a859509c72039c7801a",
     "runtime/astra_expert_adjustment.json": "9bb0a151992493945422ffdab540b618370eb47c792442024111f0e4c070d0b0",
@@ -174,7 +177,7 @@
     "runtime/verify_runtime.py": "f9dfcb15ecc886534b22f13783c67b9a5a0c4d7ef50c1200d6e6a06d421425fd",
     "submission.json": "93df8e5f1174316e5ddc97932a8c5c2bec563a7f5de6d8ddcbf4632afd2476da",
     "summarize.py": "8c321f2342a12c0af173e962b195b871bad8ef532d7980e29c9a0619c64002f8",
-    "test_verify_archive.py": "71623dda759f7823edaf0ab13937c21ec76de70dc5d7fae91c81537f6e10d5d1",
-    "verify_archive.py": "0a96cba131f744f0aa2f971d3c37e4f7d036ad9b5676553202d3add01a5c38a7"
+    "test_verify_archive.py": "0068516bef839f7488016ceb23da879eebcd7cc6cfb0969b5655f1efbb8c640a",
+    "verify_archive.py": "70b3b30e2972f2015fad47852c5d28e8d3e731f2a4be1ac9aa2f2e0860af802f"
   }
 }

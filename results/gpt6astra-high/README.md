@@ -35,6 +35,12 @@ automatic scores, not equivalent to a completed human review.
 ![Astra per-task solver resources and cost per pass](figs/astra-high-agent-resource-use.png)
 
 Both figures have **PNG, PDF and SVG** versions in [figs/](figs/).
+A standalone square version of resource-efficiency panel (c) is available in
+[PNG](resource-efficiency/astra-high-resource-efficiency-square.png),
+[PDF](resource-efficiency/astra-high-resource-efficiency-square.pdf), and
+[SVG](resource-efficiency/astra-high-resource-efficiency-square.svg).
+It preserves all nine model coordinates, colors, and total-cost bubble areas.
+Rebuild only this version with `python3 results/gpt6astra-high/make_figures.py --square-only`.
 
 ## Artifact runtime relative to the expert reference
 
