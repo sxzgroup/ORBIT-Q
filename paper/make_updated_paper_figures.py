@@ -13,6 +13,7 @@ import math
 from pathlib import Path
 
 import matplotlib as mpl
+mpl.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import LinearSegmentedColormap, Normalize
@@ -56,6 +57,9 @@ COLORS = {
     "luna56_high": "#CC79A7",
     "deepseek_v4_flash_high": "#4D4D4D",
     "grok45_high": "#111111",
+    "deepseek_v4_pro_high": "#007F87",
+    "grok46_high": "#566573",
+    "astra_high": "#7B2CBF",
     "tensorcircuit": "#0072B2",
     "pennylane": "#CC79A7",
     "torchquantum": "#E69F00",
@@ -105,7 +109,7 @@ def save_all(fig: mpl.figure.Figure, stem: str) -> None:
 
 
 def validate_new_slowdowns(agent_rows: list[dict[str, str]]) -> None:
-    """Recompute the Fig. 2b values from final task outcomes and paper refs."""
+    """Check archived fixed-paper ratios; these no longer drive Fig. 2b."""
     refs = {int(r["task"]): num(r, "expert_tc_runtime_sec") for r in read_csv("paper_expert_runtimes.csv")}
     outcomes = read_csv("task_outcomes.csv")
     model_to_agent = {
@@ -115,6 +119,9 @@ def validate_new_slowdowns(agent_rows: list[dict[str, str]]) -> None:
         "gpt56_luna_high": "luna56_high",
         "deepseek_v4_flash_high": "deepseek_v4_flash_high",
         "grok45_high": "grok45_high",
+        "deepseek_v4_pro_high": "deepseek_v4_pro_high",
+        "grok46_high": "grok46_high",
+        "astra_high": "astra_high",
     }
     expected = {r["key"]: num(r, "gm_slowdown") for r in agent_rows if r["series"] == "new"}
     for model, agent_key in model_to_agent.items():
@@ -130,7 +137,7 @@ def validate_new_slowdowns(agent_rows: list[dict[str, str]]) -> None:
 
 def make_fig1c(agent_rows: list[dict[str, str]], framework_rows: list[dict[str, str]]) -> None:
     agents = [r for r in agent_rows if r["include_fig1c"] == "yes"]
-    order = ["gpt55", "opus48", "glm52", "sonnet46", "sol56_high", "sol56_ultra", "terra56_high", "luna56_high", "deepseek_v4_flash_high", "grok45_high"]
+    order = ["gpt55", "opus48", "glm52", "sonnet46", "sol56_high", "sol56_ultra", "terra56_high", "luna56_high", "deepseek_v4_flash_high", "grok45_high", "deepseek_v4_pro_high", "grok46_high", "astra_high"]
     agents = sorted(agents, key=lambda r: order.index(r["key"]))
     frameworks = {r["key"]: r for r in framework_rows}
 
@@ -144,7 +151,7 @@ def make_fig1c(agent_rows: list[dict[str, str]], framework_rows: list[dict[str, 
         "orbit_passes", ["#E9B5AB", "#F3D7A2", "#CFE1C9", "#B8D8D8"]
     )
     norm = Normalize(3, 12)
-    fig, ax = plt.subplots(figsize=(7.75, 2.75))
+    fig, ax = plt.subplots(figsize=(10.2, 2.75))
     ax.set_xlim(-0.85, len(agents))
     ax.set_ylim(4.25, -1.1)
     ax.axis("off")
@@ -173,9 +180,13 @@ def make_fig1c(agent_rows: list[dict[str, str]], framework_rows: list[dict[str, 
         "5.6 Luna",
         "DeepSeek\nV4 Flash",
         "Grok 4.5",
+        "DeepSeek\nV4 Pro",
+        "Grok 4.6",
+        "GPT-6\nAstra",
     ]
     for j, label in enumerate(labels):
-        ax.text(j + 0.50, -0.02, label, ha="center", va="bottom", fontsize=7.7)
+        ax.text(j + 0.50, -0.02, label, ha="center", va="bottom", fontsize=7.7,
+                color=COLORS["astra_high"] if agents[j]["key"] == "astra_high" else "#222222")
 
     ax.text(-0.68, 2.0, "Framework", rotation=90, ha="center", va="center", fontsize=9.5, fontweight="bold", color="#666666")
     ax.set_title("Updated agent–framework benchmarking matrix", loc="left", fontweight="bold", pad=18)
@@ -184,12 +195,18 @@ def make_fig1c(agent_rows: list[dict[str, str]], framework_rows: list[dict[str, 
 
 def make_fig2b(agent_rows: list[dict[str, str]]) -> None:
     rows = [r for r in agent_rows if r["include_fig2b"] == "yes"]
-    fig, ax = plt.subplots(figsize=(3.65, 3.15))
+    paired = read_csv("astra_expert_runtime.csv")
+    paired_ratios = [num(r, "astra_sec") / num(r, "expert_reference_sec")
+                     for r in paired]
+    astra_ratio = math.exp(sum(math.log(v) for v in paired_ratios) / len(paired_ratios))
+    fig, ax = plt.subplots(figsize=(5.3, 4.4))
     clean_axes(ax)
     ax.axhline(1.0, color="#888888", ls=(0, (3, 3)), lw=0.9, zorder=1)
     ax.axvline(0.0, color="#888888", ls=(0, (3, 3)), lw=0.9, zorder=1)
-    ax.scatter([0], [1], marker="D", s=42, facecolor="#D0D0D0", edgecolor="#888888", zorder=4)
-    ax.text(1.3, 1.25, "Expert TC\nreference", fontsize=7.5, color="#777777", ha="left", va="center")
+    # The diamond is the normalization anchor, not a measured failure rate
+    # for the expert (Astra's Task 08 expert run did not complete).
+    ax.scatter([0], [1], marker="D", s=82, facecolor="none", edgecolor="#888888", zorder=2)
+    ax.text(1.3, 1.40, "Expert TC\nreference", fontsize=7.5, color="#777777", ha="left", va="center")
 
     # Preserve the original paper's four agent colors and label positions.
     # Additional configurations use distinct colors in the same axis.
@@ -198,35 +215,42 @@ def make_fig2b(agent_rows: list[dict[str, str]]) -> None:
         "opus48": "#E69F00",
         "sonnet46": "#CC79A7",
         "glm52": "#D55E00",
-        "sol56_high": "#6A3D9A",
+        "sol56_high": "#A65628",
         "sol56_ultra": "#009E73",
         "terra56_high": "#56B4E9",
         "luna56_high": "#8C6D31",
         "deepseek_v4_flash_high": "#4D4D4D",
         "grok45_high": "#111111",
+        "deepseek_v4_pro_high": COLORS["deepseek_v4_pro_high"],
+        "grok46_high": COLORS["grok46_high"],
+        "astra_high": COLORS["astra_high"],
     }
     label_positions = {
-        "gpt55": (20.0, 1.30, "left"),
-        "opus48": (26.8, 3.36, "left"),
+        "gpt55": (18.2, 1.30, "left"),
+        "opus48": (24.0, 3.70, "right"),
         "sonnet46": (47.2, 8.15, "left"),
         "glm52": (57.0, 7.10, "left"),
-        "sol56_high": (15.0, 3.02, "right"),
-        "sol56_ultra": (14.2, 2.00, "right"),
-        "terra56_high": (28.8, 2.48, "left"),
-        "luna56_high": (28.2, 4.70, "left"),
+        "sol56_high": (14.6, 3.00, "right"),
+        "sol56_ultra": (14.2, 2.15, "right"),
+        "terra56_high": (29.5, 2.78, "left"),
+        "luna56_high": (28.2, 5.00, "left"),
         "deepseek_v4_flash_high": (58.3, 4.08, "center"),
         "grok45_high": (36.0, 4.12, "left"),
+        "deepseek_v4_pro_high": (58.3, 2.02, "center"),
+        "grok46_high": (30.0, 2.00, "left"),
+        "astra_high": (3.5, 0.08, "left"),
     }
     for row in rows:
         x = 100.0 * int(row["failures"]) / 12.0
-        y = num(row, "gm_slowdown")
+        y = astra_ratio if row["key"] == "astra_high" else num(row, "gm_slowdown")
         color = fig2_colors[row["key"]]
         ax.scatter(x, y, marker="o", s=34, facecolor=color, edgecolor="#222222", linewidth=0.8, alpha=0.9, zorder=3)
         label_x, label_y, align = label_positions[row["key"]]
+        label = f"{row['short_label']}\n({row['passes']}/12)"
         ax.text(
             label_x,
             label_y,
-            f"{row['short_label']}\n({row['passes']}/12)",
+            label,
             fontsize=7.2,
             fontweight="bold",
             color=color,
@@ -234,10 +258,11 @@ def make_fig2b(agent_rows: list[dict[str, str]]) -> None:
             va="center",
         )
 
-    ax.set_xlim(-2, 72)
-    ax.set_ylim(0.35, 9.2)
+    # Negative limits provide visual padding only; data coordinates are unchanged.
+    ax.set_xlim(-10, 72)
+    ax.set_ylim(-0.6, 9.2)
     ax.set_xticks(np.arange(0, 71, 10))
-    ax.set_yticks([1, 3, 5, 7, 9])
+    ax.set_yticks([0, 1, 3, 5, 7, 9])
     ax.set_xlabel("Failure rate (%)")
     ax.set_ylabel("Runtime / expert TC reference")
     panel_label(ax, "(b)")
@@ -245,8 +270,9 @@ def make_fig2b(agent_rows: list[dict[str, str]]) -> None:
 
 
 def make_fig4(agent_rows: list[dict[str, str]], framework_rows: list[dict[str, str]]) -> None:
-    fig = plt.figure(figsize=(14.0, 8.3))
-    gs = fig.add_gridspec(2, 3, width_ratios=[1.15, 1.15, 1.15], wspace=0.48, hspace=0.42)
+    fig = plt.figure(figsize=(16.0, 9.4))
+    gs = fig.add_gridspec(2, 3, width_ratios=[1.15, 1.15, 1.15],
+                          height_ratios=[1.25, 1], wspace=0.50, hspace=0.42)
     axes = [fig.add_subplot(gs[i, j]) for i in range(2) for j in range(3)]
     axa, axb, axc, axd, axe, axf = axes
 
@@ -280,16 +306,19 @@ def make_fig4(agent_rows: list[dict[str, str]], framework_rows: list[dict[str, s
 
     agent_label_positions = {
         "gpt55": (6.2, 1.98),
-        "gpt55_checklist": (11.0, 1.12),
+        "gpt55_checklist": (9.0, 1.10),
         "opus48": (22.7, 1.82),
         "glm52": (34.0, 2.50),
-        "sonnet46": (29.5, 1.72),
+        "sonnet46": (32.0, 1.72),
         "sol56_high": (11.5, 2.74),
         "sol56_ultra": (6.0, 3.10),
         "terra56_high": (26.5, 1.47),
-        "luna56_high": (30.0, 0.38),
-        "deepseek_v4_flash_high": (46.0, 0.31),
-        "grok45_high": (13.0, 0.72),
+        "luna56_high": (25.5, 0.43),
+        "deepseek_v4_flash_high": (45.0, 0.35),
+        "grok45_high": (17.0, 0.79),
+        "deepseek_v4_pro_high": (60.5, 0.60),
+        "grok46_high": (25.0, 2.30),
+        "astra_high": (0.8, 0.80),
     }
     for row in agent_rows:
         x = num(row, "wall_total_sec") / 60 / int(row["passes"])
@@ -310,7 +339,7 @@ def make_fig4(agent_rows: list[dict[str, str]], framework_rows: list[dict[str, s
             color=color,
             va="center",
         )
-    axc.set_xlim(5, 64)
+    axc.set_xlim(0, 76)
     axc.set_ylim(0, 3.35)
     axc.set_xlabel("Solve time per valid solution (min)")
     axc.set_ylabel("Solver cost per valid solution (USD)")
@@ -418,6 +447,53 @@ def make_expert_optimization() -> None:
     save_all(fig, "expert_optimization_updated_overview")
 
 
+def make_astra_paired() -> None:
+    """Use eleven measured pairs plus the reviewer-approved Task 08 estimate."""
+    rows = read_csv("astra_expert_runtime.csv")
+    tasks = [r["task"] for r in rows]
+    expert = np.array([num(r, "expert_reference_sec") for r in rows])
+    astra = np.array([num(r, "astra_sec") for r in rows])
+    speedups = np.array([num(r, "expert_over_astra") for r in rows])
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(12.2, 5.25),
+                                gridspec_kw={"width_ratios": [1.08, 1.35], "wspace": 0.35})
+    x = np.arange(len(rows))
+    width = 0.38
+    purple = COLORS["astra_high"]
+    ax.bar(x-width/2, expert, width, color="#7A7A7A", edgecolor="#222222",
+           linewidth=0.6, label="Expert reference", zorder=2)
+    ax.bar(x+width/2, astra, width, color=purple, edgecolor="#222222",
+           linewidth=0.6, label="Astra high", zorder=2)
+    ax.set_yscale("log")
+    ax.set_ylim(1, 400)
+    ax.set_xticks(x, tasks)
+    ax.set_xlabel("Challenge")
+    ax.set_ylabel("End-to-end runtime (s, log scale)")
+    ax.legend(frameon=False, loc="upper right")
+    for i, r in enumerate(rows):
+        if np.isnan(expert[i]):
+            ax.text(i-width/2, 1.16, r["expert_status"], color="#7A7A7A",
+                    fontsize=6.8, ha="center", va="bottom", rotation=90)
+    bx.barh(x, speedups, color=purple, edgecolor="#222222", linewidth=0.75, zorder=2)
+    bx.axvline(1, color="#777777", ls=(0,(3,3)), lw=0.9)
+    bx.set_xscale("log")
+    bx.set_xlim(0.1, 35)
+    bx.set_yticks(x, [f"Task {t}" for t in tasks])
+    bx.invert_yaxis()
+    bx.set_xlabel("End-to-end speedup (expert / Astra, ×, log scale)")
+    for i, value in enumerate(speedups):
+        if np.isnan(value):
+            bx.text(1.08, i, f"Expert {rows[i]['expert_status']}", color="#555555", va="center", fontsize=7.2)
+        else:
+            bx.text(value*1.08, i, f"{value:.2f}×", va="center", ha="left", fontsize=7.2, color="#333333")
+    for panel, grid_axis, label in [(ax,"y","(a)"),(bx,"x","(b)")]:
+        clean_axes(panel, grid_axis=grid_axis)
+        panel.set_axisbelow(True)
+        panel_label(panel, label)
+    fig.suptitle("Astra artifact runtime relative to the expert reference",
+                 fontsize=12.5, fontweight="bold", y=0.995)
+    save_all(fig, "astra_expert_paired_runtime")
+
+
 def main() -> None:
     agents = read_csv("paper_agent_axis.csv")
     frameworks = read_csv("paper_framework_axis.csv")
@@ -425,7 +501,9 @@ def main() -> None:
     make_fig1c(agents, frameworks)
     make_fig2b(agents)
     make_fig4(agents, frameworks)
-    make_expert_optimization()
+    make_astra_paired()
+    # The earlier expert-optimization measurements and their figure are unchanged.
+    # Call make_expert_optimization() explicitly to reproduce that archived figure.
 
 
 if __name__ == "__main__":
