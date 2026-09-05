@@ -1,0 +1,15 @@
+key,label,short_label,series,passes,failures,gm_slowdown,wall_total_sec,wall_passed_sec,wall_failed_sec,total_tokens_m,noncache_prompt_m,cache_prompt_m,output_tokens_m,cost_usd,include_fig1c,include_fig2b,source
+gpt55,GPT-5.5,GPT-5.5,paper,10,2,2.197481,7512.3,5116.4,2395.9,14.241691,,,,17.99,yes,yes,arXiv:2607.03105 Tables S2-S3
+gpt55_checklist,GPT-5.5 + checklist,GPT-5.5*,paper,10,2,2.190668,5343.4,3917.8,1425.6,8.205577,,,,13.29,no,no,arXiv:2607.03105 Tables S2-S4
+opus48,Claude Opus-4.8,Opus-4.8,paper,9,3,2.889799,10382.4,8752.1,1630.3,12.203758,,,,17.52,yes,yes,arXiv:2607.03105 Tables S2-S5
+glm52,GLM-5.2,GLM-5.2,paper,6,6,6.616186,13811.1,6834.2,6976.9,21.075177,,,,12.98,yes,yes,arXiv:2607.03105 Tables S2-S6
+sonnet46,Claude Sonnet-4.6,Sonnet-4.6,paper,7,5,7.245877,13644.2,7715.0,5929.2,21.268795,,,,14.55,yes,yes,arXiv:2607.03105 Tables S2-S7
+sol56_high,GPT-5.6 Sol,Sol,new,10,2,2.541474,11861.715963,9220.290130,2641.425833,26.070809,1.709460,24.198656,0.162693,25.527418,yes,yes,ORBIT-Q PR 5 plus final Task 08 adjudication
+sol56_ultra,GPT-5.6 Sol ultra,Sol ultra,new,10,2,2.072336,10967.757000,7892.985000,3074.772000,33.047608,1.312299,31.478016,0.257293,30.019293,yes,yes,ORBIT-Q PR 6 plus final Task 08 adjudication
+terra56_high,GPT-5.6 Terra,Terra,new,9,3,2.701777,12385.907000,9300.564036,3085.342537,36.803664,1.142037,35.454720,0.206907,12.036862,yes,yes,ORBIT-Q PR 20 plus final Task 08 adjudication
+luna56_high,GPT-5.6 Luna,Luna,new,9,3,4.691620,14362.147000,10744.733972,3617.413183,74.852649,1.769004,72.726528,0.357117,2.236872,yes,yes,ORBIT-Q PR 21 plus final Task 08 adjudication
+deepseek_v4_flash_high,DeepSeek V4 Flash,DeepSeek Flash,new,5,7,3.476293,17424.726000,5869.032092,11555.693612,81.584990,0.663753,80.007936,0.913301,0.572672,yes,yes,ORBIT-Q PR 23
+grok45_high,Grok 4.5,Grok 4.5,new,8,4,3.844088,9785.490000,5394.966612,4390.523575,8.462179,0.805236,7.449472,0.207471,5.090140,yes,yes,ORBIT-Q PR 26; normalized repaired compatibility protocol; cost reconstructed from recorded token classes at xAI public list prices
+deepseek_v4_pro_high,DeepSeek V4 Pro,DeepSeek Pro,new,5,7,2.587924,19453.447205,5792.96097,13660.486235,67.18005,0.654636,65.861504,0.66391,1.101116,yes,yes,https://github.com/sxzgroup/ORBIT-Q/pull/27
+grok46_high,Grok 4.6,Grok 4.6,new,9,3,2.190531,11949.916262,7658.766225,4291.150037,29.767008,1.702097,27.575296,0.489615,20.129532,yes,yes,https://github.com/sxzgroup/ORBIT-Q/pull/28
+astra_high,GPT-6 Astra,Astra,new,12,0,0.974148,2683.130984,2683.130984,0,6.834954,0.430094,6.338304,0.066556,13.967044,yes,yes,https://github.com/sxzgroup/ORBIT-Q/pull/29

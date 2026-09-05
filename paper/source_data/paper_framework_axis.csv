@@ -1,0 +1,5 @@
+key,label,short_label,passes,failures,gm_slowdown,wall_total_sec,wall_passed_sec,wall_failed_sec,total_tokens_m,cost_usd,source
+tensorcircuit,TensorCircuit-NG,TC,10,2,2.197481,7512.3,5116.4,2395.9,14.241691,17.99,arXiv:2607.03105 Tables S2-S3
+pennylane,PennyLane,PL,8,4,,9575.7,6482.5,3093.2,16.579728,23.04,arXiv:2607.03105 Tables S2 and S8
+torchquantum,TorchQuantum,TQ,4,8,,8310.5,1929.0,6381.5,20.298642,24.91,arXiv:2607.03105 Tables S2 and S9
+mindquantum,MindQuantum,MQ,4,8,,9762.4,3028.2,6734.2,22.928678,29.03,arXiv:2607.03105 Tables S2 and S10

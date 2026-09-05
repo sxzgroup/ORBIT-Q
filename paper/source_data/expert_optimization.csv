@@ -1,0 +1,13 @@
+task,baseline_sec,optimized_sec,speedup,dominant_factor,dominant_factor_speedup,dominant_factor_context,source_branch,measurement_note
+01,60.651144,6.359807,9.636410,batched closed-form gate construction,3.575,end-to-end factor screen,codex/task-01-final-expert-optimization,six matched local pairs
+02,4.495463,4.031039,1.115649,batched exact purity,1.074,end-to-end factor screen,codex/task-02-final-expert-optimization,six matched local pairs
+03,4.259896,0.870991,4.893978,TensorCircuit K.vmap local conditional maps,2.063,incremental factor screen,codex/task-03-final-expert-optimization,original workload; exact reduction
+04,14.742286,5.672258,2.602133,probe-network K.vmap,2.165,incremental factor screen,codex/task-04-final-expert-optimization,six matched local pairs
+05,115.708000,60.114000,1.939000,OMECo 4x4 path-search budget,1.420,direct fused-circuit ablation,codex/task-05-tc-native-fused,five cold fresh-process triples; mean paired speedup; median 1.668x
+06,41.425900,27.536600,1.504460,TensorCircuit native jaxode,1.529,single-screen dominant factor,codex/task-06-final-expert-optimization,five matched local pairs
+07,140.076441,3.070839,45.757921,classical-ancilla and duplicate-trajectory reduction,45.758,end-to-end factor screen,codex/task-07-classical-ancilla-design-report,six matched local pairs; exact design loophole
+08,126.675000,123.188000,1.045000,bounded mapped sampling batch,1.045,small paired end-to-end gain,codex/task-08-final-expert-optimization,five matched pairs; valid optimized implementation
+09,33.503727,8.766516,3.821725,preconstructed causal cones plus compiled trajectory,3.8217,bundled end-to-end factor,codex/task-09-final-expert-optimization,six matched local pairs
+10,18.931000,3.869000,4.898000,native hyperedge with fixed contraction path,1.626,largest isolated factor,codex/task-10-final-expert-optimization,five paired cold-specialization runs
+11,168.361539,114.968325,1.464430,layer fusion plus diagonal onsite reduction,81.215,isolated onsite-term factor; not end-to-end,codex/task-11-final-expert-optimization,six matched local pairs
+12,9.082742,2.320613,3.914003,batched fixed-order Pade SU4 construction,3.109,isolated gate-build/gradient kernel,codex/task-12-final-expert-optimization,six matched local pairs

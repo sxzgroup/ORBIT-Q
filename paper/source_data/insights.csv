@@ -1,0 +1,7 @@
+task,insight,loophole_or_design_finding,primary_factor,measured_effect
+03,Post-selection after every brickwork layer leaves six independent one-qubit survivors,exact product-state reduction in original task,product reduction,4.894x end to end
+07,Measured ancillas form an analytically sampled classical controller with only two unique branches,exact classical-ancilla/trajectory reduction in published task,branch and trajectory merging,45.758x end to end
+10,The advantage is cold specialization and fixed contraction planning rather than MPO gate arithmetic,hyperedge path search and graph preprocessing dominate; fixed-path hyperedge versus MPO is 1.011x,native hyperedge with fixed path,4.898x end to end
+05,Keep the quantum process TensorCircuit-native and give OMECo enough search budget to avoid bad contraction paths,gate fusion alone is unresolved; OMECo 4x4 is the dominant measured factor,OMECo path-search budget,1.939x mean paired end to end
+09,Explicit causal-cone pruning plus compact TensorCircuit graphs removes irrelevant global work,not a loophole; framework-native local contraction,causal cones and compiled trajectory,3.822x end to end
+12,Batched fixed-order Pade construction shrinks the differentiated gate-build graph,not a loophole; fixed-order static kernel,batched SU4 construction,3.914x end to end
