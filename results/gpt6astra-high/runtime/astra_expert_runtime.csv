@@ -1,0 +1,13 @@
+task,expert_reference_sec,astra_sec,astra_over_expert,expert_over_astra,expert_reference_basis,source
+01,58.59,13.68,0.2334869431643625,4.282894736842105,measured,https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549123804
+02,4.15,9.84,2.3710843373493975,0.42174796747967486,measured,https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549123804
+03,3.82,5.1,1.3350785340314135,0.7490196078431373,measured,https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549123804
+04,13.13,2.33,0.17745620715917745,5.635193133047211,measured,https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549123804
+05,91.87,5.26,0.05725481658865788,17.46577946768061,measured,https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549123804
+06,44.26,104.66,2.3646633529145955,0.422893177909421,measured,https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549123804
+07,147.46,21.22,0.1439034314390343,6.949104618284638,measured,https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549123804
+08,50,16.31,0.3262,3.065603923973023,estimated,https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549266776
+09,23.64,8.63,0.3650592216582065,2.73928157589803,measured,https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549123804
+10,21.51,105.57,4.907949790794978,0.20375106564364878,measured,https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549123804
+11,171.11,143.04,0.8359534802174039,1.1962388143176736,measured,https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549123804
+12,10.57,5.17,0.489120151371807,2.044487427466151,measured,https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549123804

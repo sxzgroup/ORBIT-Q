@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-09-04T19:55:42.286518+00:00",
+  "id": "7d63caf886c5365f9b3239c210788c46f4c07c546baada335d7c1a9795f0a86a",
+  "name": "challenge-08__eg5trdj__verifier__trial-main-1",
+  "image": "sha256:ce64a50ab90eaee930d981b7397903bc4baca54f32b8c88f5fa6ad2c40b9f5d7",
+  "mounts": [
+    {
+      "Type": "bind",
+      "Source": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/gpt6astra-high-clean-20260905/challenge-08-tensorcircuit-gpt-6-astra-high-clean-r1/challenge-08__Eg5tRdj/verifier",
+      "Destination": "/logs/verifier",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": "rprivate"
+    }
+  ],
+  "nano_cpus": 6000000000,
+  "memory_bytes": 10737418240,
+  "started_at": "2026-09-04T19:55:36.723819774Z"
+}

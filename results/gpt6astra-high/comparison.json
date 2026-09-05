@@ -1,0 +1,834 @@
+{
+  "base_commit": "0201238ec2983907e2891f5319f5fff2d00844d5",
+  "models": {
+    "sol_high": {
+      "commit": "a395c1cd0444630f2244fb89e3bcecde667e3372",
+      "source": "results/gpt56sol-high",
+      "label": "GPT-5.6 Sol high",
+      "model": "gpt-5.6-sol",
+      "effort": "high",
+      "tasks": [
+        {
+          "task": 1,
+          "raw_reward": 0.0,
+          "final_valid": false,
+          "runtime_sec": 107.51,
+          "agent_wall_sec": 1800.363832,
+          "total_tokens": 6087474,
+          "input_tokens": 6056004,
+          "output_tokens": 31470,
+          "cache_tokens": 5907712,
+          "cost_usd": 4.639416
+        },
+        {
+          "task": 2,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 10.65,
+          "agent_wall_sec": 708.101399,
+          "total_tokens": 1267640,
+          "input_tokens": 1255226,
+          "output_tokens": 12414,
+          "cache_tokens": 1124864,
+          "cost_usd": 1.586662
+        },
+        {
+          "task": 3,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 9.84,
+          "agent_wall_sec": 458.103691,
+          "total_tokens": 587629,
+          "input_tokens": 579158,
+          "output_tokens": 8471,
+          "cache_tokens": 469760,
+          "cost_usd": 1.036
+        },
+        {
+          "task": 4,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 14.14,
+          "agent_wall_sec": 337.963382,
+          "total_tokens": 570720,
+          "input_tokens": 564252,
+          "output_tokens": 6468,
+          "cache_tokens": 488448,
+          "cost_usd": 0.817284
+        },
+        {
+          "task": 5,
+          "raw_reward": 0.0,
+          "final_valid": true,
+          "runtime_sec": 124.92,
+          "agent_wall_sec": 605.841533,
+          "total_tokens": 1591985,
+          "input_tokens": 1583872,
+          "output_tokens": 8113,
+          "cache_tokens": 1401344,
+          "cost_usd": 1.856702
+        },
+        {
+          "task": 6,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 23.39,
+          "agent_wall_sec": 1800.340606,
+          "total_tokens": 4812934,
+          "input_tokens": 4792628,
+          "output_tokens": 20306,
+          "cache_tokens": 4598528,
+          "cost_usd": 3.878944
+        },
+        {
+          "task": 7,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 155.52,
+          "agent_wall_sec": 1532.745071,
+          "total_tokens": 3413721,
+          "input_tokens": 3396049,
+          "output_tokens": 17672,
+          "cache_tokens": 3255040,
+          "cost_usd": 2.862725
+        },
+        {
+          "task": 8,
+          "raw_reward": 0.0,
+          "final_valid": false,
+          "runtime_sec": 55.48,
+          "agent_wall_sec": 841.062001,
+          "total_tokens": 2198510,
+          "input_tokens": 2185300,
+          "output_tokens": 13210,
+          "cache_tokens": 2046720,
+          "cost_usd": 2.11256
+        },
+        {
+          "task": 9,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 87.31,
+          "agent_wall_sec": 1062.152141,
+          "total_tokens": 650416,
+          "input_tokens": 642099,
+          "output_tokens": 8317,
+          "cache_tokens": 582656,
+          "cost_usd": 0.838053
+        },
+        {
+          "task": 10,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 68.68,
+          "agent_wall_sec": 1220.710903,
+          "total_tokens": 1026451,
+          "input_tokens": 1017231,
+          "output_tokens": 9220,
+          "cache_tokens": 843520,
+          "cost_usd": 1.566915
+        },
+        {
+          "task": 11,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 100.41,
+          "agent_wall_sec": 991.511818,
+          "total_tokens": 2887083,
+          "input_tokens": 2870375,
+          "output_tokens": 16708,
+          "cache_tokens": 2684160,
+          "cost_usd": 2.774395
+        },
+        {
+          "task": 12,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 12.85,
+          "agent_wall_sec": 502.819586,
+          "total_tokens": 976246,
+          "input_tokens": 965922,
+          "output_tokens": 10324,
+          "cache_tokens": 795904,
+          "cost_usd": 1.557762
+        }
+      ],
+      "raw_passes": 9,
+      "final_passes": 10,
+      "agent_wall_sec": 11861.715963,
+      "input_tokens": 25908116,
+      "cache_tokens": 24198656,
+      "output_tokens": 162693,
+      "total_tokens": 26070809,
+      "cost_usd": 25.527418
+    },
+    "sol_ultra": {
+      "commit": "552481c7d133c1bc48e7b0e379cab8fcfaf3851b",
+      "source": "results/gpt56sol-ultra",
+      "label": "GPT-5.6 Sol ultra",
+      "model": "gpt-5.6-sol",
+      "effort": "ultra",
+      "tasks": [
+        {
+          "task": 1,
+          "raw_reward": 0.0,
+          "final_valid": false,
+          "runtime_sec": 127.87,
+          "agent_wall_sec": 1800.387,
+          "total_tokens": 5056363,
+          "input_tokens": 5023975,
+          "output_tokens": 32388,
+          "cache_tokens": 4884480,
+          "cost_usd": 4.111355
+        },
+        {
+          "task": 2,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 14.32,
+          "agent_wall_sec": 788.518,
+          "total_tokens": 2474435,
+          "input_tokens": 2456982,
+          "output_tokens": 17453,
+          "cache_tokens": 2352896,
+          "cost_usd": 2.220468
+        },
+        {
+          "task": 3,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 18.45,
+          "agent_wall_sec": 563.353,
+          "total_tokens": 1912695,
+          "input_tokens": 1897551,
+          "output_tokens": 15144,
+          "cache_tokens": 1801216,
+          "cost_usd": 1.836603
+        },
+        {
+          "task": 4,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 4.96,
+          "agent_wall_sec": 361.059,
+          "total_tokens": 1280944,
+          "input_tokens": 1270011,
+          "output_tokens": 10933,
+          "cache_tokens": 1168640,
+          "cost_usd": 1.419165
+        },
+        {
+          "task": 5,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 75.51,
+          "agent_wall_sec": 704.971,
+          "total_tokens": 2344646,
+          "input_tokens": 2330547,
+          "output_tokens": 14099,
+          "cache_tokens": 2227712,
+          "cost_usd": 2.051001
+        },
+        {
+          "task": 6,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 152.16,
+          "agent_wall_sec": 1262.24,
+          "total_tokens": 2536740,
+          "input_tokens": 2515791,
+          "output_tokens": 20949,
+          "cache_tokens": 2420480,
+          "cost_usd": 2.315265
+        },
+        {
+          "task": 7,
+          "raw_reward": 0.0,
+          "final_valid": true,
+          "runtime_sec": 84.99,
+          "agent_wall_sec": 1424.895,
+          "total_tokens": 3753525,
+          "input_tokens": 3722975,
+          "output_tokens": 30550,
+          "cache_tokens": 3597056,
+          "cost_usd": 3.344623
+        },
+        {
+          "task": 8,
+          "raw_reward": 1.0,
+          "final_valid": false,
+          "runtime_sec": 60.94,
+          "agent_wall_sec": 1274.385,
+          "total_tokens": 3687880,
+          "input_tokens": 3650913,
+          "output_tokens": 36967,
+          "cache_tokens": 3521280,
+          "cost_usd": 3.517815
+        },
+        {
+          "task": 9,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 7.18,
+          "agent_wall_sec": 623.51,
+          "total_tokens": 1784001,
+          "input_tokens": 1765946,
+          "output_tokens": 18055,
+          "cache_tokens": 1675008,
+          "cost_usd": 1.8338439999999998
+        },
+        {
+          "task": 10,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 71.27,
+          "agent_wall_sec": 506.032,
+          "total_tokens": 1753226,
+          "input_tokens": 1739475,
+          "output_tokens": 13751,
+          "cache_tokens": 1655552,
+          "cost_usd": 1.659921
+        },
+        {
+          "task": 11,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 120.07,
+          "agent_wall_sec": 1204.31,
+          "total_tokens": 5036593,
+          "input_tokens": 5005515,
+          "output_tokens": 31078,
+          "cache_tokens": 4855808,
+          "cost_usd": 4.108779
+        },
+        {
+          "task": 12,
+          "raw_reward": 1.0,
+          "final_valid": true,
+          "runtime_sec": 8.61,
+          "agent_wall_sec": 454.097,
+          "total_tokens": 1426560,
+          "input_tokens": 1410634,
+          "output_tokens": 15926,
+          "cache_tokens": 1317888,
+          "cost_usd": 1.600454
+        }
+      ],
+      "raw_passes": 10,
+      "final_passes": 10,
+      "agent_wall_sec": 10967.757,
+      "input_tokens": 32790315,
+      "cache_tokens": 31478016,
+      "output_tokens": 257293,
+      "total_tokens": 33047608,
+      "cost_usd": 30.019292999999998
+    },
+    "astra_high": {
+      "label": "GPT-6 Astra high",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "tasks": [
+        {
+          "task": 1,
+          "raw_reward": 1.0,
+          "functional_score": 1.0,
+          "static_policy_score": 1.0,
+          "llm_audit_score": 1.0,
+          "runtime_sec": 13.5,
+          "agent_wall_sec": 482.912465,
+          "input_tokens": 1002736,
+          "cache_tokens": 959232,
+          "output_tokens": 12956,
+          "cost_usd": 2.042072,
+          "candidate_sha256": "f338dba565415fd2b51e09e41a1c577ebd8a91943169072eabde852c5edbf713",
+          "agent_info": {
+            "name": "codex",
+            "version": "0.153.3",
+            "model_info": {
+              "name": "gpt-6-astra",
+              "provider": null
+            }
+          },
+          "exception_type": null,
+          "timing": {
+            "agent_execution": {
+              "started_at": "2026-09-04T19:13:28.004675Z",
+              "finished_at": "2026-09-04T19:21:30.917140Z"
+            },
+            "verifier": {
+              "started_at": "2026-09-04T19:21:44.972753Z",
+              "finished_at": "2026-09-04T19:22:49.780314Z"
+            }
+          },
+          "total_tokens": 1015692,
+          "non_cache_input_tokens": 43504
+        },
+        {
+          "task": 2,
+          "raw_reward": 1.0,
+          "functional_score": 1.0,
+          "static_policy_score": 1.0,
+          "llm_audit_score": 1.0,
+          "runtime_sec": 9.93,
+          "agent_wall_sec": 155.935848,
+          "input_tokens": 324595,
+          "cache_tokens": 298624,
+          "output_tokens": 3837,
+          "cost_usd": 0.750184,
+          "candidate_sha256": "3df7ac70f5f66fcb98376441edb897dc4187e1fd6eb64ad1ef83d0e69c392e8f",
+          "agent_info": {
+            "name": "codex",
+            "version": "0.153.3",
+            "model_info": {
+              "name": "gpt-6-astra",
+              "provider": null
+            }
+          },
+          "exception_type": null,
+          "timing": {
+            "agent_execution": {
+              "started_at": "2026-09-04T19:22:52.455276Z",
+              "finished_at": "2026-09-04T19:25:28.391124Z"
+            },
+            "verifier": {
+              "started_at": "2026-09-04T19:25:41.768532Z",
+              "finished_at": "2026-09-04T19:26:29.055178Z"
+            }
+          },
+          "total_tokens": 328432,
+          "non_cache_input_tokens": 25971
+        },
+        {
+          "task": 3,
+          "raw_reward": 1.0,
+          "functional_score": 1.0,
+          "static_policy_score": 1.0,
+          "llm_audit_score": 1.0,
+          "runtime_sec": 6.13,
+          "agent_wall_sec": 149.740855,
+          "input_tokens": 213416,
+          "cache_tokens": 189056,
+          "output_tokens": 4120,
+          "cost_usd": 0.6386560000000001,
+          "candidate_sha256": "30e180918713dddee615cc48fa4ab0740c9361b014707aac52b8afde8106754c",
+          "agent_info": {
+            "name": "codex",
+            "version": "0.153.3",
+            "model_info": {
+              "name": "gpt-6-astra",
+              "provider": null
+            }
+          },
+          "exception_type": null,
+          "timing": {
+            "agent_execution": {
+              "started_at": "2026-09-04T19:26:31.435771Z",
+              "finished_at": "2026-09-04T19:29:01.176626Z"
+            },
+            "verifier": {
+              "started_at": "2026-09-04T19:29:14.723900Z",
+              "finished_at": "2026-09-04T19:29:57.387076Z"
+            }
+          },
+          "total_tokens": 217536,
+          "non_cache_input_tokens": 24360
+        },
+        {
+          "task": 4,
+          "raw_reward": 1.0,
+          "functional_score": 1.0,
+          "static_policy_score": 1.0,
+          "llm_audit_score": 1.0,
+          "runtime_sec": 2.66,
+          "agent_wall_sec": 143.797886,
+          "input_tokens": 342849,
+          "cache_tokens": 317312,
+          "output_tokens": 3826,
+          "cost_usd": 0.763982,
+          "candidate_sha256": "7056af7215163f2dd4e8ace881fc5083427a05d224d5b24a18f982756a76c1b8",
+          "agent_info": {
+            "name": "codex",
+            "version": "0.153.3",
+            "model_info": {
+              "name": "gpt-6-astra",
+              "provider": null
+            }
+          },
+          "exception_type": null,
+          "timing": {
+            "agent_execution": {
+              "started_at": "2026-09-04T19:29:59.889065Z",
+              "finished_at": "2026-09-04T19:32:23.686951Z"
+            },
+            "verifier": {
+              "started_at": "2026-09-04T19:32:37.201749Z",
+              "finished_at": "2026-09-04T19:33:15.246635Z"
+            }
+          },
+          "total_tokens": 346675,
+          "non_cache_input_tokens": 25537
+        },
+        {
+          "task": 5,
+          "raw_reward": 1.0,
+          "functional_score": 1.0,
+          "static_policy_score": 1.0,
+          "llm_audit_score": 1.0,
+          "runtime_sec": 9.62,
+          "agent_wall_sec": 175.179708,
+          "input_tokens": 482861,
+          "cache_tokens": 449920,
+          "output_tokens": 4424,
+          "cost_usd": 1.0005300000000001,
+          "candidate_sha256": "07e56dd27bca64cc7498259109395924489b8fbfe89851a52de72c58e9d7eb7d",
+          "agent_info": {
+            "name": "codex",
+            "version": "0.153.3",
+            "model_info": {
+              "name": "gpt-6-astra",
+              "provider": null
+            }
+          },
+          "exception_type": null,
+          "timing": {
+            "agent_execution": {
+              "started_at": "2026-09-04T19:33:17.889397Z",
+              "finished_at": "2026-09-04T19:36:13.069105Z"
+            },
+            "verifier": {
+              "started_at": "2026-09-04T19:36:26.941347Z",
+              "finished_at": "2026-09-04T19:37:15.797948Z"
+            }
+          },
+          "total_tokens": 487285,
+          "non_cache_input_tokens": 32941
+        },
+        {
+          "task": 6,
+          "raw_reward": 1.0,
+          "functional_score": 1.0,
+          "static_policy_score": 1.0,
+          "llm_audit_score": 1.0,
+          "runtime_sec": 108.47,
+          "agent_wall_sec": 221.083834,
+          "input_tokens": 692897,
+          "cache_tokens": 648320,
+          "output_tokens": 4174,
+          "cost_usd": 1.30279,
+          "candidate_sha256": "f2a4a7c8d49babb2815a1c3f03f2ec70bf69cc971f17e0ff92abbc8d282072db",
+          "agent_info": {
+            "name": "codex",
+            "version": "0.153.3",
+            "model_info": {
+              "name": "gpt-6-astra",
+              "provider": null
+            }
+          },
+          "exception_type": null,
+          "timing": {
+            "agent_execution": {
+              "started_at": "2026-09-04T19:37:19.140601Z",
+              "finished_at": "2026-09-04T19:41:00.224435Z"
+            },
+            "verifier": {
+              "started_at": "2026-09-04T19:41:13.744692Z",
+              "finished_at": "2026-09-04T19:43:39.113810Z"
+            }
+          },
+          "total_tokens": 697071,
+          "non_cache_input_tokens": 44577
+        },
+        {
+          "task": 7,
+          "raw_reward": 1.0,
+          "functional_score": 1.0,
+          "static_policy_score": 1.0,
+          "llm_audit_score": 1.0,
+          "runtime_sec": 22.93,
+          "agent_wall_sec": 347.909045,
+          "input_tokens": 1118515,
+          "cache_tokens": 1065728,
+          "output_tokens": 8682,
+          "cost_usd": 2.027698,
+          "candidate_sha256": "c77546fd874382499edaf3065864d7e3b6e1560f5492fff5871b01429af8cfe5",
+          "agent_info": {
+            "name": "codex",
+            "version": "0.153.3",
+            "model_info": {
+              "name": "gpt-6-astra",
+              "provider": null
+            }
+          },
+          "exception_type": null,
+          "timing": {
+            "agent_execution": {
+              "started_at": "2026-09-04T19:43:41.714741Z",
+              "finished_at": "2026-09-04T19:49:29.623786Z"
+            },
+            "verifier": {
+              "started_at": "2026-09-04T19:49:43.249924Z",
+              "finished_at": "2026-09-04T19:51:04.961756Z"
+            }
+          },
+          "total_tokens": 1127197,
+          "non_cache_input_tokens": 52787
+        },
+        {
+          "task": 8,
+          "raw_reward": 1.0,
+          "functional_score": 1.0,
+          "static_policy_score": 1.0,
+          "llm_audit_score": 1.0,
+          "runtime_sec": 16.36,
+          "agent_wall_sec": 255.345866,
+          "input_tokens": 670097,
+          "cache_tokens": 627072,
+          "output_tokens": 6625,
+          "cost_usd": 1.3885720000000001,
+          "candidate_sha256": "5731b266010b0847a1df8c056a8bd1cb11a140265305fb976a85d616c70d860f",
+          "agent_info": {
+            "name": "codex",
+            "version": "0.153.3",
+            "model_info": {
+              "name": "gpt-6-astra",
+              "provider": null
+            }
+          },
+          "exception_type": null,
+          "timing": {
+            "agent_execution": {
+              "started_at": "2026-09-04T19:51:07.597583Z",
+              "finished_at": "2026-09-04T19:55:22.943449Z"
+            },
+            "verifier": {
+              "started_at": "2026-09-04T19:55:36.386866Z",
+              "finished_at": "2026-09-04T19:56:31.790251Z"
+            }
+          },
+          "total_tokens": 676722,
+          "non_cache_input_tokens": 43025
+        },
+        {
+          "task": 9,
+          "raw_reward": 1.0,
+          "functional_score": 1.0,
+          "static_policy_score": 1.0,
+          "llm_audit_score": 1.0,
+          "runtime_sec": 8.77,
+          "agent_wall_sec": 211.388948,
+          "input_tokens": 579602,
+          "cache_tokens": 548736,
+          "output_tokens": 5188,
+          "cost_usd": 1.1167960000000001,
+          "candidate_sha256": "9288c3b1dfba9226a0a2a832e7da5236751eeee857fdcba82d6a695870b82ec0",
+          "agent_info": {
+            "name": "codex",
+            "version": "0.153.3",
+            "model_info": {
+              "name": "gpt-6-astra",
+              "provider": null
+            }
+          },
+          "exception_type": null,
+          "timing": {
+            "agent_execution": {
+              "started_at": "2026-09-04T19:56:34.407089Z",
+              "finished_at": "2026-09-04T20:00:05.796037Z"
+            },
+            "verifier": {
+              "started_at": "2026-09-04T20:00:19.153490Z",
+              "finished_at": "2026-09-04T20:01:02.017442Z"
+            }
+          },
+          "total_tokens": 584790,
+          "non_cache_input_tokens": 30866
+        },
+        {
+          "task": 10,
+          "raw_reward": 1.0,
+          "functional_score": 1.0,
+          "static_policy_score": 1.0,
+          "llm_audit_score": 1.0,
+          "runtime_sec": 69.88,
+          "agent_wall_sec": 175.292938,
+          "input_tokens": 522941,
+          "cache_tokens": 492032,
+          "output_tokens": 3897,
+          "cost_usd": 0.9959720000000001,
+          "candidate_sha256": "3bb2557e7d67644cf0200f80fd9d7e8ecfb48140f908eca455d791046f92a619",
+          "agent_info": {
+            "name": "codex",
+            "version": "0.153.3",
+            "model_info": {
+              "name": "gpt-6-astra",
+              "provider": null
+            }
+          },
+          "exception_type": null,
+          "timing": {
+            "agent_execution": {
+              "started_at": "2026-09-04T20:01:04.379748Z",
+              "finished_at": "2026-09-04T20:03:59.672686Z"
+            },
+            "verifier": {
+              "started_at": "2026-09-04T20:04:13.004525Z",
+              "finished_at": "2026-09-04T20:06:47.687363Z"
+            }
+          },
+          "total_tokens": 526838,
+          "non_cache_input_tokens": 30909
+        },
+        {
+          "task": 11,
+          "raw_reward": 1.0,
+          "functional_score": 1.0,
+          "static_policy_score": 1.0,
+          "llm_audit_score": 1.0,
+          "runtime_sec": 102.1,
+          "agent_wall_sec": 235.330635,
+          "input_tokens": 567128,
+          "cache_tokens": 526336,
+          "output_tokens": 5442,
+          "cost_usd": 1.206356,
+          "candidate_sha256": "8ddfc364644ecc39aaee21184540b45aa41a1adfb1d9aa54ea912d69235a13fa",
+          "agent_info": {
+            "name": "codex",
+            "version": "0.153.3",
+            "model_info": {
+              "name": "gpt-6-astra",
+              "provider": null
+            }
+          },
+          "exception_type": null,
+          "timing": {
+            "agent_execution": {
+              "started_at": "2026-09-04T20:06:50.195795Z",
+              "finished_at": "2026-09-04T20:10:45.526430Z"
+            },
+            "verifier": {
+              "started_at": "2026-09-04T20:10:58.975137Z",
+              "finished_at": "2026-09-04T20:13:31.639451Z"
+            }
+          },
+          "total_tokens": 572570,
+          "non_cache_input_tokens": 40792
+        },
+        {
+          "task": 12,
+          "raw_reward": 1.0,
+          "functional_score": 1.0,
+          "static_policy_score": 1.0,
+          "llm_audit_score": 1.0,
+          "runtime_sec": 4.31,
+          "agent_wall_sec": 129.212956,
+          "input_tokens": 250761,
+          "cache_tokens": 215936,
+          "output_tokens": 3385,
+          "cost_usd": 0.733436,
+          "candidate_sha256": "83fefe8596e0cb65b9fca94794fa8d3a342081c4023c522b8d6707a0ae623033",
+          "agent_info": {
+            "name": "codex",
+            "version": "0.153.3",
+            "model_info": {
+              "name": "gpt-6-astra",
+              "provider": null
+            }
+          },
+          "exception_type": null,
+          "timing": {
+            "agent_execution": {
+              "started_at": "2026-09-04T20:13:34.053718Z",
+              "finished_at": "2026-09-04T20:15:43.266674Z"
+            },
+            "verifier": {
+              "started_at": "2026-09-04T20:15:56.683074Z",
+              "finished_at": "2026-09-04T20:16:37.840265Z"
+            }
+          },
+          "total_tokens": 254146,
+          "non_cache_input_tokens": 34825
+        }
+      ],
+      "completed_tasks": 12,
+      "raw_passes": 12,
+      "final_passes": null,
+      "result_basis": "Unmodified automatic Harbor verifier; no human adjudication applied",
+      "agent_wall_sec": 2683.130984,
+      "input_tokens": 6768398,
+      "output_tokens": 66556,
+      "cache_tokens": 6338304,
+      "total_tokens": 6834954,
+      "cost_usd": 13.967044000000001
+    }
+  },
+  "audit_model": "gpt-5.6-sol",
+  "audit_effort": "high",
+  "comparison_notes": [
+    "Astra high vs Sol high changes solver model and necessarily solver CLI; it does not isolate effort.",
+    "Sol high vs Sol ultra is the existing same-model effort comparison.",
+    "Final adjudicated historical validity is separate from original automatic verifier reward.",
+    "One trial per task and configuration; runtime differences are descriptive, not statistical estimates.",
+    "Null cost means unavailable, not free. Tokens include cache reads."
+  ],
+  "same_model_effort_comparison": {
+    "model": "gpt-5.6-sol",
+    "from_effort": "high",
+    "to_effort": "ultra",
+    "final_pass_change": 0,
+    "same_final_pass_set": true,
+    "common_final_passing_tasks": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12
+    ],
+    "artifact_runtime_geomean_ratio": 0.8154072713137435,
+    "agent_wall_sec_relative_change": -0.0753650623390838,
+    "total_tokens_relative_change": 0.2676096088924591,
+    "cost_usd_relative_change": 0.17596276286148482
+  },
+  "descriptive_comparisons": {
+    "sol_high": {
+      "common_passing_tasks": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12
+      ],
+      "runtime_geomean_ratio": 0.42679750294494634,
+      "agent_wall_sec_relative_change": -0.7737990867114477,
+      "total_tokens_relative_change": -0.7378311505408213,
+      "cost_usd_relative_change": -0.45286107666666475
+    },
+    "sol_ultra": {
+      "common_passing_tasks": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12
+      ],
+      "runtime_geomean_ratio": 0.5234163564145209,
+      "agent_wall_sec_relative_change": -0.7553619227705355,
+      "total_tokens_relative_change": -0.7931785562210736,
+      "cost_usd_relative_change": -0.5347310811084058
+    }
+  }
+}

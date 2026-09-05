@@ -1,0 +1,35 @@
+{
+  "task": 10,
+  "raw_reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 69.88,
+  "agent_wall_sec": 175.292938,
+  "input_tokens": 522941,
+  "cache_tokens": 492032,
+  "output_tokens": 3897,
+  "cost_usd": 0.9959720000000001,
+  "candidate_sha256": "3bb2557e7d67644cf0200f80fd9d7e8ecfb48140f908eca455d791046f92a619",
+  "agent_info": {
+    "name": "codex",
+    "version": "0.153.3",
+    "model_info": {
+      "name": "gpt-6-astra",
+      "provider": null
+    }
+  },
+  "exception_type": null,
+  "timing": {
+    "agent_execution": {
+      "started_at": "2026-09-04T20:01:04.379748Z",
+      "finished_at": "2026-09-04T20:03:59.672686Z"
+    },
+    "verifier": {
+      "started_at": "2026-09-04T20:04:13.004525Z",
+      "finished_at": "2026-09-04T20:06:47.687363Z"
+    }
+  },
+  "total_tokens": 526838,
+  "non_cache_input_tokens": 30909
+}

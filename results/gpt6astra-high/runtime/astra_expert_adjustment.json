@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-05",
+  "measured_source": "astra_expert_paired.csv",
+  "measured_source_sha256": "9d151a187c4b73e08c95ced4cfcbaae29afcd34bffdddecb376537710cd34e48",
+  "runtime_table": "astra_expert_runtime.csv",
+  "task08": {
+    "expert_reference_sec": 50,
+    "basis": "estimated",
+    "source": "https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549266776",
+    "published_reference_sec": 25.05,
+    "reviewer_scale_factor": 2,
+    "reviewer_proposed_sec": 50.1,
+    "rounding": "Nearest whole second (50 s), as approved for this figure update.",
+    "original_expert_status": "OOM",
+    "astra_sec": 16.31
+  },
+  "summary": {
+    "task_count": 12,
+    "measured_pair_count": 11,
+    "estimated_reference_count": 1,
+    "geometric_mean_ratio": 0.539697529957958,
+    "geometric_mean_speedup": 1.8528897104233535,
+    "expert_sum_sec": 640.11,
+    "astra_sum_sec": 440.81,
+    "ratio_of_sums": 0.6886472637515427,
+    "astra_faster_tasks": [
+      1,
+      4,
+      5,
+      7,
+      8,
+      9,
+      11,
+      12
+    ]
+  }
+}

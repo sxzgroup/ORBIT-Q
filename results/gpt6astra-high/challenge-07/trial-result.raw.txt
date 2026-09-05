@@ -1,0 +1,161 @@
+{
+    "id": "8173270c-2483-4608-9fdf-6dad76446982",
+    "task_name": "challenge-07",
+    "trial_name": "challenge-07__9nC9Erq",
+    "trial_uri": "file:///Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/gpt6astra-high-clean-20260905/challenge-07-tensorcircuit-gpt-6-astra-high-clean-r1/challenge-07__9nC9Erq",
+    "task_id": {
+        "path": "/private/tmp/orbitq-gpt6-astra-high-20260905.PZx2B6/.tmp/astra-high-20260905/challenge-07"
+    },
+    "source": null,
+    "task_checksum": "f4cf2be4cea84deb7623a51ee59bcada3baecfcfa7468cc0779f2c8139ba1d45",
+    "config": {
+        "task": {
+            "path": "/private/tmp/orbitq-gpt6-astra-high-20260905.PZx2B6/.tmp/astra-high-20260905/challenge-07",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "challenge-07__9nC9Erq",
+        "trials_dir": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/gpt6astra-high-clean-20260905/challenge-07-tensorcircuit-gpt-6-astra-high-clean-r1",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": null,
+            "import_path": "harbor.agents.installed.codex:Codex",
+            "model_name": "gpt-6-astra",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "reasoning_effort": "high"
+            },
+            "env": {
+                "CODEX_FORCE_AUTH_JSON": "${CODEX_FORCE_AUTH_JSON}",
+                "HTTP_PROXY": "http://192.168.5.2:7891",
+                "HTTPS_PROXY": "http://192.168.5.2:7891",
+                "NO_PROXY": "localhost,127.0.0.1"
+            },
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": null,
+            "import_path": "adapters.framework_docker:FrameworkDockerEnvironment",
+            "force_build": false,
+            "delete": [REDACTED],
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {
+                "framework": "tensorcircuit",
+                "docker_image": "challenge-benchmark-quantum-tensorcircuit:astra-cli01533-audit01450"
+            },
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {
+                "REQUIRED_QUANTUM_FRAMEWORK": "tensorcircuit",
+                "PATH": "/usr/local/bin:/usr/bin:/bin",
+                "HTTP_PROXY": "http://192.168.5.2:7891",
+                "HTTPS_PROXY": "http://192.168.5.2:7891",
+                "NO_PROXY": "localhost,127.0.0.1"
+            },
+            "import_path": "adapters.codex_para_verifier:CodexParaVerifier",
+            "kwargs": {
+                "audit_model": "gpt-5.6-sol",
+                "force_auth_json": [REDACTED],
+                "profile_config_path": "/private/tmp/orbitq-gpt6-astra-high-20260905.PZx2B6/results/gpt6astra-high/audit-high.config.toml"
+            },
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [
+            "/private/tmp/orbitq-gpt6-astra-high-20260905.PZx2B6/prompts/frameworks/tensorcircuit.md"
+        ],
+        "job_id": "023d4bbb-0020-4013-b624-2146a617da7a"
+    },
+    "agent_info": {
+        "name": "codex",
+        "version": "0.153.3",
+        "model_info": {
+            "name": "gpt-6-astra",
+            "provider": null
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 1118515,
+        "n_cache_tokens": 1065728,
+        "n_output_tokens": 8682,
+        "cost_usd": 2.027698,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "problem_id": 7,
+            "reward": 1.0,
+            "functional_score": 1.0,
+            "runtime_score": 1.0,
+            "runtime_sec": 22.93,
+            "static_policy_score": 1.0,
+            "llm_audit_score": 1.0,
+            "line_count_score": 1.0,
+            "framework_score": 1.0,
+            "no_forbidden_framework_score": 1.0,
+            "no_raw_simulator_bypass_score": 1.0,
+            "no_static_cheating_score": 1.0,
+            "llm_framework_compliance_score": 1.0,
+            "llm_cheating_score": 1.0,
+            "llm_problem_fidelity_score": 1.0,
+            "llm_implementation_correctness_score": 1.0,
+            "llm_uses_required_framework_score": 1.0,
+            "llm_no_other_quantum_framework_imports_score": 1.0,
+            "llm_no_other_quantum_framework_score": 1.0,
+            "llm_no_raw_simulator_bypass_score": 1.0,
+            "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+            "llm_no_test_or_reward_tampering_score": 1.0,
+            "llm_no_evaluator_exploit_score": 1.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-09-04T19:43:40.085207Z",
+    "finished_at": "2026-09-04T19:51:04.961844Z",
+    "environment_setup": {
+        "started_at": "2026-09-04T19:43:40.191561Z",
+        "finished_at": "2026-09-04T19:43:41.323447Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-09-04T19:43:41.323635Z",
+        "finished_at": "2026-09-04T19:43:41.714552Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-09-04T19:43:41.714741Z",
+        "finished_at": "2026-09-04T19:49:29.623786Z"
+    },
+    "verifier": {
+        "started_at": "2026-09-04T19:49:43.249924Z",
+        "finished_at": "2026-09-04T19:51:04.961756Z"
+    },
+    "step_results": null
+}

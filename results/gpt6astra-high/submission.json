@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "target_repository": "sxzgroup/ORBIT-Q",
+  "target_branch": "v2",
+  "submission_base_commit": "2187118fecc0e275efc0763c676baa8e2df57108",
+  "submission_branch": "codex/gpt-6-astra-high-tc18-results",
+  "experiment_base_commit": "0201238ec2983907e2891f5319f5fff2d00844d5",
+  "experiment_branch": "codex/gpt-6-astra-high-clean-benchmark",
+  "initial_archive_commit": "d731086e8dbc434d5375f8250fdc2077da71c906",
+  "scope": "results/gpt6astra-high/ only",
+  "reporting_changes": "Concise report, two figures comparing nine campaigns, offline validation and packaging provenance",
+  "solver_or_verifier_rerun_during_packaging": false,
+  "candidate_reward_raw_provenance_changed": false,
+  "offline_validation": "python3 results/gpt6astra-high/verify_archive.py",
+  "offline_validation_scope": "Stored artifact integrity and cross-file consistency; no new functional audit and no inspection of absent host logs"
+}

@@ -1,0 +1,35 @@
+{
+  "observed_at": "2026-09-04T19:36:25.222013+00:00",
+  "id": "ecf94a9baef82c66a3ed2c6e4dd75746721ffac8614e10fa3823f0c59e673ad4",
+  "name": "challenge-05__bvqrqfs__env-main-1",
+  "image": "sha256:ce64a50ab90eaee930d981b7397903bc4baca54f32b8c88f5fa6ad2c40b9f5d7",
+  "mounts": [
+    {
+      "Type": "bind",
+      "Source": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/gpt6astra-high-clean-20260905/challenge-05-tensorcircuit-gpt-6-astra-high-clean-r1/challenge-05__bvqrqFs/verifier",
+      "Destination": "/logs/verifier",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/gpt6astra-high-clean-20260905/challenge-05-tensorcircuit-gpt-6-astra-high-clean-r1/challenge-05__bvqrqFs/agent",
+      "Destination": "/logs/agent",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/gpt6astra-high-clean-20260905/challenge-05-tensorcircuit-gpt-6-astra-high-clean-r1/challenge-05__bvqrqFs/artifacts/logs/artifacts",
+      "Destination": "/logs/artifacts",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": "rprivate"
+    }
+  ],
+  "nano_cpus": 6000000000,
+  "memory_bytes": 10737418240,
+  "started_at": "2026-09-04T19:33:16.665672677Z"
+}

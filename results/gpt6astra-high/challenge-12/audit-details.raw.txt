@@ -1,0 +1,63 @@
+{
+  "problem_id": 12,
+  "framework": "tensorcircuit",
+  "static": {
+    "path": "/root/solution_12.py",
+    "framework": "tensorcircuit",
+    "exists": [REDACTED],
+    "parse_ok": 1.0,
+    "line_count": 58,
+    "line_count_score": 1.0,
+    "framework_score": 1.0,
+    "no_forbidden_framework_score": 1.0,
+    "no_static_cheating_score": 1.0,
+    "no_raw_simulator_bypass_score": 1.0,
+    "imports": [
+      "jax",
+      "numpy",
+      "optax",
+      "tensorcircuit"
+    ],
+    "forbidden_imports": [],
+    "cheating_hits": [],
+    "raw_simulator_hits": [],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_score": 1.0,
+    "runtime_score": 1.0,
+    "runtime_sec": 4.31,
+    "functional_return_code": 0,
+    "functional_passed": [REDACTED],
+    "functional_output_tail": "Challenge 12 evaluation\nSolution module: solution_12\nEnd-to-end solution time: 4.31s\nQubits: 32\nDMRG chi: 8\nDMRG sweeps: 4\nLayers: 2\nSteps: 5000\nTrainable circuit parameters: 465\nTarget MPS max bond dimension: 8\nInitial fidelity: 1.92078500e-09\nFinal fidelity: 8.69978584e-01\nInitial loss: 9.99999998e-01\nFinal loss: 1.30021416e-01\nFinal overlap phase: 7.08913241e-01\nFidelity history shape: (5000,)\nReturned NumPy keys: ['fidelity_history', 'final_overlap_phase', 'final_parameters', 'loss_history']\nPassing criteria:\n  loss history shape: PASS\n  fidelity history shape: PASS\n  final parameter shape: PASS\n  fidelity values finite: PASS\n  loss values finite: PASS\n  final values finite: PASS\n  fidelity improves: PASS\n  loss improves: PASS\n  final fidelity reaches threshold: PASS\n  fidelity bounded: PASS\n  target bond dimension valid: PASS\nOverall: PASS\n"
+  },
+  "audit": {
+    "uses_required_framework": [REDACTED],
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": [REDACTED],
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "TensorCircuit performs the core quantum computation: it represents the supplied MPS as a tensor-network bra, constructs the Neel-state variational circuit, creates TensorCircuit SU4 gates, and contracts the circuit ket with the target bra. JAX and Optax provide differentiation, compilation, and optimization support only; neither is another quantum framework or an end-to-end simulator bypass.",
+    "cheating_rationale": "The source does not hardcode results, access hidden answers, alter evaluator artifacts, or exploit the reported checks. Histories and final parameters are produced by the actual optimization.",
+    "fidelity_rationale": "The implementation consumes config['dmrg_state'] without rerunning DMRG, builds the 32-qubit Neel state, applies the two alternating brickwork layers with 31 SU4 gates and 465 parameters, optimizes 1 minus squared overlap using Adam and the configured learning rate for exactly max_steps updates, records metrics immediately before each update, and returns all required NumPy-format outputs.",
+    "implementation_error_rationale": "No obvious error is present. MPS axes are reordered into left-bond, physical, right-bond form, the overlap and fidelity are computed consistently, the parameter count is correct, and the observed evaluation results corroborate correct execution.",
+    "confidence": 0.99,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  }
+}

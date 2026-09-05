@@ -1,0 +1,12 @@
+{
+  "challenge": 8,
+  "trial": "challenge-08__Eg5tRdj",
+  "status": "finished",
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 16.36,
+  "harbor_exit_code": 0,
+  "finished_at": "2026-09-04T19:56:32.255011+00:00"
+}

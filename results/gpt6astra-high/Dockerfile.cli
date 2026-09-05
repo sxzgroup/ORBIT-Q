@@ -1,0 +1,8 @@
+FROM challenge-benchmark-quantum-tensorcircuit:1.8.0.dev20260726-py311
+
+# Preserve /usr/local/bin/codex (0.145.0) for the historical verifier.
+# The solver needs a newer CLI to access gpt-6-astra.
+RUN npm install --prefix /opt/codex-astra --registry=https://registry.npmjs.org @openai/codex@0.153.3 \
+    && /opt/codex-astra/node_modules/.bin/codex --version \
+    && /usr/local/bin/codex --version
+ENV PATH="/opt/codex-astra/node_modules/.bin:${PATH}"

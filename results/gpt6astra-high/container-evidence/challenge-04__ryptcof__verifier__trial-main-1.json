@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-09-04T19:33:02.767846+00:00",
+  "id": "d86a5f70416e4ea5208b3ca7d7fcf1bb8f2b591125067bf4e1a0857f45a027a9",
+  "name": "challenge-04__ryptcof__verifier__trial-main-1",
+  "image": "sha256:ce64a50ab90eaee930d981b7397903bc4baca54f32b8c88f5fa6ad2c40b9f5d7",
+  "mounts": [
+    {
+      "Type": "bind",
+      "Source": "/Users/qqy/Desktop/2026Project/ORBIT-Q/jobs/gpt6astra-high-clean-20260905/challenge-04-tensorcircuit-gpt-6-astra-high-clean-r1/challenge-04__RyptcoF/verifier",
+      "Destination": "/logs/verifier",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": "rprivate"
+    }
+  ],
+  "nano_cpus": 6000000000,
+  "memory_bytes": 10737418240,
+  "started_at": "2026-09-04T19:32:37.537889231Z"
+}
