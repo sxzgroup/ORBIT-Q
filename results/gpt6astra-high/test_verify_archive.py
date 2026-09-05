@@ -122,6 +122,27 @@ class ArchiveTests(unittest.TestCase):
         with self.assertRaises(verifier.VerificationError):
             verifier.parse_json('{"cost": NaN}')
 
+    def test_runtime_estimate_not_measurement(self):
+        with self.copy() as root:
+            self.edit_json(root, "runtime/astra_expert_adjustment.json",
+                           lambda d: d["summary"].update(measured_pair_count=12))
+            with self.assertRaisesRegex(verifier.VerificationError, "measured_pair_count"):
+                verifier.verify(root)
+
+    def test_wrong_runtime_reference(self):
+        with self.copy() as root:
+            self.edit_json(root, "runtime/astra_expert_adjustment.json",
+                           lambda d: d["task08"].update(expert_reference_sec=25.05))
+            with self.assertRaisesRegex(verifier.VerificationError, "Approved Task 08 reference"):
+                verifier.verify(root)
+
+    def test_stale_runtime_aggregate(self):
+        with self.copy() as root:
+            self.edit_json(root, "runtime/astra_expert_adjustment.json",
+                           lambda d: d["summary"].update(geometric_mean_ratio=0.564975))
+            with self.assertRaisesRegex(verifier.VerificationError, "geometric_mean_ratio"):
+                verifier.verify(root)
+
     def test_reject_duplicate_json_keys(self):
         with self.assertRaisesRegex(verifier.VerificationError, "Duplicate JSON key"):
             verifier.parse_json('{"reward": 0, "reward": 1}')

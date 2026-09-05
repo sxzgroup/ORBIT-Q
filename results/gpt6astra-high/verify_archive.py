@@ -14,6 +14,7 @@ import json
 import math
 from pathlib import Path
 import re
+import runpy
 import struct
 import sys
 from urllib.parse import unquote, urlparse
@@ -309,12 +310,19 @@ def verify(root=ROOT):
     require(len(set(sessions)) == 12, "Session reused across tasks")
     verify_comparisons(root, data)
     verify_figures(root)
+    try:
+        runtime = runpy.run_path(str(root / "runtime/verify_runtime.py"))["verify"](root / "runtime")
+    except ValueError as exc:
+        raise VerificationError(f"Runtime supplement: {exc}") from exc
     for path in root.glob("*.md"):
         for target in re.findall(r'\]\(([^)]+)\)', path.read_text()):
             if not target.startswith("https://"):
                 require((path.parent / target).exists(), f"Broken link in {path.name}: {target}")
     return {"files_checked": count, "tasks": 12, "automatic_passes": 12, "comparison_models": 9,
-            "figure_files": 6, "mode": "offline, read-only; stored evidence only"}
+            "figure_files": 6, "runtime_figure_files": 4,
+            "runtime_comparisons": runtime["task_count"],
+            "estimated_expert_references": runtime["estimated_reference_count"],
+            "mode": "offline, read-only; stored evidence only"}
 
 
 def main():

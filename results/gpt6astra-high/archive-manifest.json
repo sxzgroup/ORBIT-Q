@@ -5,7 +5,7 @@
   "sha256": {
     "Dockerfile.cli": "40f542c0290b12309d367526c3ed44b98399957c4f861417ee7f4d14f43fc68d",
     "METHODS.md": "914788b57746d62ff45d464fa7cb8b53f8a42a04a3dc879ca5c70298e84d6cf2",
-    "README.md": "259e6d5304e177a78bbf0e84fc25eff129b17111a7670b2e49fc38fd7597edb5",
+    "README.md": "75c65dae08fd55b9f7f02cd4d8177ff67e79fc059860829aa553df3e72429fe5",
     "audit-high.config.toml": "14c94e959de2196a10dd0460dcb9dbd3c71bb9d7862d1a0eaed31dc583d31b1f",
     "challenge-01/audit-details.json": "1bdf0668b9018acefd78600789846b96b4120c0b5c794e3489e38c86edfe91ff",
     "challenge-01/audit-details.raw.txt": "60962b3b34c6004551089d29df853ed00b96149c34e216d82e2e0a10dc3e44d9",
@@ -163,9 +163,18 @@
     "protocol.json": "5a29d545c880232a2588d79bd3b3c3b946e3f8a1890534b17dd08a96cb659ecf",
     "public-model-comparison.json": "4950fd4a7c81faa83c2486b910935cee2630b8717920ea68922b0fac99f79217",
     "run_benchmark.py": "07364a10abcee97d04929516f0755832c5db0c2f875c4fb7381d39a99164b975",
+    "runtime/README.md": "5ed103495fbc2d475d71f0f09a1d39f2e1ed864c94f96a859509c72039c7801a",
+    "runtime/astra_expert_adjustment.json": "9bb0a151992493945422ffdab540b618370eb47c792442024111f0e4c070d0b0",
+    "runtime/astra_expert_paired.csv": "9d151a187c4b73e08c95ced4cfcbaae29afcd34bffdddecb376537710cd34e48",
+    "runtime/astra_expert_runtime.csv": "049474b636fd44873df9cd71166123a513af6c53e739e5fa94c1246496f6d0e7",
+    "runtime/figs/astra_expert_paired_runtime.pdf": "8a739c4ce657670bd752a65ad22813ebaced325303cd8349158d3e86d37f787a",
+    "runtime/figs/astra_expert_paired_runtime.png": "5a77116eb2476d4fe28635aec9a7d4cb5e67518e286f85afcf6b6619b4977d53",
+    "runtime/figs/fig2b_updated_agent_axis.pdf": "35089e77e8cbe18a067fc9af3af6cf8ab5469a6cfb2f1520ef22262c9c366c7b",
+    "runtime/figs/fig2b_updated_agent_axis.png": "df0085f3bba0d2ac076c43c119f08ad3d66cc8566d9e7147f6b26590df8da38d",
+    "runtime/verify_runtime.py": "f9dfcb15ecc886534b22f13783c67b9a5a0c4d7ef50c1200d6e6a06d421425fd",
     "submission.json": "93df8e5f1174316e5ddc97932a8c5c2bec563a7f5de6d8ddcbf4632afd2476da",
     "summarize.py": "8c321f2342a12c0af173e962b195b871bad8ef532d7980e29c9a0619c64002f8",
-    "test_verify_archive.py": "2ade485f0cbce6b56b4776761ec21ed92ae68813b4df8700c6173ba7d4a39db3",
-    "verify_archive.py": "d6bb213dd829d8380c5131ca19d07b008c92afb1c3af079096b750f4010e44d1"
+    "test_verify_archive.py": "71623dda759f7823edaf0ab13937c21ec76de70dc5d7fae91c81537f6e10d5d1",
+    "verify_archive.py": "0a96cba131f744f0aa2f971d3c37e4f7d036ad9b5676553202d3add01a5c38a7"
   }
 }

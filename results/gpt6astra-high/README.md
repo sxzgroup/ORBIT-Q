@@ -35,6 +35,20 @@ automatic scores, not equivalent to a completed human review.
 ![Astra per-task solver resources and cost per pass](figs/astra-high-agent-resource-use.png)
 
 Both figures have **PNG, PDF and SVG** versions in [figs/](figs/).
+
+## Artifact runtime relative to the expert reference
+
+The [runtime supplement](runtime/README.md) records eleven same-host measured
+pairs and the reviewer's estimated **50 s** expert reference for Task 08
+(25.05 s × 2, rounded). Astra's Task 08 runtime is **16.31 s**.
+Across all twelve comparisons, Astra's geometric-mean runtime ratio is
+**0.540×** (**1.85×** speedup), with **8/12** faster artifacts.
+The supplement includes the full table, updated runtime and efficiency
+figures, and separate measured/estimated provenance. Original solver results
+and the two agent-resource/outcome figures above remain unchanged.
+
+## Validation
+
 Verify the archive offline with Python 3.10+ (standard library only):
 
 ```bash
