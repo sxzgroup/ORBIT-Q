@@ -1,0 +1,16 @@
+{
+  "task": 4,
+  "trial": "challenge-04__KgG6B4x",
+  "solver_wall_sec": 247.818553,
+  "n_input_tokens": 781754,
+  "n_output_tokens": 7707,
+  "n_cache_tokens": 735872,
+  "cost_usd": 0.24242119999999998,
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 2.74,
+  "solver_termination": "completed",
+  "candidate_sha256": "9b8d676183bd46df10fc7179b25324b2fe6afdb63a796b46fad9d4d0432d477b"
+}

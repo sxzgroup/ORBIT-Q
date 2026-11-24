@@ -1,0 +1,16 @@
+{
+  "task": 9,
+  "trial": "challenge-09__nzscUNu",
+  "solver_wall_sec": 275.063046,
+  "n_input_tokens": 830903,
+  "n_output_tokens": 6140,
+  "n_cache_tokens": 737920,
+  "cost_usd": 0.321158,
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 6.83,
+  "solver_termination": "completed",
+  "candidate_sha256": "f90f9bd026ecf8f1ae68e6dd916c66eb2c3b1268c9d1a8252c2ad2a6f8f7ed35"
+}

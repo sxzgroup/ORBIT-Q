@@ -1,0 +1,16 @@
+{
+  "task": 3,
+  "trial": "challenge-03__Fbxgbty",
+  "solver_wall_sec": 226.846238,
+  "n_input_tokens": 543627,
+  "n_output_tokens": 7061,
+  "n_cache_tokens": 511872,
+  "cost_usd": 0.1853072,
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 4.77,
+  "solver_termination": "completed",
+  "candidate_sha256": "664ac93ea8a057637c055ad026bc881b5bc10327972f124c3ba2eb41c66ee2a1"
+}

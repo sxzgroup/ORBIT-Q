@@ -1,0 +1,98 @@
+[
+  {
+    "task": 1,
+    "model_sec": 23.33,
+    "expert_reference_sec": 62.39,
+    "expert_reference_basis": "measured",
+    "model_over_expert": 0.3739381311107549,
+    "source": "timing-evidence.json"
+  },
+  {
+    "task": 2,
+    "model_sec": 10.17,
+    "expert_reference_sec": 5.44,
+    "expert_reference_basis": "measured",
+    "model_over_expert": 1.869485294117647,
+    "source": "timing-evidence.json"
+  },
+  {
+    "task": 3,
+    "model_sec": 6.19,
+    "expert_reference_sec": 4.86,
+    "expert_reference_basis": "measured",
+    "model_over_expert": 1.2736625514403292,
+    "source": "timing-evidence.json"
+  },
+  {
+    "task": 4,
+    "model_sec": 2.69,
+    "expert_reference_sec": 13.02,
+    "expert_reference_basis": "measured",
+    "model_over_expert": 0.206605222734255,
+    "source": "timing-evidence.json"
+  },
+  {
+    "task": 5,
+    "model_sec": 6.08,
+    "expert_reference_sec": 119.91,
+    "expert_reference_basis": "measured",
+    "model_over_expert": 0.05070469518805771,
+    "source": "timing-evidence.json"
+  },
+  {
+    "task": 6,
+    "model_sec": 84.46,
+    "expert_reference_sec": 61.07,
+    "expert_reference_basis": "measured",
+    "model_over_expert": 1.3830031111838872,
+    "source": "timing-evidence.json"
+  },
+  {
+    "task": 7,
+    "model_sec": 5.04,
+    "expert_reference_sec": 123.58,
+    "expert_reference_basis": "measured",
+    "model_over_expert": 0.04078329826832821,
+    "source": "timing-evidence.json"
+  },
+  {
+    "task": 8,
+    "model_sec": 6.68,
+    "expert_reference_sec": 50,
+    "expert_reference_basis": "estimated",
+    "model_over_expert": 0.1336,
+    "source": "https://github.com/sxzgroup/ORBIT-Q/pull/29#issuecomment-5549266776"
+  },
+  {
+    "task": 9,
+    "model_sec": 7.02,
+    "expert_reference_sec": 45.47,
+    "expert_reference_basis": "measured",
+    "model_over_expert": 0.15438750824719594,
+    "source": "timing-evidence.json"
+  },
+  {
+    "task": 10,
+    "model_sec": 4.46,
+    "expert_reference_sec": 17.62,
+    "expert_reference_basis": "measured",
+    "model_over_expert": 0.2531214528944381,
+    "source": "timing-evidence.json"
+  },
+  {
+    "task": 11,
+    "model_sec": 104.51,
+    "expert_reference_sec": 155.92,
+    "expert_reference_basis": "measured",
+    "model_over_expert": 0.6702796305797846,
+    "source": "timing-evidence.json"
+  },
+  {
+    "task": 12,
+    "model_sec": 4.28,
+    "expert_reference_sec": 7.85,
+    "expert_reference_basis": "measured",
+    "model_over_expert": 0.5452229299363058,
+    "source": "timing-evidence.json"
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "audit": {
+    "uses_required_framework": null,
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": null,
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "TensorCircuit constructs the causal-cone circuits, applies the parameterized gates, and contracts Pauli expectations. JAX provides differentiation and batching, Optax provides Adam, and NumPy provides initialization and output conversion. No other quantum framework is imported.",
+    "cheating_rationale": "The source computes results from the supplied configuration and gate tape. There are no hardcoded outcomes, hidden-answer reads, evaluator exploits, or test/reward modifications.",
+    "fidelity_rationale": "Backward causal-cone extraction correctly removes gates that cannot affect each observable. Each retained circuit starts in the plus state and preserves gate order and parameter sharing. Full parameter vectors are drawn with the specified restart seeds before selecting active parameters; omitting zero-gradient parameters preserves Adam dynamics. Batched optimization performs exactly max_steps updates and records weighted objectives immediately before each update, returning the required NumPy history.",
+    "implementation_error_rationale": "No obvious implementation error is evident. Batched Adam maintains separate elementwise moments for each restart, and the shared update counter is appropriate because all restarts execute the same number of steps.",
+    "confidence": 0.98,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  },
+  "missing_solution": null,
+  "static": {
+    "line_count": 68,
+    "imports": [
+      "jax",
+      "numpy",
+      "optax",
+      "tensorcircuit"
+    ],
+    "forbidden_imports": [],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_return_code": 0,
+    "functional_score": 1.0,
+    "runtime_sec": 6.83
+  }
+}
