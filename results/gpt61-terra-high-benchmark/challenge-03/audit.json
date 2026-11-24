@@ -1,0 +1,49 @@
+{
+  "audit": {
+    "uses_required_framework": true,
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": true,
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "TensorCircuit performs state preparation, all quantum gates, explicit post-selection, and Hamiltonian expectations. JAX supports differentiation and execution, NumPy converts outputs, and Optax implements Adam; none is another quantum framework or a simulator bypass.",
+    "cheating_rationale": "The source computes histories through actual variational optimization. There are no hardcoded answers, hidden data accesses, evaluator exploits, or test/reward modifications. The fixed random seed only initializes trainable parameters.",
+    "fidelity_rationale": "The implementation consumes every supplied configuration field, prepares |+>^n, applies the specified alternating brickwork interactions and RX rotations, and selects outcome 0 on each even qubit after every step. Doubled RXX/RZZ angles implement the specified interaction exponentials. Ratios of successive unnormalized branch norms recover conditional event probabilities, followed by state normalization. The open-boundary TFIM energy density and mean log probability penalty match the objective. Adam performs exactly max_steps updates, recording pre-update metrics and returning the four required NumPy histories.",
+    "implementation_error_rationale": "No obvious implementation error is present. The success probability is the product of event probabilities; its difference from exponentiating the epsilon-stabilized log sum is negligible for these probabilities. Unused parameter slots do not alter the prescribed circuit.",
+    "confidence": 0.98,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  },
+  "missing_solution": null,
+  "static": {
+    "line_count": 65,
+    "imports": [
+      "jax",
+      "numpy",
+      "optax",
+      "os",
+      "tensorcircuit"
+    ],
+    "forbidden_imports": [],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_return_code": 0,
+    "functional_score": 1.0,
+    "runtime_sec": 11.15
+  }
+}

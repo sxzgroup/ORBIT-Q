@@ -1,0 +1,47 @@
+{
+  "audit": {
+    "uses_required_framework": true,
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": true,
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "TensorCircuit performs the core quantum computation: preparing |+> states, applying the supplied parameterized gates, and evaluating Pauli expectations on backward causal cones. JAX provides differentiation, batching, and optimization; NumPy provides initialization and output conversion. No other quantum framework is imported.",
+    "cheating_rationale": "The implementation computes histories from the supplied circuit and observables. There are no hardcoded answers, hidden oracle accesses, evaluator exploits, or test/reward modifications.",
+    "fidelity_rationale": "Backward traversal correctly retains gates affecting each observable and maps shared parameters consistently. Each restart samples the full parameter vector with the prescribed seed and Gaussian distribution before retaining relevant parameters. Omitting parameters outside both cones is equivalent because their objective gradients are zero. Adam ascent on the objective implements Adam descent on its negative, using the configured learning rate and exactly max_steps updates. Histories record objective values immediately before updates and return the required NumPy array shape.",
+    "implementation_error_rationale": "No obvious implementation error is present. Cone construction, gate ordering, observable mapping, Adam bias correction, and history transposition are consistent with the task.",
+    "confidence": 0.99,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  },
+  "missing_solution": null,
+  "static": {
+    "line_count": 56,
+    "imports": [
+      "jax",
+      "numpy",
+      "tensorcircuit"
+    ],
+    "forbidden_imports": [],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_return_code": 0,
+    "functional_score": 1.0,
+    "runtime_sec": 7.91
+  }
+}

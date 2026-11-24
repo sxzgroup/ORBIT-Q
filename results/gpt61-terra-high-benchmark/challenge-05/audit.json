@@ -1,0 +1,48 @@
+{
+  "audit": {
+    "uses_required_framework": true,
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": true,
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "TensorCircuit performs state preparation, non-unitary gate application, state extraction, and Hamiltonian expectation calculations. JAX supports differentiation, normalization, scanning, and compilation; Optax supplies Adam. No other quantum framework is imported or used.",
+    "cheating_rationale": "The source computes energies and learned parameters directly from the configured circuit and optimization loop. It contains no hardcoded answers, hidden-file access, evaluator manipulation, or test/reward tampering.",
+    "fidelity_rationale": "The implementation prepares |+>^18, applies exp(a_l X) on every qubit followed by exp(b_l ZZ) on the specified alternating brickwork bonds, and differentiably normalizes after each layer. It minimizes the correct open-boundary Ising energy density using the configured initialization and exactly 600 Adam updates for the supplied configuration. History entries are evaluated before each update, and the returned NumPy arrays have the required shapes and even/odd parameter ordering.",
+    "implementation_error_rationale": "No obvious implementation error is present. Filter matrices, parameter indexing, Hamiltonian signs, normalization, gradient flow, optimizer updates, and return formatting match the specification.",
+    "confidence": 0.99,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  },
+  "missing_solution": null,
+  "static": {
+    "line_count": 48,
+    "imports": [
+      "jax",
+      "numpy",
+      "optax",
+      "tensorcircuit"
+    ],
+    "forbidden_imports": [],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_return_code": 0,
+    "functional_score": 1.0,
+    "runtime_sec": 134.76
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "completed": 12,
+  "passes": 11,
+  "cost_usd": 1.0303656,
+  "tasks": [
+    {
+      "task": 1,
+      "solver": "gpt-6.1-terra",
+      "trial": "challenge-01__osF5zgt",
+      "reward": 1.0,
+      "cost_usd": 0.154421,
+      "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+      "n_input_tokens": 1390190,
+      "n_output_tokens": 5531,
+      "n_cache_tokens": 1329920
+    },
+    {
+      "task": 2,
+      "solver": "gpt-6.1-terra",
+      "trial": "challenge-02__PJ4gHoC",
+      "reward": 1.0,
+      "cost_usd": 0.0506608,
+      "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+      "n_input_tokens": 319522,
+      "n_output_tokens": 3550,
+      "n_cache_tokens": 301696
+    },
+    {
+      "task": 3,
+      "solver": "gpt-6.1-terra",
+      "trial": "challenge-03__qTgb5Tj",
+      "reward": 1.0,
+      "cost_usd": 0.058339800000000004,
+      "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+      "n_input_tokens": 357473,
+      "n_output_tokens": 4062,
+      "n_cache_tokens": 336256
+    },
+    {
+      "task": 4,
+      "solver": "gpt-6.1-terra",
+      "trial": "challenge-04__vbKqMAo",
+      "reward": 1.0,
+      "cost_usd": 0.0542066,
+      "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+      "n_input_tokens": 309530,
+      "n_output_tokens": 3023,
+      "n_cache_tokens": 284672
+    },
+    {
+      "task": 5,
+      "solver": "gpt-6.1-terra",
+      "trial": "challenge-05__x53yoMW",
+      "reward": 1.0,
+      "cost_usd": 0.1549372,
+      "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+      "n_input_tokens": 1570912,
+      "n_output_tokens": 6894,
+      "n_cache_tokens": 1526784
+    },
+    {
+      "task": 6,
+      "solver": "gpt-6.1-terra",
+      "trial": "challenge-06__QVN7Xtq",
+      "reward": 1.0,
+      "cost_usd": 0.0907436,
+      "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+      "n_input_tokens": 761323,
+      "n_output_tokens": 4119,
+      "n_cache_tokens": 727552
+    },
+    {
+      "task": 7,
+      "solver": "gpt-6.1-terra",
+      "trial": "challenge-07__7w3VPjr",
+      "reward": 1.0,
+      "cost_usd": 0.1098656,
+      "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+      "n_input_tokens": 1161310,
+      "n_output_tokens": 6378,
+      "n_cache_tokens": 1140352
+    },
+    {
+      "task": 8,
+      "solver": "gpt-6.1-terra",
+      "trial": "challenge-08__JZBWNP2",
+      "reward": 0.0,
+      "cost_usd": 0.044862000000000006,
+      "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+      "n_input_tokens": 335839,
+      "n_output_tokens": 2483,
+      "n_cache_tokens": 319360
+    },
+    {
+      "task": 9,
+      "solver": "gpt-6.1-terra",
+      "trial": "challenge-09__KN7yGix",
+      "reward": 1.0,
+      "cost_usd": 0.0968438,
+      "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+      "n_input_tokens": 737164,
+      "n_output_tokens": 4407,
+      "n_cache_tokens": 697216
+    },
+    {
+      "task": 10,
+      "solver": "gpt-6.1-terra",
+      "trial": "challenge-10__6bsGi73",
+      "reward": 1.0,
+      "cost_usd": 0.054634600000000005,
+      "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+      "n_input_tokens": 316561,
+      "n_output_tokens": 3040,
+      "n_cache_tokens": 291712
+    },
+    {
+      "task": 11,
+      "solver": "gpt-6.1-terra",
+      "trial": "challenge-11__nZL8CZP",
+      "reward": 1.0,
+      "cost_usd": 0.0826646,
+      "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+      "n_input_tokens": 764726,
+      "n_output_tokens": 5957,
+      "n_cache_tokens": 749312
+    },
+    {
+      "task": 12,
+      "solver": "gpt-6.1-terra",
+      "trial": "challenge-12__TTMM67e",
+      "reward": 1.0,
+      "cost_usd": 0.07818599999999999,
+      "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+      "n_input_tokens": 471277,
+      "n_output_tokens": 3705,
+      "n_cache_tokens": 433280
+    }
+  ]
+}

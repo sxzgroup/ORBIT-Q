@@ -1,0 +1,44 @@
+[
+  {
+    "task": 1,
+    "expert_sec": 62.39,
+    "model_sec": null,
+    "expert_oom": false,
+    "candidate_valid": false
+  },
+  {
+    "task": 2,
+    "expert_sec": 5.44,
+    "model_sec": 11.53,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 3,
+    "expert_sec": 4.86,
+    "model_sec": 7.97,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 4,
+    "expert_sec": null,
+    "model_sec": null,
+    "expert_oom": null,
+    "candidate_valid": true
+  },
+  {
+    "task": 5,
+    "expert_sec": 119.91,
+    "model_sec": 125.25,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 6,
+    "expert_sec": 61.07,
+    "model_sec": 90.99,
+    "expert_oom": false,
+    "candidate_valid": true
+  }
+]
