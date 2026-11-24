@@ -1,0 +1,16 @@
+{
+  "task": 7,
+  "trial": "challenge-07__5HEPbLc",
+  "solver_wall_sec": 270.941656,
+  "n_input_tokens": 727502,
+  "n_output_tokens": 7922,
+  "n_cache_tokens": 680448,
+  "cost_usd": 0.2413728,
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 4.97,
+  "solver_termination": "completed",
+  "candidate_sha256": "7a413c515896961dc1cd3af35a6a43ebee2956e955760338bf3b1c6ea7d6c3cd"
+}

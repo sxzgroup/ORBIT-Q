@@ -1,0 +1,104 @@
+{
+  "historical": [
+    [
+      "GPT-5.5",
+      16.666666666666668,
+      2.197481
+    ],
+    [
+      "Opus-4.8",
+      25.0,
+      2.889799
+    ],
+    [
+      "GLM-5.2",
+      50.0,
+      6.616186
+    ],
+    [
+      "Sonnet-4.6",
+      41.666666666666664,
+      7.245877
+    ],
+    [
+      "Sol",
+      16.666666666666668,
+      2.541474
+    ],
+    [
+      "Sol ultra",
+      16.666666666666668,
+      2.072336
+    ],
+    [
+      "Terra",
+      25.0,
+      2.701777
+    ],
+    [
+      "Luna",
+      25.0,
+      4.69162
+    ],
+    [
+      "DeepSeek Flash",
+      58.333333333333336,
+      3.476293
+    ],
+    [
+      "Grok 4.5",
+      33.333333333333336,
+      3.844088
+    ],
+    [
+      "DeepSeek Pro",
+      58.333333333333336,
+      2.587924
+    ],
+    [
+      "Grok 4.6",
+      25.0,
+      2.190531
+    ],
+    [
+      "Astra",
+      0.0,
+      0.539697529957958
+    ]
+  ],
+  "new": [
+    {
+      "variant": "sol",
+      "label": "6.2 Sol high",
+      "marker": "s",
+      "failure_pct": 0.0,
+      "ratio": 0.3163278324384497,
+      "pairs": 12,
+      "measured_ratio": 0.34211135697377426,
+      "measured_pairs": 11,
+      "estimated_references": 1
+    },
+    {
+      "variant": "astra",
+      "label": "6.2 Astra high",
+      "marker": "*",
+      "failure_pct": 0.0,
+      "ratio": 0.1782188335576394,
+      "pairs": 12,
+      "measured_ratio": 0.20653371382893262,
+      "measured_pairs": 11,
+      "estimated_references": 1
+    },
+    {
+      "variant": "terra",
+      "label": "6.1 Terra high",
+      "marker": "^",
+      "failure_pct": 8.333333333333334,
+      "ratio": 0.9693528653062887,
+      "pairs": 11,
+      "measured_ratio": 0.9693528653062887,
+      "measured_pairs": 11,
+      "estimated_references": 0
+    }
+  ]
+}

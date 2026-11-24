@@ -1,0 +1,15 @@
+{
+  "base": "2187118fecc0e275efc0763c676baa8e2df57108",
+  "solver": "gpt-6.2-sol",
+  "solver_effort": "high",
+  "verifier": "gpt-6-astra",
+  "audit_effort": "high",
+  "cli": "0.172.0",
+  "image": "orbitq-tc18-codex:0.172.0",
+  "image_id": "sha256:49a5f26e273f81ecd2ff936b72971b74318dc407899de9ea9d8256337729dd4f",
+  "cpus": 6,
+  "host": "Mac Colima",
+  "memory_mib": 10240,
+  "framework": "TensorCircuit 1.8.0.dev20260726",
+  "concurrency": 1
+}

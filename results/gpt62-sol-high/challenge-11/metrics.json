@@ -1,0 +1,16 @@
+{
+  "task": 11,
+  "trial": "challenge-11__42tpNxz",
+  "solver_wall_sec": 303.87274,
+  "n_input_tokens": 1049123,
+  "n_output_tokens": 9477,
+  "n_cache_tokens": 995968,
+  "cost_usd": 0.3006768,
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 88.13,
+  "solver_termination": "completed",
+  "candidate_sha256": "5a8007aabd46e4c28b1cef1ba0db3e3eeb6663d28d43bd41b95ea6c238b11f08"
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "task": 1,
+    "expert_sec": 62.39,
+    "model_sec": 23.33,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 2,
+    "expert_sec": 5.44,
+    "model_sec": 10.17,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 3,
+    "expert_sec": 4.86,
+    "model_sec": 6.19,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 4,
+    "expert_sec": 13.02,
+    "model_sec": 2.69,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 5,
+    "expert_sec": 119.91,
+    "model_sec": 6.08,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 6,
+    "expert_sec": 61.07,
+    "model_sec": 84.46,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 7,
+    "expert_sec": 123.58,
+    "model_sec": 5.04,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 8,
+    "expert_sec": null,
+    "model_sec": 6.68,
+    "expert_oom": true,
+    "candidate_valid": true
+  },
+  {
+    "task": 9,
+    "expert_sec": 45.47,
+    "model_sec": 7.02,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 10,
+    "expert_sec": 17.62,
+    "model_sec": 4.46,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 11,
+    "expert_sec": 155.92,
+    "model_sec": 104.51,
+    "expert_oom": false,
+    "candidate_valid": true
+  },
+  {
+    "task": 12,
+    "expert_sec": 7.85,
+    "model_sec": 4.28,
+    "expert_oom": false,
+    "candidate_valid": true
+  }
+]

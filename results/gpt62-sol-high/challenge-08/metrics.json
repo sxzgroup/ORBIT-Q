@@ -1,0 +1,16 @@
+{
+  "task": 8,
+  "trial": "challenge-08__wBu3jeH",
+  "solver_wall_sec": 311.772176,
+  "n_input_tokens": 1237275,
+  "n_output_tokens": 9474,
+  "n_cache_tokens": 1174144,
+  "cost_usd": 0.33841639999999995,
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 5.56,
+  "solver_termination": "completed",
+  "candidate_sha256": "4be417de8665253719cb2aa65bea36178062a7ef8b27f7a687c4e9a3466e45e6"
+}

@@ -1,0 +1,16 @@
+{
+  "task": 6,
+  "trial": "challenge-06__Lq45Gmf",
+  "solver_wall_sec": 266.365855,
+  "n_input_tokens": 900422,
+  "n_output_tokens": 7550,
+  "n_cache_tokens": 855936,
+  "cost_usd": 0.2500656,
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 73.87,
+  "solver_termination": "completed",
+  "candidate_sha256": "b9a30c340a23a5278508b5faa017dfd355e6cd13782adea0ec4bd6fe25f39e48"
+}
