@@ -1,0 +1,47 @@
+{
+  "audit": {
+    "uses_required_framework": null,
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": null,
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "TensorCircuit constructs the reduced circuits, applies the parameterized gates, and computes Pauli expectations. JAX supplies differentiation, batching, and optimization; NumPy supplies initialization and output conversion. No other quantum framework is imported.",
+    "cheating_rationale": "The source computes results from the supplied configuration without hardcoded answers, hidden data access, evaluator manipulation, or test/reward tampering.",
+    "fidelity_rationale": "Pauli commutation analysis conservatively identifies relevant gates and removes rotations that cannot affect the initial plus-state evolution. This preserves the requested expectations. Each restart samples the full parameter vector with the specified seed before retaining relevant parameters. Adam ascent on the objective is equivalent to minimizing its negative, runs exactly max_steps updates, and records pre-update objectives in the required NumPy array.",
+    "implementation_error_rationale": "No obvious logic error is apparent. Gate order, parameter indices, observable weights, Adam bias corrections, and history orientation are consistent with the specification.",
+    "confidence": 0.98,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  },
+  "missing_solution": null,
+  "static": {
+    "line_count": 70,
+    "imports": [
+      "jax",
+      "numpy",
+      "tensorcircuit"
+    ],
+    "forbidden_imports": [],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_return_code": 0,
+    "functional_score": 1.0,
+    "runtime_sec": 7.92
+  }
+}

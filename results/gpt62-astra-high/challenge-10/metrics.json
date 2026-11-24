@@ -1,0 +1,17 @@
+{
+  "task": 10,
+  "trial": "challenge-10__DdYXTv2",
+  "solver_wall_sec": 192.071048,
+  "n_input_tokens": 439789,
+  "n_output_tokens": 2822,
+  "n_cache_tokens": 418048,
+  "cost_usd": 0.45402719999999996,
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 1.96,
+  "solver_termination": "completed",
+  "candidate_sha256": "4c9e4996382ab6ab6bedc110d05165c0364d6b2e4060cb498d4fb1deb5e677fe",
+  "cost_basis": "Harbor recorded"
+}

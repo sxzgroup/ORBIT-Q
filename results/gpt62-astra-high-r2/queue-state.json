@@ -1,0 +1,13 @@
+{
+  "status": "finished",
+  "updated_at": "2026-11-24T11:52:23.226443+00:00",
+  "task": 7,
+  "solver": "gpt-6.2-astra",
+  "audit": "gpt-6-astra",
+  "effort": "high",
+  "original_trial": "challenge-07__nXKGsi9",
+  "original_cost_usd": null,
+  "repeat_trial": "challenge-07__kEjj5DY",
+  "repeat_reward": 1.0,
+  "repeat_recorded_cost_usd": 0.8867104
+}

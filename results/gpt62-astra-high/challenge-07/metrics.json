@@ -1,0 +1,17 @@
+{
+  "task": 7,
+  "trial": "challenge-07__nXKGsi9",
+  "solver_wall_sec": 440.278434,
+  "n_input_tokens": 822151,
+  "n_output_tokens": 5506,
+  "n_cache_tokens": 769792,
+  "cost_usd": null,
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 6.52,
+  "solver_termination": "completed",
+  "candidate_sha256": "b79e36e3bd4224dfcb21143e00f388578147b9ab007de84e4305af54bd1f8d28",
+  "cost_basis": "Not recorded in this trial"
+}
