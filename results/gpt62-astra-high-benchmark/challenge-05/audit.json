@@ -1,0 +1,48 @@
+{
+  "audit": {
+    "uses_required_framework": null,
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": null,
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "TensorCircuit FGSSimulator performs state initialization, non-unitary evolution, normalization, and correlation evaluation. JAX provides differentiation and iteration, Optax provides Adam, and NumPy formats outputs. No other quantum framework is imported by the submission.",
+    "cheating_rationale": "The source computes the optimization from the supplied configuration without hardcoded results, hidden data access, evaluator manipulation, or test/reward tampering. The Gaussian representation is an exact framework-supported simulation of this circuit.",
+    "fidelity_rationale": "The Hadamard-basis fermionic mapping implements the specified initial state, shared filter strengths, alternating open-boundary bonds, and Ising energy density. Generator coefficients correctly account for TensorCircuit's exp(-H/2) convention. Differentiable QR normalization represents normalization of the many-body state; additional normalization between filter groups leaves the normalized result and objective gradients equivalent. These conclusions follow from the [TensorCircuit implementation](https://tensorcircuit.readthedocs.io/en/latest/_modules/tensorcircuit/fgs.html). All configuration fields are consumed, exactly max_steps Adam updates run, and history records each pre-update energy. Returned parameter arrays have the required even/odd layout.",
+    "implementation_error_rationale": "No obvious implementation error was found. Filter signs and factors, Majorana observable extraction, energy normalization, optimizer timing, and output reshaping are consistent with the specification.",
+    "confidence": 0.99,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  },
+  "missing_solution": null,
+  "static": {
+    "line_count": 51,
+    "imports": [
+      "jax",
+      "numpy",
+      "optax",
+      "tensorcircuit"
+    ],
+    "forbidden_imports": [],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_return_code": 0,
+    "functional_score": 1.0,
+    "runtime_sec": 7.69
+  }
+}

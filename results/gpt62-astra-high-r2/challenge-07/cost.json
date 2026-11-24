@@ -1,0 +1,12 @@
+{
+  "task": 7,
+  "solver": "gpt-6.2-astra",
+  "trial": "challenge-07__kEjj5DY",
+  "reward": 1.0,
+  "cost_usd": 0.8867104,
+  "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+  "cost_basis": "Harbor agent_result.cost_usd for this trial",
+  "n_input_tokens": 934673,
+  "n_output_tokens": 6373,
+  "n_cache_tokens": 900736
+}

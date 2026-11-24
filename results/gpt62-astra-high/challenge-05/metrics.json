@@ -1,0 +1,17 @@
+{
+  "task": 5,
+  "trial": "challenge-05__nz2MTE7",
+  "solver_wall_sec": 188.644716,
+  "n_input_tokens": 407015,
+  "n_output_tokens": 3378,
+  "n_cache_tokens": 373376,
+  "cost_usd": 0.5535824,
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 7.69,
+  "solver_termination": "completed",
+  "candidate_sha256": "dff970627cb011ceee34692d55966a303659162b0be76a110b3a0668c300fbf7",
+  "cost_basis": "Harbor recorded"
+}

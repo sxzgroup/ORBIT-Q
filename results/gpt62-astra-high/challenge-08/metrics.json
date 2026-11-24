@@ -1,0 +1,17 @@
+{
+  "task": 8,
+  "trial": "challenge-08__jjgdqcQ",
+  "solver_wall_sec": 371.607744,
+  "n_input_tokens": 485070,
+  "n_output_tokens": 5524,
+  "n_cache_tokens": 465024,
+  "cost_usd": 0.5673376,
+  "reward": 1.0,
+  "functional_score": 1.0,
+  "static_policy_score": 1.0,
+  "llm_audit_score": 1.0,
+  "runtime_sec": 1.75,
+  "solver_termination": "completed",
+  "candidate_sha256": "6eeabe97d3a8b9eb38c4efd1fa2570a1c19a3c636f286f404d1ff867b307791d",
+  "cost_basis": "Harbor recorded"
+}
