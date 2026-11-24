@@ -1,0 +1,15 @@
+{
+  "audit": null,
+  "missing_solution": "/root/solution_8.py",
+  "static": {
+    "line_count": null,
+    "imports": null,
+    "forbidden_imports": null,
+    "static_policy_score": null
+  },
+  "functional": {
+    "functional_return_code": null,
+    "functional_score": null,
+    "runtime_sec": null
+  }
+}

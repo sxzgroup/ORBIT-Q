@@ -1,0 +1,258 @@
+[
+  {
+    "label": "5.6 Sol high",
+    "solver_model": "gpt-5.6-sol",
+    "solver_effort": "high",
+    "passes": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12
+    ],
+    "pass_count": 10,
+    "agent_wall_sec": 11861.715963,
+    "total_cost_usd": 25.527418,
+    "resource_source": "results/gpt56sol-high/agent-resource-use.json",
+    "cost_basis": "adapter-recorded solver cost",
+    "outcome_basis": "historical final outcomes as published in PR #28",
+    "color": "#0072B2"
+  },
+  {
+    "label": "5.6 Sol ultra",
+    "solver_model": "gpt-5.6-sol",
+    "solver_effort": "ultra",
+    "passes": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12
+    ],
+    "pass_count": 10,
+    "agent_wall_sec": 10967.757,
+    "total_cost_usd": 30.019293,
+    "resource_source": "results/gpt56sol-ultra/agent-resource-use.json",
+    "cost_basis": "adapter-recorded solver cost",
+    "outcome_basis": "historical final outcomes as published in PR #28",
+    "color": "#D55E00"
+  },
+  {
+    "label": "5.6 Terra high",
+    "solver_model": "gpt-5.6-terra",
+    "solver_effort": "high",
+    "passes": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      11,
+      12
+    ],
+    "pass_count": 9,
+    "agent_wall_sec": 12385.907,
+    "total_cost_usd": 12.036862,
+    "resource_source": "results/gpt56terra-high/summary.json",
+    "cost_basis": "adapter-recorded solver cost",
+    "outcome_basis": "historical final outcomes as published in PR #28",
+    "color": "#009E73"
+  },
+  {
+    "label": "5.6 Luna high",
+    "solver_model": "gpt-5.6-luna",
+    "solver_effort": "high",
+    "passes": [
+      2,
+      3,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12
+    ],
+    "pass_count": 9,
+    "agent_wall_sec": 14362.147,
+    "total_cost_usd": 2.236872,
+    "resource_source": "results/gpt56luna-high/summary.json",
+    "cost_basis": "adapter-recorded solver cost",
+    "outcome_basis": "historical final outcomes as published in PR #28",
+    "color": "#CC79A7"
+  },
+  {
+    "label": "DeepSeek V4 Flash high",
+    "solver_model": "deepseek-v4-flash",
+    "solver_effort": "high",
+    "passes": [
+      3,
+      4,
+      5,
+      10,
+      12
+    ],
+    "pass_count": 5,
+    "agent_wall_sec": 17424.726,
+    "total_cost_usd": 0.572672,
+    "resource_source": "results/deepseek-v4-flash-high/summary.json",
+    "cost_basis": "adapter-recorded solver cost",
+    "outcome_basis": "historical final outcomes as published in PR #28",
+    "color": "#B2182B"
+  },
+  {
+    "label": "Grok 4.5 high",
+    "solver_model": "grok-4.5",
+    "solver_effort": "high",
+    "passes": [
+      2,
+      3,
+      5,
+      6,
+      7,
+      9,
+      10,
+      12
+    ],
+    "pass_count": 8,
+    "agent_wall_sec": 9785.49,
+    "total_cost_usd": 5.09014,
+    "resource_source": "results/grok-4.5-high/summary.json; cost reconstructed from recorded token classes at archived xAI list prices",
+    "cost_basis": "archived token-class list-price reconstruction",
+    "outcome_basis": "historical final outcomes as published in PR #28",
+    "color": "#222222"
+  },
+  {
+    "label": "DeepSeek V4 Pro high",
+    "solver_model": "deepseek-v4-pro",
+    "solver_effort": "high",
+    "passes": [
+      2,
+      4,
+      6,
+      7,
+      10
+    ],
+    "pass_count": 5,
+    "agent_wall_sec": 19453.447,
+    "total_cost_usd": 1.101116,
+    "resource_source": "results/deepseek-v4-pro-high/summary.json (TensorCircuit 1.8 rerun)",
+    "cost_basis": "adapter-recorded solver cost",
+    "outcome_basis": "historical final outcomes as published in PR #28",
+    "color": "#56B4E9"
+  },
+  {
+    "label": "Grok 4.6 high",
+    "solver_model": "grok-4.6",
+    "solver_effort": "high",
+    "passes": [
+      2,
+      3,
+      4,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12
+    ],
+    "pass_count": 9,
+    "agent_wall_sec": 11949.916,
+    "total_cost_usd": 20.129532,
+    "resource_source": "results/grok-4.6-high/summary.json; xAI list-price reconstruction",
+    "cost_basis": "archived token-class list-price reconstruction",
+    "outcome_basis": "historical final outcomes as published in PR #28",
+    "color": "#8C564B"
+  },
+  {
+    "label": "6 Astra high",
+    "passes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "agent_wall_sec": 2683.130984,
+    "total_cost_usd": 13.967044000000001,
+    "color": "#7B2CBF"
+  },
+  {
+    "label": "6.2 Sol high",
+    "color": "#18598A",
+    "passes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "agent_wall_sec": 3375.770987,
+    "total_cost_usd": 3.2752656000000004
+  },
+  {
+    "label": "6.2 Astra high",
+    "color": "#8450BD",
+    "passes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "agent_wall_sec": 2809.5010509999997,
+    "total_cost_usd": 7.0637184
+  },
+  {
+    "label": "6.1 Terra high",
+    "color": "#017F5B",
+    "passes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12
+    ],
+    "agent_wall_sec": 2985.0470459999997,
+    "total_cost_usd": 1.0303656
+  }
+]

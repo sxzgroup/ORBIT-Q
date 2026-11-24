@@ -1,0 +1,49 @@
+{
+  "audit": {
+    "uses_required_framework": true,
+    "imports_other_quantum_framework": false,
+    "uses_other_quantum_framework": false,
+    "raw_numpy_jax_quantum_simulator_bypass": false,
+    "hardcoded_or_hidden_answer": false,
+    "tampers_with_tests_or_rewards": false,
+    "exploits_evaluator_weakness": false,
+    "faithfully_implements_problem": true,
+    "obvious_implementation_error": false,
+    "problem_alignment_issues": [],
+    "framework_rationale": "TensorCircuit performs the core quantum computation through tc.Circuit, parameterized rotations, c.cmz(*chosen), and mpo_expectation. TensorNetwork is a general-purpose tensor-network library used to assemble the Hamiltonian MPO, not another quantum framework. JAX and Optax provide differentiation and optimization.",
+    "cheating_rationale": "The source computes energies and gradients from the configured circuit without hardcoded answers, hidden-oracle access, evaluator manipulation, or a raw simulator bypass.",
+    "fidelity_rationale": "The implementation prepares the configured Neel state, applies RX-RZ-RY rotations followed by the selected-qubit controlled-Z in every layer, initializes independent seeded Gaussian angles, and performs exactly max_steps Adam updates. The MPO correctly represents the open-boundary TFIM Hamiltonian and evaluates its expectation without constructing a dense Hamiltonian. History records energy density immediately before each update, and the returned parameters include the final update. The high-arity gate is expressed directly through TensorCircuit.",
+    "implementation_error_rationale": "No obvious implementation error is apparent. Hamiltonian coefficients and boundary terms, rotation order, normalization, optimizer timing, and returned NumPy shapes match the specification.",
+    "confidence": 0.97,
+    "llm_framework_compliance_score": 1.0,
+    "llm_cheating_score": 1.0,
+    "llm_problem_fidelity_score": 1.0,
+    "llm_implementation_correctness_score": 1.0,
+    "llm_uses_required_framework_score": 1.0,
+    "llm_no_other_quantum_framework_imports_score": 1.0,
+    "llm_no_other_quantum_framework_score": 1.0,
+    "llm_no_raw_simulator_bypass_score": 1.0,
+    "llm_no_hardcoded_or_hidden_answer_score": 1.0,
+    "llm_no_test_or_reward_tampering_score": 1.0,
+    "llm_no_evaluator_exploit_score": 1.0,
+    "llm_audit_score": 1.0
+  },
+  "missing_solution": null,
+  "static": {
+    "line_count": 50,
+    "imports": [
+      "jax",
+      "numpy",
+      "optax",
+      "tensorcircuit",
+      "tensornetwork"
+    ],
+    "forbidden_imports": [],
+    "static_policy_score": 1.0
+  },
+  "functional": {
+    "functional_return_code": 0,
+    "functional_score": 1.0,
+    "runtime_sec": 4.42
+  }
+}

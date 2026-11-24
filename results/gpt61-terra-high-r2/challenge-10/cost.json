@@ -1,0 +1,11 @@
+{
+  "task": 10,
+  "solver": "gpt-6.1-terra",
+  "trial": "challenge-10__6bsGi73",
+  "reward": 1.0,
+  "cost_usd": 0.054634600000000005,
+  "pricing_source": "https://github.com/BerriAI/litellm/blob/88240a6d9d17c1a1eec162f707a849bb4064e69f/model_prices_and_context_window.json",
+  "n_input_tokens": 316561,
+  "n_output_tokens": 3040,
+  "n_cache_tokens": 291712
+}

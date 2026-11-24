@@ -1,0 +1,17 @@
+{
+  "task": 8,
+  "trial": "challenge-08__N7jpjCW",
+  "solver_wall_sec": 160.023019,
+  "n_input_tokens": 274208,
+  "n_output_tokens": 1604,
+  "n_cache_tokens": 231808,
+  "cost_usd": 0.0620104,
+  "reward": 0.0,
+  "functional_score": 0.0,
+  "static_policy_score": 0.0,
+  "llm_audit_score": 0.0,
+  "runtime_sec": -1.0,
+  "solver_termination": "completed",
+  "candidate_sha256": null,
+  "cost_basis": "Harbor recorded"
+}
