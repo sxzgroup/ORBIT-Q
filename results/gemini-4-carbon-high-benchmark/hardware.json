@@ -1,0 +1,11 @@
+{
+  "processor": "Apple M2",
+  "logical_cpus": "8",
+  "physical_memory_bytes": "17179869184",
+  "docker": {
+    "architecture": "aarch64",
+    "vm_cpus": 6,
+    "vm_memory_bytes": 16733048832,
+    "engine_version": "29.5.2"
+  }
+}

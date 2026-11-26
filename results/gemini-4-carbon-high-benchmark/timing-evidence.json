@@ -1,0 +1,664 @@
+{
+  "1": {
+    "expert": {
+      "task": 1,
+      "key": "expert",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "c0b6bea94044e3f6cac12e5f48a54255097bec95624325861685c47adda66fb6",
+        "candidate": "60a2df55bad90f159f3edf67e39e01ea07e83b6d14c1dd3e9ff1df17553ea1a2",
+        "fixture": "613e5c2d3d1ec18181a94ed084def89aa777b995e6df90c5ce5c6008811a166e"
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 59.83,
+      "config_hash": "45b7483202f43a87f97a84f0aa45ede1acfbe2486f8aa5f46e80683efa16c0c0"
+    }
+  },
+  "2": {
+    "expert": {
+      "task": 2,
+      "key": "expert",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "76881417fdbaa55f61fcebc7ed338fe947a61fb823a663e95d3c06bd9394fcfa",
+        "candidate": "9aa9779f1e7290de2d3adad35f0a305df7822606aa153d7131d5f28b68e18b5a",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 4.41,
+      "config_hash": "957a3f3d25394d2b731fc86df56975c2eb5c978fb5911c4c3b48729a1e74e1f0"
+    },
+    "candidate": {
+      "task": 2,
+      "key": "carbon",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "76881417fdbaa55f61fcebc7ed338fe947a61fb823a663e95d3c06bd9394fcfa",
+        "candidate": "8afd158dd37388995d10bf543610965841e138151f631067fff0ca784169d821",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 11.34,
+      "config_hash": "957a3f3d25394d2b731fc86df56975c2eb5c978fb5911c4c3b48729a1e74e1f0"
+    }
+  },
+  "3": {
+    "expert": {
+      "task": 3,
+      "key": "expert",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "5fad7fbdedca24ab4d84c3a84ad318e52b9aa1c220445d649537e86869c113a0",
+        "candidate": "eb059b0f457ba4e677eff06e58429ddd58e1fd1007057c820ef2a5df663aaa1e",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 3.88,
+      "config_hash": "b986b572887d53fba99028f50046ec4c9c2d05516ed97b1301f73b2ffa1c55e8"
+    },
+    "candidate": {
+      "task": 3,
+      "key": "carbon",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "5fad7fbdedca24ab4d84c3a84ad318e52b9aa1c220445d649537e86869c113a0",
+        "candidate": "4008d63bbad64b598fb4dbdcf3a451f9e7b9ba61b540de57710e930d5d9f657d",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 4.98,
+      "config_hash": "b986b572887d53fba99028f50046ec4c9c2d05516ed97b1301f73b2ffa1c55e8"
+    }
+  },
+  "4": {
+    "expert": {
+      "task": 4,
+      "key": "expert",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "5f7db300ea32dd0ba16bbfc36d59e79965151d31d46797ed4442844ec514ba59",
+        "candidate": "29fc2417465fcd3db0d6e4c4dbc008aa0fe0ac58fe3397fe3a4dc5f8e47897ec",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 14.27,
+      "config_hash": "b68923511c311a98abe3e581400e7daa744504eea56a2f401f8f120d52491c68"
+    },
+    "candidate": {
+      "task": 4,
+      "key": "carbon",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "5f7db300ea32dd0ba16bbfc36d59e79965151d31d46797ed4442844ec514ba59",
+        "candidate": "846c5b9dd1db10810fa09e1b77a5c4929da463e9e9837305987035c700a8f1e1",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 1.0,
+      "config_hash": "b68923511c311a98abe3e581400e7daa744504eea56a2f401f8f120d52491c68"
+    }
+  },
+  "5": {
+    "expert": {
+      "task": 5,
+      "key": "expert",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "928cf131719d0c867a1cecb9f2d70fe0d8cf9908d207d1c5d2c7343753253afb",
+        "candidate": "212ec101f72aa87468b5d2aabc76b445b158a69d8f99e709cb8a0bbd05476a8f",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 93.6,
+      "config_hash": "8756682e7e4d83919a0037d5f888e68773c0243cba8f92a45bbee529e38ef78a"
+    },
+    "candidate": {
+      "task": 5,
+      "key": "carbon",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "928cf131719d0c867a1cecb9f2d70fe0d8cf9908d207d1c5d2c7343753253afb",
+        "candidate": "995a0683b4539a2179686c0ee6515fb3d5b68b52daac00c184a0d0717b6f216a",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 117.32,
+      "config_hash": "8756682e7e4d83919a0037d5f888e68773c0243cba8f92a45bbee529e38ef78a"
+    }
+  },
+  "6": {
+    "expert": {
+      "task": 6,
+      "key": "expert",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "eb2cd4bacd4b578ddf33fbfec276f420e59b2199a618b67e46411d7427413943",
+        "candidate": "2a3fce5cebe393d89a8afbfa700dc82147fd8c56c939ea97c10e59380d615c15",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 44.67,
+      "config_hash": "0f541d857b7bde302c0ca6034bdfc813d5db2cb887acd5bfc95e8a5e76465301"
+    },
+    "candidate": {
+      "task": 6,
+      "key": "carbon",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "eb2cd4bacd4b578ddf33fbfec276f420e59b2199a618b67e46411d7427413943",
+        "candidate": "7a15aadbf90156f7abb28369065b7441f806fe674b521ee66a0b734acb3c45b2",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 22.42,
+      "config_hash": "0f541d857b7bde302c0ca6034bdfc813d5db2cb887acd5bfc95e8a5e76465301"
+    }
+  },
+  "7": {
+    "expert": {
+      "task": 7,
+      "key": "expert",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "c42faa56d800246340c2e3a2f5809afe60222a8c3a78bf8402705ca5a1f16986",
+        "candidate": "3c84fd06b5134320996c957c3c01b88f3f7835bba2f6485d29017305ec85cfa7",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 121.71,
+      "config_hash": "0a832d32af61a4bed14139608444530db3802af38997b4ee96f45da523902b2f"
+    },
+    "candidate": {
+      "task": 7,
+      "key": "carbon",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "c42faa56d800246340c2e3a2f5809afe60222a8c3a78bf8402705ca5a1f16986",
+        "candidate": "7147cdca74ea4e1bb2617736097821bfbdd579c5281ded223abf6bad5a361af0",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 29.93,
+      "config_hash": "0a832d32af61a4bed14139608444530db3802af38997b4ee96f45da523902b2f"
+    }
+  },
+  "8": {
+    "expert": {
+      "task": 8,
+      "key": "expert",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "15ec500489f269c8292cbeb742691a2dabb7ba9d99da706ad15fb88beebe3211",
+        "candidate": "e34960d1ab18eb3da59f959579aad8240f82ec4f6c8c1dd0128fa7f589ba60f6",
+        "fixture": null
+      },
+      "exit_code": 1,
+      "oom": false,
+      "timeout": false,
+      "passed": false,
+      "sec": null,
+      "config_hash": "cb5becdc354fe9bd031aa06401cde4f95beac1f19525b3963d0166385cf62eb2"
+    },
+    "candidate": {
+      "task": 8,
+      "key": "carbon",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "15ec500489f269c8292cbeb742691a2dabb7ba9d99da706ad15fb88beebe3211",
+        "candidate": "a6f8da846d36339e6e641c75bc71ff455ada76e98843ddf4e3a6f99e52a777a8",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 19.89,
+      "config_hash": "cb5becdc354fe9bd031aa06401cde4f95beac1f19525b3963d0166385cf62eb2"
+    }
+  },
+  "9": {
+    "expert": {
+      "task": 9,
+      "key": "expert",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "1f374632c55d2665551365ee362f767514317c915f37ff6d89f879f52e211293",
+        "candidate": "c986cf99aab358c7c6f9cc40db5d3331836a638e8eff3cb6b4a31f1fd6c7a7bc",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 25.1,
+      "config_hash": "12352ac2b0412266b187295cc51f34510a1c5fe13a3cd4610889fed72b94da3d"
+    }
+  },
+  "10": {
+    "expert": {
+      "task": 10,
+      "key": "expert",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "ba3c9d4f90b6b1c39e7cd104961cd5b6f36028338ed17a4a9118fdca3ed1fe66",
+        "candidate": "595a8b4b34d1bfdb9a0e5975cc0f6d3582e9e011036a493b23773ac7325f742d",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 18.4,
+      "config_hash": "84e5fd120ebffa5672a5aac6dfba0670993cf8b3e640413a235fcc14697623df"
+    },
+    "candidate": {
+      "task": 10,
+      "key": "carbon",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "ba3c9d4f90b6b1c39e7cd104961cd5b6f36028338ed17a4a9118fdca3ed1fe66",
+        "candidate": "fe6b2272209639bd0ece583f40181162389616224cb0294d4ab0646c4ef681c0",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 57.79,
+      "config_hash": "84e5fd120ebffa5672a5aac6dfba0670993cf8b3e640413a235fcc14697623df"
+    }
+  },
+  "11": {
+    "expert": {
+      "task": 11,
+      "key": "expert",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "fe2b05d62b9bd40ad233cc68a3682fd3aca6d362bf2b4a3dbb22b4f535e01300",
+        "candidate": "49efe66295773cc8bfcc4e828a1662ba6ca78200419723b4a9336e1e72f1ec12",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 165.32,
+      "config_hash": "c470288c860e7b7f4ebaf33a6c758ae10ca8b06a356fbcf581f90e763e6bf1a5"
+    },
+    "candidate": {
+      "task": 11,
+      "key": "carbon",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "fe2b05d62b9bd40ad233cc68a3682fd3aca6d362bf2b4a3dbb22b4f535e01300",
+        "candidate": "3518603a2a3f06dbc8e619f5b71762596f8084c94bfc4074feffad6131c73920",
+        "fixture": null
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 40.29,
+      "config_hash": "c470288c860e7b7f4ebaf33a6c758ae10ca8b06a356fbcf581f90e763e6bf1a5"
+    }
+  },
+  "12": {
+    "expert": {
+      "task": 12,
+      "key": "expert",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "d94d0ac35da6929d2643ecf1645cff8a24eb688c241105943820b42227ec0691",
+        "candidate": "578b53dae336ff5b42b337758ca4b2f18da5f62047360e0c40906716c95ccbb1",
+        "fixture": "85512b31f4a5e83d395ba07d4cdcd08b00a7b8a906aa072d517de82e21bb85cb"
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 9.83,
+      "config_hash": "5612e4a8dccd57e97504f1a0bcdd140e3d56f25f3faeb6572f83371451102cab"
+    },
+    "candidate": {
+      "task": 12,
+      "key": "carbon",
+      "stamp": {
+        "image": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+        "threads": {
+          "OMP_NUM_THREADS": "6",
+          "MKL_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "JAX_ENABLE_COMPILATION_CACHE": "false",
+          "NUMBA_DISABLE_JIT": "1",
+          "PYTHONHASHSEED": "20260905"
+        },
+        "cpu": 6,
+        "memory_mib": 10240,
+        "network": "none",
+        "harness": "84f6bdb7032f00cd87d2e41074a9201262f9f524dfa08a5c90cb9554e3d4632f",
+        "evaluator": "d94d0ac35da6929d2643ecf1645cff8a24eb688c241105943820b42227ec0691",
+        "candidate": "dd4c92bc72dffa187c1a35086471e5899916fe5452e017bb21626ced1fb684fd",
+        "fixture": "85512b31f4a5e83d395ba07d4cdcd08b00a7b8a906aa072d517de82e21bb85cb"
+      },
+      "exit_code": 0,
+      "oom": false,
+      "timeout": false,
+      "passed": true,
+      "sec": 10.56,
+      "config_hash": "5612e4a8dccd57e97504f1a0bcdd140e3d56f25f3faeb6572f83371451102cab"
+    }
+  }
+}
