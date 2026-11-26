@@ -1,0 +1,18 @@
+{
+  "base": "2187118fecc0e275efc0763c676baa8e2df57108",
+  "harness": "Antigravity",
+  "solver": "gemini-4-neon-high",
+  "solver_effort": "high",
+  "verifier": "gemini-4-neon-high",
+  "audit_effort": "high",
+  "cli": "1.5.17",
+  "image": "orbitq-tc18-agy:1.5.17",
+  "image_id": "sha256:a53c868dd8ddc7601d2162fa5b620415413125f74cbcd804b62a8aa17d90561b",
+  "cpus": 6,
+  "host": "Mac Colima",
+  "memory_mib": 10240,
+  "framework": "TensorCircuit 1.8.0.dev20260726",
+  "concurrency": 1,
+  "pricing_lock_sha256": "283ebf5d8547c27f76556bd933e6a9623b0ed15ea896bbe5b9a790b936a194b8",
+  "pricing_as_of": "2026-11-25"
+}
